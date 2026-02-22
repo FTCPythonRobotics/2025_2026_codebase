@@ -17,7 +17,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 public class Constants {
     // TODO: Review this value, it should probably
     // be boosted to 1.0 soon.
-    public static float VELOCITY_MULTIPLIER = 0.7f;
+    public static float VELOCITY_MULTIPLIER = 1.0f;
 
     public static FollowerConstants followerConstants = new FollowerConstants()
             .mass(12.4)
