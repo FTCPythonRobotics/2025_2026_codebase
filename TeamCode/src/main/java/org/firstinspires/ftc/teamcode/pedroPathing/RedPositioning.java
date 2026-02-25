@@ -9,8 +9,8 @@ import com.pedropathing.paths.PathChain;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-@Autonomous(name = "BluePositioning", group = "Setup")
-public class BluePositioning extends OpMode {
+@Autonomous(name = "RedPositioning", group = "Setup")
+public class RedPositioning extends OpMode {
 
     private Follower follower;
     private Paths paths;
@@ -22,11 +22,11 @@ public class BluePositioning extends OpMode {
         public Paths(Follower follower) {
             Path1 = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(72.000, 80.000),
+                                    new Pose(144.00 - 72.000, 80.000),
 
-                                    new Pose(48.000, 96.000)
+                                    new Pose(144.00 - 48.000, 96.000)
                             )
-                    ).setLinearHeadingInterpolation(Math.toRadians(90), Math.toRadians(135))
+                    ).setLinearHeadingInterpolation(Math.toRadians(180 - 90), Math.toRadians(180 - 135))
                     .build();
         }
     }
@@ -41,7 +41,7 @@ public class BluePositioning extends OpMode {
     @Override
     public void init() {
         follower = Constants.createFollower(hardwareMap);
-        follower.setStartingPose(new Pose(72.0, 80.0, Math.toRadians(90)));
+        follower.setStartingPose(new Pose(144.00 - 72.0, 80.0, Math.toRadians(180.00 - 90)));
         paths = new Paths(follower);
     }
 
