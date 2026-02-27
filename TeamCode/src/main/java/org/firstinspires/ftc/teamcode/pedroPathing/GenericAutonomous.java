@@ -80,6 +80,7 @@ public abstract class GenericAutonomous extends OpMode {
     }
 
     public static class Paths {
+        public PathChain Setup;
         public PathChain Shoot1, ArtifactSetup1, ArtifactPickup1, TravelToShoot1;
         public PathChain Shoot2, ArtifactSetup2, ArtifactPickup2, TravelToShoot2;
         public PathChain Shoot3, ArtifactSetup3, ArtifactPickup3;
@@ -97,6 +98,15 @@ public abstract class GenericAutonomous extends OpMode {
         public Paths(Follower follower, boolean flipped) {
             this.flipped = flipped;
 
+            Setup = follower.pathBuilder()
+                    .addPath(
+                            new BezierLine(
+                                    new Pose(flipX(20.300), 122.500),
+                                    new Pose(flipX(48.000), 96.000)
+                            )
+                    )
+                    .setLinearHeadingInterpolation(flipRotation(Math.toRadians(144)), flipRotation(Math.toRadians(135)))
+                    .build();
             Shoot1 = follower.pathBuilder()
                     .addPath(new BezierLine(new Pose(flipX(48.000), 96.000), new Pose(flipX(48.000), 96.000)))
                     .setLinearHeadingInterpolation(flipRotation(Math.toRadians(135)), flipRotation(Math.toRadians(135))).build();
@@ -131,8 +141,8 @@ public abstract class GenericAutonomous extends OpMode {
                     .addPath(new BezierLine(new Pose(flipX(42.000), 35.000), new Pose(flipX(18.000), 35.000)))
                     .setLinearHeadingInterpolation(flipRotation(Math.toRadians(90)), flipRotation(Math.toRadians(90))).build();
             Park = follower.pathBuilder()
-                    .addPath(new BezierLine(new Pose(flipX(18.000), 35.000), new Pose(flipX(105.500), 33.000)))
-                    .setLinearHeadingInterpolation(flipRotation(Math.toRadians(90)), flipRotation(Math.toRadians(0))).build();
+                    .addPath(new BezierLine(new Pose(flipX(18.000), 35.000), new Pose(flipX(72.000), 50.000)))
+                    .setLinearHeadingInterpolation(flipRotation(Math.toRadians(90)), flipRotation(Math.toRadians(144))).build();
         }
     }
 
@@ -156,6 +166,7 @@ public abstract class GenericAutonomous extends OpMode {
 
     private void buildSequence() {
         sequence = new ArrayList<>();
+        sequence.add(followStep("Setup", paths.Setup, FULL_SPEED, () -> {}));
         sequence.add(new Step() {
             @Override public void onEnter() { ballCount = 3; setIntake(false); startShootAll(); }
             @Override public boolean isDone() { return shootAllDone(); }
@@ -200,8 +211,9 @@ public abstract class GenericAutonomous extends OpMode {
         opmodeTimer = new Timer();
 
         follower = Constants.createFollower(hardwareMap);
+
         // Flip starting pose x/heading if this autonomous was constructed with flipped=true
-        follower.setStartingPose(new Pose(flipX(48.000), 96.000, flipRotation(Math.toRadians(135))));
+        follower.setStartingPose(new Pose(flipX(20.300), 122.500, flipRotation(Math.toRadians(144))));
 
         intake = hardwareMap.get(DcMotor.class, intakeName);
 
