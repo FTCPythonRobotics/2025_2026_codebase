@@ -83,7 +83,8 @@ public abstract class GenericAutonomous extends OpMode {
         public PathChain Setup;
         public PathChain Shoot1, ArtifactSetup1, ArtifactPickup1, TravelToShoot1;
         public PathChain Shoot2, ArtifactSetup2, ArtifactPickup2, TravelToShoot2;
-        public PathChain Shoot3, ArtifactSetup3, ArtifactPickup3;
+        public PathChain Shoot3, ArtifactSetup3, ArtifactPickup3, TravelToShoot3;
+        public PathChain Shoot4;
         public PathChain Park;
 
         private final boolean flipped;
@@ -140,9 +141,15 @@ public abstract class GenericAutonomous extends OpMode {
             ArtifactPickup3 = follower.pathBuilder()
                     .addPath(new BezierLine(new Pose(flipX(42.000), 35.000), new Pose(flipX(18.000), 35.000)))
                     .setLinearHeadingInterpolation(flipRotation(Math.toRadians(90)), flipRotation(Math.toRadians(90))).build();
+            TravelToShoot3 = follower.pathBuilder()
+                    .addPath(new BezierLine(new Pose(flipX(18.000), 35.000), new Pose(flipX(48.000), 96.000)))
+                    .setLinearHeadingInterpolation(flipRotation(Math.toRadians(90)), flipRotation(Math.toRadians(135))).build();
+            Shoot4 = follower.pathBuilder()
+                    .addPath(new BezierLine(new Pose(flipX(48.000), 96.000), new Pose(flipX(48.000), 96.000)))
+                    .setLinearHeadingInterpolation(flipRotation(Math.toRadians(135)), flipRotation(Math.toRadians(135))).build();
             Park = follower.pathBuilder()
-                    .addPath(new BezierLine(new Pose(flipX(18.000), 35.000), new Pose(flipX(72.000), 50.000)))
-                    .setLinearHeadingInterpolation(flipRotation(Math.toRadians(90)), flipRotation(Math.toRadians(144))).build();
+                    .addPath(new BezierLine(new Pose(flipX(48.000), 96.000), new Pose(flipX(72.000), 50.000)))
+                    .setLinearHeadingInterpolation(flipRotation(Math.toRadians(135)), flipRotation(Math.toRadians(144))).build();
         }
     }
 
@@ -190,6 +197,12 @@ public abstract class GenericAutonomous extends OpMode {
         });
         sequence.add(followStep("Setup -> Row 3", paths.ArtifactSetup3, FULL_SPEED, () -> { shutdownFlywheel(); setIntake(true); }));
         sequence.add(followStep("Pickup Row 3", paths.ArtifactPickup3, INTAKE_SWEEP_SPEED, null));
+        sequence.add(followStep("Return -> Shoot 4", paths.TravelToShoot3, FULL_SPEED, () -> { ballCount = 3; spinupFlywheel(); }));
+        sequence.add(new Step() {
+            @Override public void onEnter() { setIntake(false); startShootAll(); }
+            @Override public boolean isDone() { return shootAllDone(); }
+            @Override public String label() { return "Shoot 4"; }
+        });
         sequence.add(followStep("Park", paths.Park, FULL_SPEED, this::shutdownFlywheel));
         sequence.add(new Step() {
             @Override public void onEnter() {}
