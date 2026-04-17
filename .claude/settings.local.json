@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(jar tf *)",
+      "Bash(jar xf *)",
+      "WebFetch(domain:pedropathing.com)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "Bash(xargs -I{} basename {})",
+      "Bash(cmd.exe /c \"dir /s /b C:\\\\Users\\\\Ben\\\\.gradle\\\\caches\\\\*pedropathing* 2>nul\")",
+      "Bash(cmd.exe *)",
+      "Bash(node *)",
+      "WebFetch(domain:ftcontrol.bylazar.com)",
+      "Bash(python3 *)",
+      "Bash(unzip -p /c/Users/Ben/.gradle/caches/modules-2/files-2.1/com.pedropathing/core/2.1.1/e80c29f33823f4c1c2ddd27999b26c8820af3c5d/core-2.1.1-sources.jar com/pedropathing/geometry/Pose.java)",
+      "Bash(./gradlew :TeamCode:compileDebugJavaWithJavac)",
+      "Bash(python *)"
+    ]
+  }
+}

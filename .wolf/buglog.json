@@ -1,0 +1,1511 @@
+{
+  "version": 1,
+  "bugs": [
+    {
+      "id": "bug-001",
+      "timestamp": "2026-04-17T16:51:12.074Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 9â†’15 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-17T16:51:12.074Z"
+    },
+    {
+      "id": "bug-002",
+      "timestamp": "2026-04-17T20:09:52.111Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoSequence.java",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 4â†’4 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-17T20:09:52.111Z"
+    },
+    {
+      "id": "bug-003",
+      "timestamp": "2026-04-17T20:16:24.467Z",
+      "error_message": "Wrong reference: pathgen should be geometry",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java",
+      "root_cause": "Used \"pathgen\" instead of \"geometry\"",
+      "fix": "Changed pathgen â†’ geometry",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-04-17T20:18:03.011Z"
+    },
+    {
+      "id": "bug-004",
+      "timestamp": "2026-04-17T20:18:08.930Z",
+      "error_message": "Wrong reference: util should be geometry",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "Used \"util\" instead of \"geometry\"",
+      "fix": "Changed util â†’ geometry",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-17T20:18:08.930Z"
+    },
+    {
+      "id": "bug-005",
+      "timestamp": "2026-04-17T20:18:23.173Z",
+      "error_message": "Wrong reference: GATE_SERVO should be GATE_SERVO_LEFT",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotAutonomous.java",
+      "root_cause": "Used \"GATE_SERVO\" instead of \"GATE_SERVO_LEFT\"",
+      "fix": "Changed GATE_SERVO â†’ GATE_SERVO_LEFT",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-17T20:18:23.173Z"
+    },
+    {
+      "id": "bug-006",
+      "timestamp": "2026-04-17T20:21:06.965Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotAutonomous.java",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 7â†’15 lines (3 removed) | Also: if (gateServo != null) gateServo.setPosition(1.0);; if (gateServo != null) gateServo.setPosition(0.0);",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-04-17T20:21:18.973Z"
+    },
+    {
+      "id": "bug-007",
+      "timestamp": "2026-04-18T13:59:34.051Z",
+      "error_message": "Wrong reference: GATE_LEFT_HOLD should be RobotConfig",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotAutonomous.java",
+      "root_cause": "Used \"GATE_LEFT_HOLD\" instead of \"RobotConfig\"",
+      "fix": "Changed GATE_LEFT_HOLD â†’ RobotConfig",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-04-18T13:59:39.878Z"
+    },
+    {
+      "id": "bug-008",
+      "timestamp": "2026-04-18T14:25:17.071Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java",
+      "root_cause": "Had \"Auto: Long Range\"",
+      "fix": "Changed to \"Long Range\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T14:25:17.071Z"
+    },
+    {
+      "id": "bug-009",
+      "timestamp": "2026-04-18T14:25:22.640Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "Had \"Auto: Short Range\"",
+      "fix": "Changed to \"Short Range\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T14:25:22.640Z"
+    },
+    {
+      "id": "bug-010",
+      "timestamp": "2026-04-18T14:25:28.126Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotAutonomous.java",
+      "root_cause": "Had \"Robot: Autonomous\"",
+      "fix": "Changed to \"Autonomous\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T14:25:28.126Z"
+    },
+    {
+      "id": "bug-011",
+      "timestamp": "2026-04-18T14:25:40.715Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+      "root_cause": "Had \"Robot: Mecanum Drive\"",
+      "fix": "Changed to \"Mecanum Drive\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T14:25:40.715Z"
+    },
+    {
+      "id": "bug-012",
+      "timestamp": "2026-04-18T14:30:34.620Z",
+      "error_message": "Null/undefined access in ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoStep.java",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T14:30:34.620Z"
+    },
+    {
+      "id": "bug-013",
+      "timestamp": "2026-04-18T14:30:55.505Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoSequence.java",
+      "root_cause": "Had \"Auto step\"",
+      "fix": "Changed to \"Step\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T14:30:55.505Z"
+    },
+    {
+      "id": "bug-014",
+      "timestamp": "2026-04-18T14:31:08.461Z",
+      "error_message": "Null/undefined access in ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T14:31:08.461Z"
+    },
+    {
+      "id": "bug-015",
+      "timestamp": "2026-04-18T14:31:45.918Z",
+      "error_message": "Null/undefined access in ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T14:31:45.918Z"
+    },
+    {
+      "id": "bug-016",
+      "timestamp": "2026-04-18T16:04:36.594Z",
+      "error_message": "Wrong reference: GATE_LEFT_HOLD should be GATE_LEFT_CLOSED",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+      "root_cause": "Used \"GATE_LEFT_HOLD\" instead of \"GATE_LEFT_CLOSED\"",
+      "fix": "Changed GATE_LEFT_HOLD â†’ GATE_LEFT_CLOSED",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-04-18T16:04:40.941Z"
+    },
+    {
+      "id": "bug-017",
+      "timestamp": "2026-04-18T16:04:48.767Z",
+      "error_message": "Wrong reference: GATE_LEFT_HOLD should be GATE_LEFT_CLOSED",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotAutonomous.java",
+      "root_cause": "Used \"GATE_LEFT_HOLD\" instead of \"GATE_LEFT_CLOSED\"",
+      "fix": "Changed GATE_LEFT_HOLD â†’ GATE_LEFT_CLOSED",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-04-18T16:04:51.710Z"
+    },
+    {
+      "id": "bug-018",
+      "timestamp": "2026-04-18T18:00:48.807Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/HardwareNames.java",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 3â†’5 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T18:00:48.807Z"
+    },
+    {
+      "id": "bug-019",
+      "timestamp": "2026-04-18T18:42:46.461Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterMotors.java",
+      "root_cause": "6 lines replaced/restructured",
+      "fix": "Rewrote 8â†’15 lines (6 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T18:42:46.461Z"
+    },
+    {
+      "id": "bug-020",
+      "timestamp": "2026-04-18T18:58:21.698Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 3â†’9 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T18:58:21.698Z"
+    },
+    {
+      "id": "bug-021",
+      "timestamp": "2026-04-18T18:58:54.719Z",
+      "error_message": "Missing error handling in unknown",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "Code path had no error handling â€” exceptions would propagate uncaught",
+      "fix": "Added try/catch block",
+      "tags": [
+        "auto-detected",
+        "error-handling",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T18:58:54.719Z"
+    },
+    {
+      "id": "bug-022",
+      "timestamp": "2026-04-18T18:59:09.506Z",
+      "error_message": "Wrong reference: DEADBAND should be RobotConfig",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Used \"DEADBAND\" instead of \"RobotConfig\"",
+      "fix": "Changed DEADBAND â†’ RobotConfig",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-04-18T18:59:13.862Z"
+    },
+    {
+      "id": "bug-023",
+      "timestamp": "2026-04-18T19:03:07.245Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterMotors.java",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 8â†’6 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T19:03:07.245Z"
+    },
+    {
+      "id": "bug-024",
+      "timestamp": "2026-04-18T19:03:14.704Z",
+      "error_message": "Wrong reference: TICKS_PER_REV should be RobotConfig",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterMotors.java",
+      "root_cause": "Used \"TICKS_PER_REV\" instead of \"RobotConfig\"",
+      "fix": "Changed TICKS_PER_REV â†’ RobotConfig",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T19:03:14.704Z"
+    },
+    {
+      "id": "bug-025",
+      "timestamp": "2026-04-18T19:33:43.518Z",
+      "error_message": "Wrong reference: lastX should be lastSquare",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Used \"lastX\" instead of \"lastSquare\"",
+      "fix": "Changed lastX â†’ lastSquare",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T19:33:43.518Z"
+    },
+    {
+      "id": "bug-026",
+      "timestamp": "2026-04-18T19:33:53.338Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Had \"X : toggle tracking on/off\"",
+      "fix": "Changed to \"Square : toggle tracking on/off\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T19:33:53.338Z"
+    },
+    {
+      "id": "bug-027",
+      "timestamp": "2026-04-18T19:34:03.143Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestIntakeMotor.java",
+      "root_cause": "Had \"X          : full forward\"",
+      "fix": "Changed to \"Square     : full forward\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T19:34:03.143Z"
+    },
+    {
+      "id": "bug-028",
+      "timestamp": "2026-04-18T19:34:12.710Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestGateServos.java",
+      "root_cause": "Had \"A           : snap both to CLOSED\"",
+      "fix": "Changed to \"Cross       : snap both to CLOSED\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T19:34:12.710Z"
+    },
+    {
+      "id": "bug-029",
+      "timestamp": "2026-04-18T19:42:49.401Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 3â†’4 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T19:42:49.401Z"
+    },
+    {
+      "id": "bug-029",
+      "timestamp": "2026-04-18T19:43:21.302Z",
+      "error_message": "Turret does full spin to limit immediately when tracking enabled",
+      "file": "TurretController.java, TestTurretController.java",
+      "root_cause": "Additive tracking update (current + tx * TICKS_PER_DEG) fires every loop while motor is still moving. Motor lag means tx stays large, target walks to MAX_TICKS/MIN_TICKS within a fraction of a second.",
+      "fix": "Added TURRET_TRACKING_GAIN (0.15) to RobotConfig. Each loop now only applies 15% of the error as a P controller, preventing runaway target accumulation.",
+      "tags": [
+        "turret",
+        "tracking",
+        "p-control",
+        "runaway"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T19:43:21.304Z"
+    },
+    {
+      "id": "bug-031",
+      "timestamp": "2026-04-18T19:47:17.290Z",
+      "error_message": "Wrong return value",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "Was returning: (target >= MAX_TICKS && tx >  RobotConfig.TURRET_D",
+      "fix": "Now returns: (target >= maxTicks() && tx >  RobotConfig.TURRET_",
+      "tags": [
+        "auto-detected",
+        "return-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T19:47:17.290Z"
+    },
+    {
+      "id": "bug-032",
+      "timestamp": "2026-04-18T19:47:39.844Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Had \"+- 105 deg  (ticks: %d to %d)\"",
+      "fix": "Changed to \"ticks: %d to %d\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T19:47:39.844Z"
+    },
+    {
+      "id": "bug-030",
+      "timestamp": "2026-04-18T19:57:02.886Z",
+      "error_message": "Turret angle display shows ~240 deg when physically at ~90 deg",
+      "file": "TurretController.java, TestTurretController.java",
+      "root_cause": "TICKS_PER_DEG used 5.2:1 gear ratio but motor was swapped to 13.7:1 (goBILDA 5203-2402-0004, 435 RPM). Factor of 13.7/5.2=2.63 explains 90*2.63=237~240 deg display.",
+      "fix": "Updated TICKS_PER_DEG formula from 5.2 to 13.7 gearbox ratio. TURRET_MAX_TICKS still needs re-measuring on the robot.",
+      "tags": [
+        "turret",
+        "encoder",
+        "gear-ratio",
+        "wrong-motor"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T19:57:02.887Z"
+    },
+    {
+      "id": "bug-034",
+      "timestamp": "2026-04-18T20:01:21.477Z",
+      "error_message": "Wrong reference: 200 should be 600",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+      "root_cause": "Used \"200\" instead of \"600\"",
+      "fix": "Changed 200 â†’ 600",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T20:01:21.477Z"
+    },
+    {
+      "id": "bug-035",
+      "timestamp": "2026-04-18T20:18:15.985Z",
+      "error_message": "Wrong return value",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "Was returning: (target >= maxTicks() && tx >  RobotConfig.TURRET_",
+      "fix": "Now returns: (target >= maxTicks() && tx < -RobotConfig.TURRET_",
+      "tags": [
+        "auto-detected",
+        "return-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T20:18:15.985Z"
+    },
+    {
+      "id": "bug-036",
+      "timestamp": "2026-04-18T20:34:51.999Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 9â†’14 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T20:34:51.999Z"
+    },
+    {
+      "id": "bug-031",
+      "timestamp": "2026-04-18T20:35:09.189Z",
+      "error_message": "Turret did near-full rotation during tracking, ignoring limits, nearly ripped cables",
+      "file": "TestTurretController.java, TurretController.java",
+      "root_cause": "Likely: setPower(0) on init disabled RUN_TO_POSITION PID; on re-enable motor ran open-loop briefly with large tx commanding full limit. Also TURRET_MAX_POWER=0.6 too high for unvalidated system.",
+      "fix": "Keep power always on (PID always active). Added hard safety cutoff: if currentPosition exceeds TURRET_MAX_TICKS, halt tracking immediately. Reduced TURRET_MAX_POWER to 0.3 for testing.",
+      "tags": [
+        "turret",
+        "safety",
+        "runaway",
+        "RUN_TO_POSITION",
+        "cables"
+      ],
+      "related_bugs": [
+        "bug-029"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T20:35:09.190Z"
+    },
+    {
+      "id": "bug-038",
+      "timestamp": "2026-04-18T20:46:25.567Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 14â†’20 lines (3 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T20:46:25.567Z"
+    },
+    {
+      "id": "bug-032",
+      "timestamp": "2026-04-18T20:46:33.296Z",
+      "error_message": "Motor spinning at max power with tracking OFF when turret pushed manually",
+      "file": "TestTurretController.java",
+      "root_cause": "Previous fix changed setPower(0) to setPower(TURRET_MAX_POWER) at init to keep PID active. This meant motor was always in RUN_TO_POSITION with full power, fighting any manual movement even when tracking was disabled.",
+      "fix": "Reverted to setPower(0) at init. Motor only gets power when tracking is enabled. Toggle ON: snap target to current position then apply power. Toggle OFF / safety cutoff: cut power to 0 so turret moves freely.",
+      "tags": [
+        "turret",
+        "safety",
+        "RUN_TO_POSITION",
+        "power-management"
+      ],
+      "related_bugs": [
+        "bug-031"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T20:46:33.297Z"
+    },
+    {
+      "id": "bug-039",
+      "timestamp": "2026-04-18T22:12:00.000Z",
+      "error_message": "Turret overshot limits and spun unsafely during testing; limit behavior was not reliably preventing outward drive",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+      "root_cause": "Safety behavior depended mostly on clamped targets and did not combine directional blocking at the physical edge with a separate hard-limit cutoff margin. Test-mode speed selection was also not wired into turret control logic.",
+      "fix": "Added layered safety: directional blocking at soft limits, hard-limit cutoff using TURRET_MAX_TICKS + TURRET_HARD_LIMIT_MARGIN_TICKS that cuts motor power, and explicit low-speed test mode power selection (TURRET_TEST_MODE/TURRET_TEST_POWER) in TestTurretController.",
+      "tags": [
+        "turret",
+        "safety",
+        "limit-protection",
+        "test-mode",
+        "run_to_position"
+      ],
+      "related_bugs": [
+        "bug-031",
+        "bug-032"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T22:12:00.000Z"
+    },
+    {
+      "id": "bug-040",
+      "timestamp": "2026-04-18T22:35:00.000Z",
+      "error_message": "Inversion must always be on; turret still overshoots AprilTag and appears to run full speed instead of test speed",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+      "root_cause": "Recent runtime inversion toggle introduced sign-path complexity, and turret target updates could still move too far per loop under large tx. Main TurretController also used TURRET_MAX_POWER directly, so test power settings did not affect that path.",
+      "fix": "Removed inversion toggle and made tx inversion fixed in both controllers. Added per-loop target delta clamp via TURRET_MAX_STEP_TICKS to reduce overshoot. Updated TurretController to use configuredPower() so TURRET_TEST_MODE/TURRET_TEST_POWER apply there too. Corrected directional limit-block conditions for the fixed-inversion sign convention.",
+      "tags": [
+        "turret",
+        "safety",
+        "overshoot",
+        "test-mode",
+        "sign-convention"
+      ],
+      "related_bugs": [
+        "bug-039"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T22:35:00.000Z"
+    },
+    {
+      "id": "bug-041",
+      "timestamp": "2026-04-18T22:52:00.000Z",
+      "error_message": "Need ultra-safe, very slow turret testing profile; speed is not priority",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Tracking updates and control arming were still too permissive for bring-up risk tolerance.",
+      "fix": "Applied ultra-conservative constants (lower power, lower gain, larger deadband, 1 tick max step, 100 ms update period), required explicit tracking arm/disarm in TeleOp (Triangle), and defaulted turret power to 0 unless tracking is enabled.",
+      "tags": [
+        "turret",
+        "safety",
+        "slow-mode",
+        "test-tuning"
+      ],
+      "related_bugs": [
+        "bug-040"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T22:52:00.000Z"
+    },
+    {
+      "id": "bug-042",
+      "timestamp": "2026-04-18T23:05:00.000Z",
+      "error_message": "Tracking does nothing until turret is manually pushed, then it runs away in pushed direction and seems to ignore AprilTag",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Tracking updates were based on current encoder position (current + delta), so manual movement could drag the command along and create unstable behavior. With conservative gain/step, integer truncation also produced zero-step commands near deadband.",
+      "fix": "Changed tracking integration to update from target position (target + delta) instead of current position, and added a minimum signed 1-tick delta whenever tx is outside deadband.",
+      "tags": [
+        "turret",
+        "tracking",
+        "runaway",
+        "control-loop",
+        "safety"
+      ],
+      "related_bugs": [
+        "bug-040",
+        "bug-041"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T23:05:00.000Z"
+    },
+    {
+      "id": "bug-043",
+      "timestamp": "2026-04-18T14:00:00.000Z",
+      "error_message": "Turret turns wrong way when tracking target",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "tx was negated (-result.getTx()) but motor wiring/mounting means raw positive tx should drive positive ticks",
+      "fix": "Removed negation: changed -result.getTx() to result.getTx() in update() and isAtLimit()",
+      "tags": [
+        "turret",
+        "tracking",
+        "inversion",
+        "sign-convention"
+      ],
+      "related_bugs": [
+        "bug-040"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T14:00:00.000Z"
+    },
+    {
+      "id": "bug-045",
+      "timestamp": "2026-04-18T22:16:59.469Z",
+      "error_message": "Wrong reference: REVERSE should be FORWARD",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "Used \"REVERSE\" instead of \"FORWARD\"",
+      "fix": "Changed REVERSE â†’ FORWARD",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T22:16:59.469Z"
+    },
+    {
+      "id": "bug-046",
+      "timestamp": "2026-04-18T22:20:48.854Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Had \"ON (fixed)\"",
+      "fix": "Changed to \"OFF (raw)\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T22:20:48.854Z"
+    },
+    {
+      "id": "bug-047",
+      "timestamp": "2026-04-18T22:39:11.811Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+      "root_cause": "10 lines replaced/restructured",
+      "fix": "Rewrote 12â†’8 lines (10 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T22:39:11.811Z"
+    },
+    {
+      "id": "bug-048",
+      "timestamp": "2026-04-18T22:52:51.595Z",
+      "error_message": "Wrong reference: Telemetry should be TelemetryManager",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Used \"Telemetry\" instead of \"TelemetryManager\"",
+      "fix": "Changed Telemetry â†’ TelemetryManager",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T22:52:51.595Z"
+    },
+    {
+      "id": "bug-049",
+      "timestamp": "2026-04-18T22:58:10.070Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 3â†’5 lines (3 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T22:58:10.070Z"
+    },
+    {
+      "id": "bug-050",
+      "timestamp": "2026-04-18T22:58:49.438Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 14â†’19 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T22:58:49.438Z"
+    },
+    {
+      "id": "bug-051",
+      "timestamp": "2026-04-18T23:34:27.325Z",
+      "error_message": "Wrong reference: IDLE should be RAMPING",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Used \"IDLE\" instead of \"RAMPING\"",
+      "fix": "Changed IDLE â†’ RAMPING",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T23:34:27.325Z"
+    },
+    {
+      "id": "bug-052",
+      "timestamp": "2026-04-18T23:34:33.690Z",
+      "error_message": "Wrong operator: == should be !=",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Used \"==\" instead of \"!=\"",
+      "fix": "Changed operator == â†’ !=",
+      "tags": [
+        "auto-detected",
+        "operator-fix",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-18T23:34:33.690Z"
+    },
+    {
+      "id": "bug-053",
+      "timestamp": "2026-04-19T00:36:02.561Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 6â†’17 lines (3 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T00:36:02.561Z"
+    },
+    {
+      "id": "bug-054",
+      "timestamp": "2026-04-19T00:36:09.277Z",
+      "error_message": "Wrong condition in logic",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Condition was: if (!llValid)",
+      "fix": "Changed to: if (!hasTarget)",
+      "tags": [
+        "auto-detected",
+        "logic-fix",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T00:36:09.277Z"
+    },
+    {
+      "id": "bug-055",
+      "timestamp": "2026-04-19T11:07:53.022Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 4â†’5 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T11:07:53.022Z"
+    },
+    {
+      "id": "bug-056",
+      "timestamp": "2026-04-19T11:08:02.373Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 4â†’5 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T11:08:02.373Z"
+    },
+    {
+      "id": "bug-057",
+      "timestamp": "2026-04-19T11:08:20.650Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 3â†’4 lines (3 removed) | Also: double derivative = dtSecs > 0 ? (tx - lastTx) / d; + kD * derivative; | Also: integral     = 0;; lastTx       = 0; | Also: // Ziegler-Nichols PID (classic, halved for less a; tunedKp = 0.3  * Ku;",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 4,
+      "last_seen": "2026-04-19T11:11:49.902Z"
+    },
+    {
+      "id": "bug-058",
+      "timestamp": "2026-04-19T11:11:02.564Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Had \"deadband\"",
+      "fix": "Changed to \"dFilter\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T11:11:02.564Z"
+    },
+    {
+      "id": "bug-059",
+      "timestamp": "2026-04-19T11:23:43.923Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 15â†’8 lines (3 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T11:23:43.923Z"
+    },
+    {
+      "id": "bug-060",
+      "timestamp": "2026-04-19T11:23:57.764Z",
+      "error_message": "Null/undefined access in ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T11:23:57.764Z"
+    },
+    {
+      "id": "bug-061",
+      "timestamp": "2026-04-19T11:31:55.914Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 9â†’4 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T11:31:55.914Z"
+    },
+    {
+      "id": "bug-062",
+      "timestamp": "2026-04-19T12:30:00.000Z",
+      "error_message": "Turret went past hard limit and refused to recover - motor stayed at 0",
+      "file": "TurretController.java",
+      "root_cause": "Hard-limit block was placed at the bottom of update() after target-visibility checks. When past the hard limit the tag leaves the Limelight FOV, findTarget() returns null, and the motor is zeroed before the hard-limit recovery code is reached. Motor stays at 0 permanently until tracking is toggled.",
+      "fix": "Moved hard-limit check to before any target/vision checks. When past hard limit, immediately apply -kF (too far right) or +kF (too far left) and return, forcing recovery toward center regardless of target visibility.",
+      "tags": [
+        "turret",
+        "hard-limit",
+        "recovery",
+        "limelight",
+        "control-flow"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T12:30:00.000Z"
+    },
+    {
+      "id": "bug-063",
+      "timestamp": "2026-04-19T13:58:42.596Z",
+      "error_message": "Wrong reference: 600 should be 509",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+      "root_cause": "Used \"600\" instead of \"509\"",
+      "fix": "Changed 600 â†’ 509",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T13:58:42.596Z"
+    },
+    {
+      "id": "bug-064",
+      "timestamp": "2026-04-19T14:00:49.925Z",
+      "error_message": "Wrong reference: TICKS_PER_DEG should be RobotConfig",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "Used \"TICKS_PER_DEG\" instead of \"RobotConfig\"",
+      "fix": "Changed TICKS_PER_DEG â†’ RobotConfig",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T14:00:49.925Z"
+    },
+    {
+      "id": "bug-065",
+      "timestamp": "2026-04-19T14:01:06.444Z",
+      "error_message": "Wrong reference: TICKS_PER_DEG should be RobotConfig",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Used \"TICKS_PER_DEG\" instead of \"RobotConfig\"",
+      "fix": "Changed TICKS_PER_DEG â†’ RobotConfig",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T14:01:06.444Z"
+    },
+    {
+      "id": "bug-066",
+      "timestamp": "2026-04-19T14:11:39.015Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 6â†’6 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T14:11:39.015Z"
+    },
+    {
+      "id": "bug-067",
+      "timestamp": "2026-04-19T14:30:00.000Z",
+      "error_message": "User requested removal of turret hard stop and soft-limit-only behavior",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+      "root_cause": "Controller still had hard-limit recovery/cutoff logic and config margin, conflicting with desired soft-limit-only control strategy.",
+      "fix": "Removed hard-limit branch/margin usage, deleted hard-cutoff handling in test OpMode, cleaned duplicate turret tick constants, and updated operator telemetry text to soft-limit wording.",
+      "tags": [
+        "turret",
+        "soft-limit",
+        "safety",
+        "control-loop"
+      ],
+      "related_bugs": [
+        "bug-062"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T14:30:00.000Z"
+    },
+    {
+      "id": "bug-068",
+      "timestamp": "2026-04-19T15:10:00.000Z",
+      "error_message": "Turret gets stuck at soft limit; motor hums with ~-0.7 power and does not move inward",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+      "root_cause": "Software control path lacked an explicit breakaway floor for static friction and had no shared power-sign inversion setting, so commanded control direction could be opposite of physical direction at limits.",
+      "fix": "Added TURRET_MIN_BREAKAWAY_POWER and TURRET_MOTOR_POWER_INVERTED config, mapped control power to motor power through the inversion setting in both controllers, and added limit/power diagnostics plus explicit idle zeroing in TestTurretController.",
+      "tags": [
+        "turret",
+        "soft-limit",
+        "stiction",
+        "sign-convention",
+        "diagnostics"
+      ],
+      "related_bugs": [
+        "bug-067"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T15:10:00.000Z"
+    },
+    {
+      "id": "bug-069",
+      "timestamp": "2026-04-19T15:25:00.000Z",
+      "error_message": "TeleOp reports 'soft limit' while moving away from limit; limit clipping semantics inconsistent with inversion",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+      "root_cause": "Limit blocking and at-limit reporting used control-space sign checks, which can diverge from physical motor direction when inversion is active. Status method also inferred limit from tx/current instead of actual clip state.",
+      "fix": "Moved limit clip checks to motor-space in both controllers and changed isAtLimit() to report only active outward clipping. Updated TeleOp wording to 'OUTWARD CLIP ACTIVE' to avoid lock semantics.",
+      "tags": [
+        "turret",
+        "limit-clipping",
+        "telemetry",
+        "sign-convention"
+      ],
+      "related_bugs": [
+        "bug-068"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T15:25:00.000Z"
+    },
+    {
+      "id": "bug-070",
+      "timestamp": "2026-04-19T15:32:00.000Z",
+      "error_message": "Turret direction still inverted in field testing (right positive, left negative expected)",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+      "root_cause": "Configured TURRET_MOTOR_POWER_INVERTED did not match real motor/encoder sign convention.",
+      "fix": "Set TURRET_MOTOR_POWER_INVERTED = true so runtime/test controllers map control direction to physical direction correctly.",
+      "tags": [
+        "turret",
+        "sign-convention",
+        "config"
+      ],
+      "related_bugs": [
+        "bug-068",
+        "bug-069"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T15:32:00.000Z"
+    },
+    {
+      "id": "bug-071",
+      "timestamp": "2026-04-19T15:55:00.000Z",
+      "error_message": "Global motor inversion broke turret tracking direction; only limit side mapping needed inversion",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Direction inversion was applied to all control outputs, reversing normal tracking. Real issue was side association in limit clipping checks.",
+      "fix": "Restored TURRET_MOTOR_POWER_INVERTED = false and flipped limit-side clip conditions in runtime/test controllers only.",
+      "tags": [
+        "turret",
+        "limit-clipping",
+        "regression",
+        "sign-convention"
+      ],
+      "related_bugs": [
+        "bug-069",
+        "bug-070"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T15:55:00.000Z"
+    },
+    {
+      "id": "bug-072",
+      "timestamp": "2026-04-19T16:20:00.000Z",
+      "error_message": "Turret overshoots and becomes jumpy; breakaway floor applied even when not escaping a limit",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Minimum breakaway power clamp was applied to all non-zero commands, turning small PID corrections into large steps and destabilizing tracking near target.",
+      "fix": "Changed breakaway logic to apply only when commanded direction is actively escaping from a reached limit; otherwise use raw PID+feedforward output.",
+      "tags": [
+        "turret",
+        "pid",
+        "breakaway",
+        "stability"
+      ],
+      "related_bugs": [
+        "bug-068",
+        "bug-071"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T16:20:00.000Z"
+    },
+    {
+      "id": "bug-073",
+      "timestamp": "2026-04-19T16:35:00.000Z",
+      "error_message": "Breakaway still activates immediately near limits instead of only when normal force fails to escape",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java, TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestTurretController.java",
+      "root_cause": "Breakaway condition was tied to escape direction at limit but did not verify failed progress over time.",
+      "fix": "Added stall-gated escape logic with progress/time thresholds (TURRET_ESCAPE_PROGRESS_TICKS and TURRET_ESCAPE_STALL_MS); breakaway now applies only after insufficient escape progress.",
+      "tags": [
+        "turret",
+        "breakaway",
+        "stall-detection",
+        "limit-escape"
+      ],
+      "related_bugs": [
+        "bug-072"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T16:35:00.000Z"
+    },
+    {
+      "id": "bug-074",
+      "timestamp": "2026-04-19T17:10:00.000Z",
+      "error_message": "Shooter pair does not spin up to velocity reliably; PID values appear wrong",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterAutoTune.java",
+      "root_cause": "No in-repo automated process existed to estimate/update shooter velocity PIDF for the paired motors after hardware/config changes.",
+      "fix": "Added TestShooterAutoTune OpMode that estimates feedforward per motor, sweeps P (and D when needed) for the pair, and outputs recommended shared PIDF values.",
+      "tags": [
+        "shooter",
+        "pidf",
+        "autotune",
+        "velocity-control"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-19T17:10:00.000Z"
+    },
+    {
+      "id": "bug-075",
+      "timestamp": "2026-04-20T00:00:00.000Z",
+      "error_message": "Turret stops dead when Limelight tracking is lost; should recenter to zero while tracking is enabled",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "Loss-of-vision branches (`disconnected`, `invalid result`, `no target`) forced motor power to 0 and returned, so controller never generated a recenter command.",
+      "fix": "Added recenter-on-loss mode that computes center error from encoder angle and runs through the same PID, soft-limit clipping, and escape/breakaway pipeline. Added explicit mode/state output reasons for telemetry.",
+      "tags": [
+        "turret",
+        "tracking-loss",
+        "recentering",
+        "soft-limit",
+        "teleop"
+      ],
+      "related_bugs": [
+        "bug-067",
+        "bug-069",
+        "bug-073"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-20T00:00:00.000Z"
+    },
+    {
+      "id": "bug-076",
+      "timestamp": "2026-04-20T16:18:38.806Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java",
+      "root_cause": "49 lines replaced/restructured",
+      "fix": "Rewrote 108â†’145 lines (49 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-20T16:18:38.806Z"
+    },
+    {
+      "id": "bug-077",
+      "timestamp": "2026-04-20T16:31:51.845Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+      "root_cause": "5 lines replaced/restructured",
+      "fix": "Rewrote 7â†’3 lines (5 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-20T16:31:51.845Z"
+    },
+    {
+      "id": "bug-078",
+      "timestamp": "2026-04-20T17:00:26.933Z",
+      "error_message": "Missing error handling in unknown",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "Code path had no error handling â€” exceptions would propagate uncaught",
+      "fix": "Added try/catch block",
+      "tags": [
+        "auto-detected",
+        "error-handling",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-20T17:00:26.933Z"
+    },
+    {
+      "id": "bug-079",
+      "timestamp": "2026-04-20T00:00:00.000Z",
+      "error_message": "Failed to enable motor - you must set a position before switching to run to position mode",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "Used RUN_TO_POSITION in shutdown recenter; mode switch from RUN_WITHOUT_ENCODER conflicts with SDK target-position requirement and is inconsistent with the rest of the controller which stays in RUN_WITHOUT_ENCODER and reads encoder only for feedback.",
+      "fix": "Replaced with a manual P+KF loop in recenter() matching update()'s no-target branch; stays in RUN_WITHOUT_ENCODER, no setMode/setTargetPosition calls.",
+      "tags": [
+        "turret",
+        "dcmotor",
+        "runmode",
+        "run-to-position"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-20T00:00:00.000Z"
+    },
+    {
+      "id": "bug-080",
+      "timestamp": "2026-04-20T17:51:07.087Z",
+      "error_message": "Wrong reference: targetPreviouslyVisible should be recentering",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "Used \"targetPreviouslyVisible\" instead of \"recentering\"",
+      "fix": "Changed targetPreviouslyVisible â†’ recentering",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-20T17:51:07.087Z"
+    },
+    {
+      "id": "bug-081",
+      "timestamp": "2026-04-20T17:51:30.462Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "17 lines replaced/restructured",
+      "fix": "Rewrote 28â†’6 lines (17 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-20T17:51:30.462Z"
+    },
+    {
+      "id": "bug-082",
+      "timestamp": "2026-04-20T20:47:25.267Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/GateMechanism.java",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 5â†’7 lines (3 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-20T20:47:25.267Z"
+    },
+    {
+      "id": "bug-083",
+      "timestamp": "2026-04-20T23:26:26.534Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "11 lines replaced/restructured",
+      "fix": "Rewrote 43â†’19 lines (11 removed) | Also: public final PathChain row2ToScore;; public final PathChain scoreToRow3;",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-04-20T23:26:33.147Z"
+    },
+    {
+      "id": "bug-084",
+      "timestamp": "2026-04-21T01:13:16.168Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterAutoTune.java",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 18â†’26 lines (3 removed) | Also: /** Runs both motors together through the probe-po; private boolean identifyBothMotors() { | Also: * Only samples before 90% of vInf are used (residu; * samples below a 1 tps residual floor are dropped",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-04-21T01:14:37.869Z"
+    },
+    {
+      "id": "bug-085",
+      "timestamp": "2026-04-21T01:13:32.129Z",
+      "error_message": "Null/undefined access in ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterAutoTune.java",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T01:13:32.129Z"
+    },
+    {
+      "id": "bug-086",
+      "timestamp": "2026-04-21T02:30:00Z",
+      "error_message": "Shooter tuner: 'motors did not reach steady state' - ID failed with no visibility into which check tripped",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterAutoTune.java",
+      "root_cause": "Three issues: (1) index-alignment bug - bottomTaus/topTaus lists drifted out of sync with bottomUVinf/topUVinf when tau fits failed on some probes, so the weighted-tau average paired wrong (u, vInf) with wrong tau. (2) ID_DURATION_MS=1800 and COOLDOWN_MS=1500 were too short for heavy 600g flywheels to settle. (3) Catch-all error message hid which specific check failed (vInf-below-threshold vs tau-fit-failed vs K<=0).",
+      "fix": "Restructured identification around a ProbeResult struct keyed by probe index (fixes alignment bug). Extended ID_DURATION_MS to 2500 and COOLDOWN_MS to 2500 for heavy flywheels. Added 63.2%-crossing fallback (fitCrossingTau) when the log-linear fit has fewer than MIN_RISE_SAMPLES survivors. Added validateModel() to return a specific per-motor failure reason. On failure, now dumps per-probe vInf/tau/sample-count to telemetry plus diagnostic hints.",
+      "tags": [
+        "shooter",
+        "tuner",
+        "pidf",
+        "identification",
+        "telemetry",
+        "diagnostics"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T02:30:00Z"
+    },
+    {
+      "id": "bug-087",
+      "timestamp": "2026-04-21T01:54:22.068Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+      "root_cause": "Had \"flywheel target rpm\"",
+      "fix": "Changed to \"flywheel set rpm\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T01:54:22.068Z"
+    },
+    {
+      "id": "bug-088",
+      "timestamp": "2026-04-21T02:08:28.870Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterAutoTune.java",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 3→5 lines (3 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T02:08:28.870Z"
+    },
+    {
+      "id": "bug-089",
+      "timestamp": "2026-04-21T02:08:36.883Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterAutoTune.java",
+      "root_cause": "Had \"%.4f / %.4f (I preserved)\"",
+      "fix": "Changed to \"%.4f / %.4f (ignored; tune uses I=0)\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-04-21T02:08:45.614Z"
+    },
+    {
+      "id": "bug-090",
+      "timestamp": "2026-04-21T02:09:05.447Z",
+      "error_message": "Wrong condition in logic",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterAutoTune.java",
+      "root_cause": "Condition was: if (avgRpm > maxRpm)",
+      "fix": "Changed to: if (!spike && elapsed > 100 && avgRpm > maxRpm)",
+      "tags": [
+        "auto-detected",
+        "logic-fix",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T02:09:05.447Z"
+    }
+  ]
+}
