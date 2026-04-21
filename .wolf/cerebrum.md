@@ -7,6 +7,8 @@
 ## User Preferences
 
 - **No unicode in code or comments:** Use plain ASCII only. Replace em dashes with `-`, `x` for multiplication, `~` for approximately, `+-` for plus-minus, write out "degrees" instead of the symbol. Exception: only use unicode if the user explicitly asks for it or it is technically required.
+- **Auto shooting sequence requirement:** Shooting must run flywheel + intake + gate together; gate should open only after waiting for flywheel spin-up.
+- **Auto timing preference:** Use 2s flywheel spin-up, 6s shooting window, and 2s pickup dwell windows in AutoShortRange.
 - **Turret tx sign convention:** Use raw `result.getTx()` with NO negation. Positive tx (target right) drives toward positive/maxTicks; negative tx drives toward minTicks. The negated form (`-result.getTx()`) causes positive feedback (amplifies movement instead of counteracting). Confirmed by physical hand-rotation test.
 - **Turret testing priority:** Safety and slow behavior are higher priority than speed/performance while tuning.
 - **Turret limit strategy:** Use soft limits only; remove hard-stop/cutoff logic from turret runtime and test paths.
@@ -42,3 +44,5 @@
 - **Turret motor:** goBILDA 5203-2402-0004, 13.7:1 ratio, 435 RPM. TICKS_PER_DEG = (28 x 13.7 x 85/16) / 360 ~= 5.65. Hardware config name: "turret_motor". (Previously 5203-2402-0005 5.2:1 -- motor was swapped.)
 - **Turret wire management:** Solved via software ±270° rotation limits (no slip ring). isAtLimit() signals OpMode to rotate robot base instead.
 - **Turret safety pattern:** Use soft-limit directional blocking at `+-TURRET_MAX_TICKS`; hard-stop/cutoff logic is intentionally removed.
+- **AutoShortRange alliance pattern:** Keep `AutoShortRangeBlue`/`AutoShortRangeRed` as lightweight wrappers overriding `isRed()`, and implement field mirroring inside `AutoShortRange.Paths` using shared `p(x,y)` and `h(deg)` helpers plus `startPose` from mirrored coordinates.
+- **AutoShortRange staging pattern:** Keep drivetrain paths as explicit stage steps, but bind mechanism timing with `onPreRun`/`onPostRun` plus `waitForFlywheelSpinup()` and `fireStep(...)` so shooter/intake behavior is deterministic across red and blue.

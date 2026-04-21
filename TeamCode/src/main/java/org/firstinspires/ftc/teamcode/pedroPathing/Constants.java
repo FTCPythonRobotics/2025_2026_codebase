@@ -50,7 +50,7 @@ public class Constants {
             .translationalPIDFCoefficients(new PIDFCoefficients(0.3, 0, 0.03, 0.04))
             .headingPIDFCoefficients(new PIDFCoefficients(0.6, 0.1, 0.08, 0.11))
             .drivePIDFCoefficients(new FilteredPIDFCoefficients(0.05, 0, 0.0005, 0.6, 0.035))
-            .centripetalScaling(0.0015);
+            .centripetalScaling(0.005);
 
     // Path constraints
     // (maxVelocity, maxAcceleration, maxAngularVelocity rad/s, maxAngularAcceleration rad/s^2)

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -67,6 +68,7 @@ import java.util.List;
  *   operator decide whether to relax tau_cl (dpad-right) or re-tune.
  */
 @TeleOp(name = "Test: Shooter Auto Tune", group = "Test")
+@Disabled
 public class TestShooterAutoTune extends LinearOpMode {
 
     // --- Flywheel physics (informational only; ID is empirical) ---

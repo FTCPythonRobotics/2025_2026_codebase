@@ -17,7 +17,9 @@
       "Bash(python *)",
       "Read(//tmp/**)",
       "Bash(find . -name \"BezierLine*.java\")",
-      "Bash(./gradlew :TeamCode:assembleDebug)"
+      "Bash(./gradlew :TeamCode:assembleDebug)",
+      "Bash(mkdir -p /tmp/pedro)",
+      "Bash(unzip -o -q C:/Users/Ben/.gradle/caches/modules-2/files-2.1/com.pedropathing/core/2.1.1/e80c29f33823f4c1c2ddd27999b26c8820af3c5d/core-2.1.1-sources.jar -d core-src)"
     ]
   }
 }

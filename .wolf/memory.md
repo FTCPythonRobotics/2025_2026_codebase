@@ -2,6 +2,10 @@
 
 > Chronological action log. Hooks and AI append to this file automatically.
 > Old sessions are consolidated by the daemon weekly.
+| 15:55 | Updated AutoShortRange timing constants to user spec: shoot 6s, pickup dwell 2s, spin-up 2s | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | done | ~450 |
+| 15:51 | Enforced shot precondition in fireStep: start flywheels + intake before opening gate | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | done | ~250 |
+| 15:48 | Wired intake/flywheel/gate actions into AutoShortRange staged sequence (spinup + per-cycle firing + park shutdown) | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | done | ~700 |
+| 15:41 | Implemented AutoShortRange alliance mirroring by wiring isRed() into path construction/start pose | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | fixed red/blue parity | ~900 |
 | 14:xx | Inverted turret tx sign: removed negation on result.getTx() in update() and isAtLimit() | TurretController.java | done | ~200 |
 
 | 17:00 | Created AutoStep.java, AutoSequence.java, AutoLongRange.java, AutoShortRange.java - step-based autonomous API with Pedro Pathing | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/ | created 4 files | ~3000 |
@@ -668,3 +672,100 @@
 | 12:09 | Session end: 3 writes across 1 files (AutoShortRange.java) | 1 reads | ~4662 tok |
 | 12:09 | Session end: 3 writes across 1 files (AutoShortRange.java) | 1 reads | ~4662 tok |
 | 12:10 | Session end: 3 writes across 1 files (AutoShortRange.java) | 1 reads | ~4662 tok |
+| 12:14 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 5→6 lines | ~118 |
+| 12:14 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 4→6 lines | ~105 |
+| 12:15 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 11→16 lines | ~212 |
+| 12:18 | Added retreatFromWall step (17,69)->(21,69) between collectAgainstWall and returnToShootPose; returnToShootPose now starts from (21,69) | AutoShortRange.java | done | ~250 |
+| 12:18 | Session end: 6 writes across 1 files (AutoShortRange.java) | 1 reads | ~5127 tok |
+| 12:21 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterAutoTune.java | added 1 import(s) | ~46 |
+| 12:21 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestShooterAutoTune.java | 2→3 lines | ~33 |
+
+## Session: 2026-04-21 12:25
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-04-21 12:25
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-04-21 12:25
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-04-21 12:27
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 12:39 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 3→2 lines | ~47 |
+| 12:39 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 7→5 lines | ~63 |
+| 12:39 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 6→4 lines | ~79 |
+| 12:39 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 6→4 lines | ~76 |
+| 12:40 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 9→4 lines | ~59 |
+| 12:40 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 17→14 lines | ~227 |
+| 12:40 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 6→4 lines | ~79 |
+| 12:40 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 6→4 lines | ~76 |
+| 12:40 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 9→4 lines | ~59 |
+| 12:41 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 16→11 lines | ~154 |
+| 12:41 | Session end: 10 writes across 1 files (AutoShortRange.java) | 5 reads | ~4468 tok |
+| 12:44 | Session end: 10 writes across 1 files (AutoShortRange.java) | 5 reads | ~4410 tok |
+| 12:47 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | modified buildSequence() | ~380 |
+| 12:48 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | modified pose() | ~1000 |
+| 12:49 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | modified buildSequence() | ~555 |
+| 12:50 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | modified Paths() | ~799 |
+| 12:50 | Session end: 14 writes across 1 files (AutoShortRange.java) | 5 reads | ~7198 tok |
+| 12:56 | Session end: 14 writes across 1 files (AutoShortRange.java) | 7 reads | ~7198 tok |
+| 12:57 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 12:57 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 12:57 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 12:57 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 12:57 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 12:57 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 12:57 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 12:57 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 12:57 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 12:57 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 12:58 | Session end: 24 writes across 1 files (AutoShortRange.java) | 7 reads | ~7232 tok |
+| 12:58 | Session end: 24 writes across 1 files (AutoShortRange.java) | 7 reads | ~7232 tok |
+| 12:59 | Session end: 24 writes across 1 files (AutoShortRange.java) | 7 reads | ~7232 tok |
+| 12:59 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 5→6 lines | ~109 |
+| 13:00 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 2→3 lines | ~38 |
+| 13:00 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 11→16 lines | ~209 |
+| 13:00 | Session end: 27 writes across 1 files (AutoShortRange.java) | 7 reads | ~7612 tok |
+| 13:00 | Session end: 27 writes across 1 files (AutoShortRange.java) | 7 reads | ~7612 tok |
+| 13:02 | Created AutoShortRange.pp | — | ~1791 |
+| 13:02 | Session end: 28 writes across 2 files (AutoShortRange.java, AutoShortRange.pp) | 7 reads | ~9531 tok |
+| 13:05 | Edited AutoShortRange.pp | 8→9 lines | ~42 |
+| 13:05 | Edited AutoShortRange.pp | 10→11 lines | ~71 |
+| 13:05 | Edited AutoShortRange.pp | 5→5 lines | ~33 |
+| 13:05 | Edited AutoShortRange.pp | 5→5 lines | ~32 |
+| 13:05 | Edited AutoShortRange.pp | 5→5 lines | ~34 |
+| 13:05 | Edited AutoShortRange.pp | 5→5 lines | ~34 |
+| 13:05 | Edited AutoShortRange.pp | 5→5 lines | ~33 |
+| 13:05 | Edited AutoShortRange.pp | 5→5 lines | ~35 |
+| 13:05 | Edited AutoShortRange.pp | 10→10 lines | ~64 |
+| 13:05 | Edited AutoShortRange.pp | 5→5 lines | ~33 |
+| 13:05 | Edited AutoShortRange.pp | 5→5 lines | ~32 |
+| 13:05 | Edited AutoShortRange.pp | 5→5 lines | ~28 |
+| 13:06 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 13:06 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 13:06 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 13:06 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 13:06 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 13:06 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 13:06 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 13:06 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 13:06 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+| 13:06 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | inline fix | ~3 |
+
+## Session: 2026-04-21 13:06
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-04-21 15:31
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|

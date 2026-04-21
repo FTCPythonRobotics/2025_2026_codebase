@@ -17,6 +17,7 @@ public abstract class AutoShortRange extends LinearOpMode {
     private static final double INTAKE_POWER       = 1.0;
     private static final long   FIRE_DURATION_MS   = 5_000;
     private static final long   FLYWHEEL_SPINUP_MS = 2_000;
+    private static final long   PICKUP_DURATION_MS = 2_000;
 
     // Hardware
     private DcMotorEx        shooterBottomMotor;
@@ -27,7 +28,8 @@ public abstract class AutoShortRange extends LinearOpMode {
 
     // State
     private long flywheelStartMs = 0;
-    private long delayRetreatStartMs = 0;
+    //private long delayRetreatStartMs = 0;
+    private boolean lastTrianglePressed = false;
 
     protected abstract boolean isRed();
 
@@ -38,19 +40,19 @@ public abstract class AutoShortRange extends LinearOpMode {
         initShooterMotors();
         initIntakeMotor();
         gate = GateMechanism.create(hardwareMap, telemetry, false);
+
         initTurret();
 
         Paths paths = new Paths(follower, isRed());
         follower.setStartingPose(paths.startPose);
 
-        telemetry.addData("Follower", "ok");
-        telemetry.addData("Alliance", isRed() ? "RED" : "BLUE");
-        telemetry.addData("Start pose", "x=%.1f y=%.1f h=%.0f deg",
-                paths.startPose.getX(), paths.startPose.getY(),
-                Math.toDegrees(paths.startPose.getHeading()));
-        telemetry.addData(">>", "Press Play to start");
+        //telemetry.addData("Follower", "ok");
+        //telemetry.addData("Alliance", isRed() ? "RED" : "BLUE");
+        //telemetry.addData(">>", "Press Play to start");
+
         telemetry.update();
         waitForStart();
+
         if (isStopRequested()) return;
 
         buildSequence(follower, paths).run();
@@ -64,36 +66,79 @@ public abstract class AutoShortRange extends LinearOpMode {
     private AutoSequence buildSequence(Follower follower, Paths paths) {
         AutoSequence seq = new AutoSequence(this, follower);
 
+        // Preload: drive to shoot lane, spin up, then fire.
+        seq.add(drive("Stage 1 - Drive to shoot", paths.stage1)
+            .onPreRun(() -> { startFlywheels(); startIntake(); })
+            .build());
+        seq.add(waitForFlywheelSpinup());
+        seq.add(fireStep("Shoot preload"));
+
+        // Cycle 1: collect row, return, shoot.
+        seq.add(drive("Stage 2 - Enter row 1",  paths.stage2).build());
+        seq.add(drive("Stage 3 - Sweep row 1",  paths.stage3).build());
+        seq.add(drive("Stage 4 - Return to shoot", paths.stage4).build());
+        seq.add(fireStep("Shoot cycle 1"));
+
+        // Cycle 2: collect row, return, shoot.
+        seq.add(drive("Stage 5 - Enter row 2",  paths.stage5).build());
+        seq.add(drive("Stage 6 - Sweep row 2",  paths.stage6).build());
+        seq.add(driveForAtLeast("Stage 7 - Collect wall sample", paths.stage7, PICKUP_DURATION_MS, follower).build());
+        seq.add(drive("Stage 8 - Return to shoot", paths.stage8).build());
+        seq.add(fireStep("Shoot cycle 2"));
+
+        // Cycle 3 then park.
+        seq.add(drive("Stage 9 - Enter row 3",  paths.stage9).build());
+        seq.add(drive("Stage 10 - Sweep row 3", paths.stage10).build());
+        seq.add(driveForAtLeast("Stage 11 - Collect wall sample", paths.stage11, PICKUP_DURATION_MS, follower).build());
+        seq.add(drive("Stage 12 - Park", paths.stage12)
+            .onPostRun(() -> { stopFlywheels(); stopIntake(); })
+            .build());
+
+        /*
         seq.add(drive("Drive to shoot position", paths.driveToShootPose)
                 .onPreRun(() -> { startFlywheels(); startIntake(); })
                 .build());
 
         seq.add(waitForFlywheelSpinup());
-        seq.add(fireStep("Fire 3 preload samples"));
+        seq.add(fireStep("Fire preload samples"));
 
-        seq.add(drive("Rotate to intake heading",        paths.rotateToIntakeHeading).build());
-        seq.add(drive("Drive from shoot pose to row 1",  paths.shootPoseToRow1).build());
-        seq.add(drive("Sweep row 1",                     paths.sweepRow1).build());
-        seq.add(drive("Retreat from row 1",              paths.retreatFromRow1).build());
+        seq.add(turnStep("Rotate to intake heading", follower, Math.toRadians(180)));
 
-        seq.add(drive("Collect sample against wall",     paths.collectAgainstWall).onPreRun(() -> {
+        seq.add(drive("Drive to row 1",          paths.shootToRow1).build());
+        seq.add(drive("Sweep row 1",             paths.sweepRow1).build());
+        seq.add(drive("Retreat from row 1",      paths.retreatFromRow1).build());
+
+        seq.add(drive("Collect sample at wall",  paths.collectAtWall).onPreRun(() -> {
             delayRetreatStartMs = System.currentTimeMillis();
         }).isFinished(() -> System.currentTimeMillis() - delayRetreatStartMs >= 500).build());
 
-        seq.add(drive("Return to shoot pose",            paths.returnToShootPose).build());
-        seq.add(drive("Rotate to goal heading",          paths.rotateToGoalHeading).build());
+        seq.add(drive("Retreat from wall",       paths.retreatFromWall).build());
+        seq.add(drive("Return to shoot pose",    paths.returnToShoot).build());
 
+        seq.add(turnStep("Rotate to goal heading", follower, Math.toRadians(144)));
         seq.add(fireStep("Fire collected samples"));
+        seq.add(turnStep("Rotate to intake heading", follower, Math.toRadians(180)));
 
-        seq.add(drive("Rotate to intake heading",        paths.rotateToIntakeHeading).build());
-        seq.add(drive("Drive from shoot pose to row 2",  paths.shootPoseToRow2).build());
-        seq.add(drive("Sweep row 2",                     paths.sweepRow2).build());
+        seq.add(drive("Drive to row 2",          paths.shootToRow2).build());
+        seq.add(drive("Sweep row 2",             paths.sweepRow2).build());
 
-        seq.add(drive("Drive to park", paths.driveToPark)
+        seq.add(drive("Park", paths.park)
                 .onPostRun(() -> { stopFlywheels(); stopIntake(); })
                 .build());
+         */
 
         return seq;
+    }
+
+    /** In-place rotation using Pedro's turnTo. Ticks turret during the rotation. */
+    private AutoStep turnStep(String name, Follower follower, double headingRad) {
+        double target = isRed() ? headingRad + Math.PI : headingRad;
+        return new AutoStep.Builder()
+                .name(name)
+                .onPreRun(() -> follower.turnTo(target))
+                .onRun(this::tickTurret)
+                .isFinished(() -> !follower.isBusy())
+                .build();
     }
 
     // -------------------------------------------------------------------------
@@ -108,6 +153,17 @@ public abstract class AutoShortRange extends LinearOpMode {
                 .onRun(this::tickTurret);
     }
 
+    /** Path-following step that also enforces a minimum dwell time for collection actions. */
+    private AutoStep.Builder driveForAtLeast(String name, PathChain path, long minDurationMs, Follower follower) {
+        long[] startMs = { 0 };
+        return new AutoStep.Builder()
+                .name(name)
+                .path(path)
+                .onPreRun(() -> startMs[0] = System.currentTimeMillis())
+                .onRun(this::tickTurret)
+                .isFinished(() -> !follower.isBusy() && System.currentTimeMillis() - startMs[0] >= minDurationMs);
+    }
+
     /** Blocks until flywheels have had FLYWHEEL_SPINUP_MS since startFlywheels; ticks turret while waiting. */
     private AutoStep waitForFlywheelSpinup() {
         return new AutoStep.Builder()
@@ -117,13 +173,14 @@ public abstract class AutoShortRange extends LinearOpMode {
                 .build();
     }
 
-    /** Opens the gate for FIRE_DURATION_MS. Intake is assumed to already be running
-     *  (it feeds balls into the flywheels). */
+    /** Opens the gate for FIRE_DURATION_MS while ensuring flywheels and intake are active. */
     private AutoStep fireStep(String name) {
         long[] fireStartMs = { 0 };
         return new AutoStep.Builder()
                 .name(name)
                 .onPreRun(() -> {
+                    startFlywheels();
+                    startIntake();
                     gate.open();
                     fireStartMs[0] = System.currentTimeMillis();
                 })
@@ -159,7 +216,16 @@ public abstract class AutoShortRange extends LinearOpMode {
     }
 
     private void tickTurret() {
-        if (turretController != null) turretController.update();
+        if (turretController == null) return;
+
+        // Triangle in auto: recenter turret and disable tracking.
+        boolean trianglePressed = gamepad1.triangle;
+        if (trianglePressed && !lastTrianglePressed) {
+            turretController.beginRecenter();
+        }
+        lastTrianglePressed = trianglePressed;
+
+        turretController.update();
     }
 
     // -------------------------------------------------------------------------
@@ -215,29 +281,18 @@ public abstract class AutoShortRange extends LinearOpMode {
     // -------------------------------------------------------------------------
 
     public static class Paths {
-
-        /** Drive from starting corner to the shooting position. Ends facing goal (144 deg). */
-        public final PathChain driveToShootPose;
-        /** In-place rotation at the shoot pose from goal-facing (144) to intake-facing (180). */
-        public final PathChain rotateToIntakeHeading;
-        /** Drive from shoot pose to row 1 at constant intake-facing heading (180). */
-        public final PathChain shootPoseToRow1;
-        /** Sweep across row 1 picking up samples. */
-        public final PathChain sweepRow1;
-        /** Back away from row 1 into the pickup lane (y=69). */
-        public final PathChain retreatFromRow1;
-        /** Drive forward into the wall to collect the final sample. */
-        public final PathChain collectAgainstWall;
-        /** Drive back to the shoot pose at constant intake-facing heading (180). */
-        public final PathChain returnToShootPose;
-        /** In-place rotation at the shoot pose from intake-facing (180) to goal-facing (144). */
-        public final PathChain rotateToGoalHeading;
-        /** Drive from shoot pose to row 2 at constant intake-facing heading (180). */
-        public final PathChain shootPoseToRow2;
-        /** Sweep across row 2 picking up samples. */
-        public final PathChain sweepRow2;
-        /** Drive to the park location at the end of the match. */
-        public final PathChain driveToPark;
+        public final PathChain stage1;
+        public final PathChain stage2;
+        public final PathChain stage3;
+        public final PathChain stage4;
+        public final PathChain stage5;
+        public final PathChain stage6;
+        public final PathChain stage7;
+        public final PathChain stage8;
+        public final PathChain stage9;
+        public final PathChain stage10;
+        public final PathChain stage11;
+        public final PathChain stage12;
 
         public final Pose startPose;
 
@@ -246,72 +301,152 @@ public abstract class AutoShortRange extends LinearOpMode {
         public Paths(Follower follower, boolean isRed) {
             this.isRed = isRed;
 
-            startPose = new Pose(p(20, 122).getX(), p(20, 122).getY(), h(144));
+            startPose = new Pose(p(24.000, 126.000).getX(), p(24.000, 126.000).getY(), h(144.000));
 
-            driveToShootPose = follower.pathBuilder()
-                    .addPath(new BezierLine(p(20, 122), p(41, 100)))
-                    .setLinearHeadingInterpolation(h(144), h(144))
+            stage1 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(21.800, 120.300), p(51.800, 97.000)))
+                    .setLinearHeadingInterpolation(h(144.000), h(140.000))
                     .build();
 
-            rotateToIntakeHeading = follower.pathBuilder()
-                    .addPath(new BezierLine(p(41, 100), p(41, 100)))
-                    .setConstantHeadingInterpolation(h(180))
+            stage2 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(51.800, 97.000), p(51.800, 82.000)))
+                    .setLinearHeadingInterpolation(h(140.000), h(180.000))
                     .build();
 
-            shootPoseToRow1 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(41, 100), p(41, 58.8)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
+            stage3 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(51.800, 82.000), p(19.000, 82.000)))
+                    .setLinearHeadingInterpolation(h(180.000), h(180.000))
                     .build();
 
-            sweepRow1 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(41, 58.8), p(21, 58.8)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
+            stage4 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(19.000, 82.000), p(51.800, 97.000)))
+                    .setLinearHeadingInterpolation(h(180.000), h(140.000))
                     .build();
 
-            retreatFromRow1 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(21, 58.8), p(21, 69)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
+            stage5 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(51.800, 97.000), p(51.800, 57.000)))
+                    .setLinearHeadingInterpolation(h(140.000), h(180.000))
                     .build();
 
-            collectAgainstWall = follower.pathBuilder()
-                    .addPath(new BezierLine(p(21, 69), p(17, 69)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
+            stage6 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(51.800, 57.000), p(10.000, 57.000)))
+                    .setLinearHeadingInterpolation(h(180.000), h(180.000))
                     .build();
 
-            returnToShootPose = follower.pathBuilder()
-                    .addPath(new BezierLine(p(17, 69), p(41, 69)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
-                    .addPath(new BezierLine(p(41, 69), p(41, 100)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
+            stage7 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(10.000, 57.000), p(20.000, 57.000)))
+                    .setLinearHeadingInterpolation(h(180.000), h(180.000))
                     .build();
 
-            rotateToGoalHeading = follower.pathBuilder()
-                    .addPath(new BezierLine(p(41, 100), p(41, 100)))
-                    .setConstantHeadingInterpolation(h(144))
+            stage8 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(20.000, 57.000), p(51.800, 97.000)))
+                    .setLinearHeadingInterpolation(h(180.000), h(140.000))
                     .build();
 
-            shootPoseToRow2 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(41, 100), p(41, 82.8)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
+            stage9 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(51.800, 97.000), p(51.800, 34.500)))
+                    .setLinearHeadingInterpolation(h(140.000), h(180.000))
                     .build();
 
-            sweepRow2 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(41, 82.8), p(19, 82.8)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
+            stage10 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(51.800, 34.500), p(10.000, 34.500)))
+                    .setLinearHeadingInterpolation(h(180.000), h(180.000))
                     .build();
 
-            driveToPark = follower.pathBuilder()
-                    .addPath(new BezierLine(p(19, 82.8), p(50, 120)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
+            stage11 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(10.000, 34.500), p(20.000, 34.500)))
+                    .setLinearHeadingInterpolation(h(180.000), h(180.000))
+                    .build();
+
+            stage12 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(20.000, 34.500), p(56.000, 110.000)))
+                    .setLinearHeadingInterpolation(h(180.000), h(153.000))
                     .build();
         }
 
         private Pose p(double x, double y) {
-            return isRed ? new Pose(144 - x, 144 - y) : new Pose(x, y);
+            return isRed ? new Pose(144.000 - x, 144.000 - y) : new Pose(x, y);
         }
 
         private double h(double degrees) {
-            return Math.toRadians(isRed ? degrees + 180 : degrees);
+            return Math.toRadians(isRed ? degrees + 180.000 : degrees);
         }
     }
+
+    /*
+    public static class Paths {
+
+        public final PathChain driveToShootPose;
+        public final PathChain shootToRow1;
+        public final PathChain sweepRow1;
+        public final PathChain retreatFromRow1;
+        public final PathChain collectAtWall;
+        public final PathChain retreatFromWall;
+        public final PathChain returnToShoot;
+        public final PathChain shootToRow2;
+        public final PathChain sweepRow2;
+        public final PathChain park;
+
+        public final Pose startPose;
+
+        private final boolean isRed;
+
+        public Paths(Follower follower, boolean isRed) {
+            this.isRed = isRed;
+
+            startPose = new Pose(p(24, 126).getX(), p(24, 126).getY(), h(144));
+
+            driveToShootPose = follower.pathBuilder()
+                    .addPath(new BezierLine(p(24, 126), p(45, 104)))
+                    .setLinearHeadingInterpolation(h(144), h(144))
+                    .build();
+
+            shootToRow1 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(45, 104), p(45, 62.8)))
+                    .setLinearHeadingInterpolation(h(180), h(180))
+                    .build();
+
+            sweepRow1 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(45, 62.8), p(23, 62.8)))
+                    .setLinearHeadingInterpolation(h(180), h(180))
+                    .build();
+
+            retreatFromRow1 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(23, 62.8), p(23, 73)))
+                    .setLinearHeadingInterpolation(h(180), h(180))
+                    .build();
+
+            collectAtWall = follower.pathBuilder()
+                    .addPath(new BezierLine(p(23, 73), p(19, 73)))
+                    .setLinearHeadingInterpolation(h(180), h(180))
+                    .build();
+
+            retreatFromWall = follower.pathBuilder()
+                    .addPath(new BezierLine(p(19, 73), p(23, 73)))
+                    .setLinearHeadingInterpolation(h(180), h(180))
+                    .build();
+
+            returnToShoot = follower.pathBuilder()
+                    .addPath(new BezierLine(p(23, 73), p(45, 73)))
+                    .setLinearHeadingInterpolation(h(180), h(180))
+                    .addPath(new BezierLine(p(45, 73), p(45, 104)))
+                    .setLinearHeadingInterpolation(h(180), h(180))
+                    .build();
+
+            shootToRow2 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(45, 104), p(45, 86.8)))
+                    .setLinearHeadingInterpolation(h(180), h(180))
+                    .build();
+
+            sweepRow2 = follower.pathBuilder()
+                    .addPath(new BezierLine(p(45, 86.8), p(23, 86.8)))
+                    .setLinearHeadingInterpolation(h(180), h(180))
+                    .build();
+
+            park = follower.pathBuilder()
+                    .addPath(new BezierLine(p(23, 86.8), p(54, 124)))
+                    .setLinearHeadingInterpolation(h(180), h(180))
+                    .build();
+        }
+    }*/
 }

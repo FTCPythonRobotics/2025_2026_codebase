@@ -1506,6 +1506,140 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-04-21T02:09:05.447Z"
+    },
+    {
+      "id": "bug-091",
+      "timestamp": "2026-04-21T11:39:28.461Z",
+      "error_message": "Incorrect value in code",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "Had \"Rotate to intake heading\"",
+      "fix": "Changed to \"Drive from shoot pose to row 1\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T11:39:28.461Z"
+    },
+    {
+      "id": "bug-092",
+      "timestamp": "2026-04-21T11:39:33.985Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 7→5 lines (2 removed) | Also: /** In-place rotation at the shoot pose from goal-; public final PathChain rotateToIntakeHeading; | Also: /** Drive back to the shoot pose at constant intak; /** In-place rotation at the shoot pose from intak | Also: rotateToIntakeHeading = follower.pathBuilder(); .addPath(new BezierLine(p(41, 100), p(41, 100)))",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 7,
+      "last_seen": "2026-04-21T11:40:51.046Z"
+    },
+    {
+      "id": "bug-093",
+      "timestamp": "2026-04-21T12:00:04.200Z",
+      "error_message": "Wrong reference: returnToShoot should be retreatFromWall",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "Used \"returnToShoot\" instead of \"retreatFromWall\"",
+      "fix": "Changed returnToShoot → retreatFromWall",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T12:00:04.200Z"
+    },
+    {
+      "id": "bug-094",
+      "timestamp": "2026-04-21T15:41:00.000Z",
+      "error_message": "AutoShortRange red-side autonomous mode existed but did not actually mirror path geometry from blue",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "`AutoShortRange.Paths` constructor ignored alliance input and used hard-coded blue coordinates/headings; runOpMode also set a fixed blue start pose.",
+      "fix": "Wired `isRed()` into `new Paths(follower, isRed())`, set follower start pose from `paths.startPose`, and refactored all stage path points/headings through mirror helpers `p(x,y)` and `h(degrees)`.",
+      "tags": [
+        "autonomous",
+        "alliance",
+        "red-blue",
+        "path-mirroring",
+        "java"
+      ],
+      "related_bugs": [
+        "bug-083",
+        "bug-093"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T15:41:00.000Z"
+    },
+    {
+      "id": "bug-095",
+      "timestamp": "2026-04-21T15:48:00.000Z",
+      "error_message": "AutoShortRange staged paths drove only chassis; intake/flywheel/shoot actions were not attached",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "`buildSequence()` added 12 drive-only steps and left mechanism flow in commented legacy block, so no spin-up or firing occurred during staged execution.",
+      "fix": "Bound mechanism actions to staged steps: start flywheels+intake at stage 1, wait for spin-up, fire preload, fire again after stage 4 and stage 8 returns, and stop intake/flywheels after stage 12 park.",
+      "tags": [
+        "autonomous",
+        "short-range",
+        "intake",
+        "shooter",
+        "sequence",
+        "java"
+      ],
+      "related_bugs": [
+        "bug-083",
+        "bug-092"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T15:48:00.000Z"
+    },
+    {
+      "id": "bug-096",
+      "timestamp": "2026-04-21T15:51:00.000Z",
+      "error_message": "Shooting step did not explicitly enforce simultaneous flywheel + intake + gate at fire time",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "`fireStep()` only opened the gate and assumed intake/flywheel were already running, which can break if mechanism state changes before a shot.",
+      "fix": "Updated `fireStep()` onPreRun to call `startFlywheels()` and `startIntake()` before `gate.open()`, preserving wait-for-spinup step before first shot.",
+      "tags": [
+        "autonomous",
+        "short-range",
+        "shooting",
+        "intake",
+        "flywheel",
+        "gate",
+        "java"
+      ],
+      "related_bugs": [
+        "bug-095"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T15:51:00.000Z"
+    },
+    {
+      "id": "bug-097",
+      "timestamp": "2026-04-21T15:55:00.000Z",
+      "error_message": "AutoShortRange timing did not match requested strategy (shoot 6s, pickup 2s)",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "`FIRE_DURATION_MS` was 5000 and pickup stages had no minimum dwell-time enforcement.",
+      "fix": "Set `FIRE_DURATION_MS` to 6000, kept `FLYWHEEL_SPINUP_MS` at 2000, added `PICKUP_DURATION_MS` = 2000, and applied `driveForAtLeast(...)` to pickup stages 7 and 11.",
+      "tags": [
+        "autonomous",
+        "timing",
+        "shooting",
+        "pickup",
+        "java"
+      ],
+      "related_bugs": [
+        "bug-095",
+        "bug-096"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T15:55:00.000Z"
     }
   ]
 }
