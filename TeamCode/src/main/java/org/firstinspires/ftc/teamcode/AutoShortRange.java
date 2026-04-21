@@ -18,6 +18,9 @@ public abstract class AutoShortRange extends LinearOpMode {
     private static final long   FIRE_DURATION_MS   = 5_000;
     private static final long   FLYWHEEL_SPINUP_MS = 2_000;
     private static final long   PICKUP_DURATION_MS = 2_000;
+    private static final long   AUTO_PERIOD_MS     = 30_000;
+    private static final long   RECENTER_LEAD_MS   = 5_000;
+    private static final long   RECENTER_FINISH_MARGIN_MS = 500;
 
     // Hardware
     private DcMotorEx        shooterBottomMotor;
@@ -28,8 +31,10 @@ public abstract class AutoShortRange extends LinearOpMode {
 
     // State
     private long flywheelStartMs = 0;
+    private long autoStartMs = 0;
     //private long delayRetreatStartMs = 0;
     private boolean lastTrianglePressed = false;
+    private boolean timedRecenterStarted = false;
 
     protected abstract boolean isRed();
 
@@ -55,10 +60,15 @@ public abstract class AutoShortRange extends LinearOpMode {
 
         if (isStopRequested()) return;
 
+        autoStartMs = System.currentTimeMillis();
+        timedRecenterStarted = false;
+
         // Start collecting immediately once auto starts.
         startIntake();
 
         buildSequence(follower, paths).run();
+
+        recenterTurretBeforeEnd();
 
         stopFlywheels();
         stopIntake();
@@ -221,6 +231,8 @@ public abstract class AutoShortRange extends LinearOpMode {
     private void tickTurret() {
         if (turretController == null) return;
 
+        maybeStartTimedRecenter();
+
         // Triangle in auto: recenter turret and disable tracking.
         boolean trianglePressed = gamepad1.triangle;
         if (trianglePressed && !lastTrianglePressed) {
@@ -229,6 +241,38 @@ public abstract class AutoShortRange extends LinearOpMode {
         lastTrianglePressed = trianglePressed;
 
         turretController.update();
+    }
+
+    private void maybeStartTimedRecenter() {
+        if (turretController == null) return;
+        if (autoStartMs == 0) return;
+        if (timedRecenterStarted) return;
+
+        long elapsedMs = System.currentTimeMillis() - autoStartMs;
+        long recenterStartMs = AUTO_PERIOD_MS - RECENTER_LEAD_MS;
+        if (elapsedMs >= recenterStartMs) {
+            turretController.beginRecenter();
+            timedRecenterStarted = true;
+        }
+    }
+
+    private void recenterTurretBeforeEnd() {
+        if (turretController == null) return;
+
+        if (!turretController.isRecentering()) {
+            turretController.beginRecenter();
+        }
+
+        long hardDeadlineMs = autoStartMs > 0
+                ? autoStartMs + AUTO_PERIOD_MS - RECENTER_FINISH_MARGIN_MS
+                : System.currentTimeMillis() + 1_500;
+
+        while (!isStopRequested()
+                && turretController.isRecentering()
+                && System.currentTimeMillis() < hardDeadlineMs) {
+            turretController.update();
+            idle();
+        }
     }
 
     // -------------------------------------------------------------------------

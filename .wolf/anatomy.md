@@ -79,7 +79,7 @@
 
 ## TeamCode/src/main/java/org/firstinspires/ftc/teamcode/
 
-- `AutoShortRange.java` — Short-range autonomous with alliance-aware path mirroring, immediate-post-start intake, sweep-stage pickup dwell timing, and turret tracking during path/turn steps. (~3378 tok)
+- `AutoShortRange.java` — Short-range autonomous with alliance-aware path mirroring, immediate-post-start intake, sweep-stage pickup dwell timing, timed/end-of-auto turret recenter, and turret tracking during path/turn steps. (~3378 tok)
 - `AutoShortRangeBlue.java` — Blue-side wrapper OpMode that selects `isRed() = false`. (~48 tok)
 - `AutoShortRangeRed.java` — Red-side wrapper OpMode that selects `isRed() = true`. (~48 tok)
 - `TestShooterAutoTune.java` — Mathematically rigorous shooter velocity PIDF tuner. (~6866 tok)

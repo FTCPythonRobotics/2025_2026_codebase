@@ -12,6 +12,7 @@
 - **AutoShortRange intake timing:** Intake should come on immediately after start (earlier than first stage pre-run), then remain managed by sequence shutdown.
 - **AutoShortRange alliance mirror rule:** Red side should use a single-axis field mirror (Y only), not a both-axis 180-degree rotation.
 - **AutoShortRange wall transition behavior:** Do not enforce pickup dwell while pressed at wall-hit steps; retreat should begin immediately after wall contact step completes.
+- **Auto end requirement:** Before autonomous end (targeting the last 5 seconds), turret should begin recentering and be given time to finish so teleop starts from center.
 - **Turret tx sign convention:** Use raw `result.getTx()` with NO negation. Positive tx (target right) drives toward positive/maxTicks; negative tx drives toward minTicks. The negated form (`-result.getTx()`) causes positive feedback (amplifies movement instead of counteracting). Confirmed by physical hand-rotation test.
 - **Turret testing priority:** Safety and slow behavior are higher priority than speed/performance while tuning.
 - **Turret limit strategy:** Use soft limits only; remove hard-stop/cutoff logic from turret runtime and test paths.

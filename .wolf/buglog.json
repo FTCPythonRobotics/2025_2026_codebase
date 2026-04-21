@@ -1702,6 +1702,25 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-04-21T16:07:00.000Z"
+    },
+    {
+      "id": "bug-101",
+      "timestamp": "2026-04-21T16:13:00.000Z",
+      "error_message": "AutoShortRange did not guarantee turret recenter by autonomous end, causing poor teleop handoff",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "Turret recenter only occurred on manual triangle press; there was no timed or end-of-auto automatic recenter path.",
+      "fix": "Added timed recenter trigger at 30s-5s during sequence updates and a post-sequence recenter loop that runs until recentered or a hard deadline near autonomous end.",
+      "tags": [
+        "autonomous",
+        "turret",
+        "recenter",
+        "teleop-handoff",
+        "timing",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T16:13:00.000Z"
     }
   ]
 }
