@@ -1661,6 +1661,47 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-04-21T15:56:00.000Z"
+    },
+    {
+      "id": "bug-099",
+      "timestamp": "2026-04-21T16:02:00.000Z",
+      "error_message": "Red AutoShortRange moved toward goal at start; alliance mirror flipped both axes instead of a single axis",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "Path mirroring used 180-degree field rotation (`x=144-x`, `y=144-y`) and heading `+180`, but this autonomous requires single-axis alliance reflection.",
+      "fix": "Changed pose mirror to Y-only (`x` unchanged, `y=144-y`) and heading mirror to `360-degrees` for red side.",
+      "tags": [
+        "autonomous",
+        "alliance",
+        "red-blue",
+        "path-mirroring",
+        "heading",
+        "java"
+      ],
+      "related_bugs": [
+        "bug-094"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T16:02:00.000Z"
+    },
+    {
+      "id": "bug-100",
+      "timestamp": "2026-04-21T16:07:00.000Z",
+      "error_message": "AutoShortRange briefly locked up at wall before retreating to shoot zone",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "2-second pickup dwell (`driveForAtLeast`) was applied to wall-hit steps (stages 7 and 11), forcing a timed pause before retreat path started.",
+      "fix": "Moved `driveForAtLeast(..., PICKUP_DURATION_MS, ...)` from wall-hit stages to sweep stages (3, 6, 10), and made stages 7 and 11 normal drive steps for immediate retreat transition.",
+      "tags": [
+        "autonomous",
+        "timing",
+        "wall-transition",
+        "path-sequence",
+        "java"
+      ],
+      "related_bugs": [
+        "bug-097"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T16:07:00.000Z"
     }
   ]
 }

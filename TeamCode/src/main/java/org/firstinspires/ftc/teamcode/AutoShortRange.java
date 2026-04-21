@@ -78,21 +78,21 @@ public abstract class AutoShortRange extends LinearOpMode {
 
         // Cycle 1: collect row, return, shoot.
         seq.add(drive("Stage 2 - Enter row 1",  paths.stage2).build());
-        seq.add(drive("Stage 3 - Sweep row 1",  paths.stage3).build());
+        seq.add(driveForAtLeast("Stage 3 - Sweep row 1", paths.stage3, PICKUP_DURATION_MS, follower).build());
         seq.add(drive("Stage 4 - Return to shoot", paths.stage4).build());
         seq.add(fireStep("Shoot cycle 1"));
 
         // Cycle 2: collect row, return, shoot.
         seq.add(drive("Stage 5 - Enter row 2",  paths.stage5).build());
-        seq.add(drive("Stage 6 - Sweep row 2",  paths.stage6).build());
-        seq.add(driveForAtLeast("Stage 7 - Collect wall sample", paths.stage7, PICKUP_DURATION_MS, follower).build());
+        seq.add(driveForAtLeast("Stage 6 - Sweep row 2", paths.stage6, PICKUP_DURATION_MS, follower).build());
+        seq.add(drive("Stage 7 - Collect wall sample", paths.stage7).build());
         seq.add(drive("Stage 8 - Return to shoot", paths.stage8).build());
         seq.add(fireStep("Shoot cycle 2"));
 
         // Cycle 3 then park.
         seq.add(drive("Stage 9 - Enter row 3",  paths.stage9).build());
-        seq.add(drive("Stage 10 - Sweep row 3", paths.stage10).build());
-        seq.add(driveForAtLeast("Stage 11 - Collect wall sample", paths.stage11, PICKUP_DURATION_MS, follower).build());
+        seq.add(driveForAtLeast("Stage 10 - Sweep row 3", paths.stage10, PICKUP_DURATION_MS, follower).build());
+        seq.add(drive("Stage 11 - Collect wall sample", paths.stage11).build());
         seq.add(drive("Stage 12 - Park", paths.stage12)
             .onPostRun(() -> { stopFlywheels(); stopIntake(); })
             .build());
@@ -357,22 +357,24 @@ public abstract class AutoShortRange extends LinearOpMode {
                     .build();
 
             stage11 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(10.000, 34.500), p(20.000, 34.500)))
+                    .addPath(new BezierLine(p(10.000, 34.500), p(22.000, 34.500)))
                     .setLinearHeadingInterpolation(h(180.000), h(180.000))
                     .build();
 
             stage12 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(20.000, 34.500), p(56.000, 110.000)))
+                    .addPath(new BezierLine(p(22.000, 34.500), p(56.000, 110.000)))
                     .setLinearHeadingInterpolation(h(180.000), h(153.000))
                     .build();
         }
 
         private Pose p(double x, double y) {
-            return isRed ? new Pose(144.000 - x, 144.000 - y) : new Pose(x, y);
+            // Alliance flip mirrors across the field centerline (Y axis in this coordinate set).
+            return isRed ? new Pose(x, 144.000 - y) : new Pose(x, y);
         }
 
         private double h(double degrees) {
-            return Math.toRadians(isRed ? degrees + 180.000 : degrees);
+            double mirrored = isRed ? 360.000 - degrees : degrees;
+            return Math.toRadians(mirrored);
         }
     }
 

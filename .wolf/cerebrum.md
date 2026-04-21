@@ -10,6 +10,8 @@
 - **Auto shooting sequence requirement:** Shooting must run flywheel + intake + gate together; gate should open only after waiting for flywheel spin-up.
 - **Auto timing preference:** Use 2s flywheel spin-up, 6s shooting window, and 2s pickup dwell windows in AutoShortRange.
 - **AutoShortRange intake timing:** Intake should come on immediately after start (earlier than first stage pre-run), then remain managed by sequence shutdown.
+- **AutoShortRange alliance mirror rule:** Red side should use a single-axis field mirror (Y only), not a both-axis 180-degree rotation.
+- **AutoShortRange wall transition behavior:** Do not enforce pickup dwell while pressed at wall-hit steps; retreat should begin immediately after wall contact step completes.
 - **Turret tx sign convention:** Use raw `result.getTx()` with NO negation. Positive tx (target right) drives toward positive/maxTicks; negative tx drives toward minTicks. The negated form (`-result.getTx()`) causes positive feedback (amplifies movement instead of counteracting). Confirmed by physical hand-rotation test.
 - **Turret testing priority:** Safety and slow behavior are higher priority than speed/performance while tuning.
 - **Turret limit strategy:** Use soft limits only; remove hard-stop/cutoff logic from turret runtime and test paths.
@@ -32,6 +34,7 @@
 - [2026-04-18] Do not leave turret motor powered in RUN_TO_POSITION when tracking is disabled in test OpModes. With manual movement, the PID will fight back and can cause unsafe spin-up. Keep power at 0 when disabled; only enable power after snapping target to current ticks.
 - [2026-04-18] Do not build turret tracking command from current encoder position each loop (`current + delta`). Use `target + delta` so manual disturbance does not pull the command into runaway behavior.
 - [2026-04-19] Do not assume control-power sign always matches physical turret direction; route through a single config inversion point and show requested vs applied motor power in diagnostics.
+- [2026-04-21] Do not mirror AutoShortRange red with both axes (`x` and `y`) plus +180 heading; this drives wrong initial direction. Use Y-only mirror and heading reflection (`360 - deg`).
 
 ## Decision Log
 
