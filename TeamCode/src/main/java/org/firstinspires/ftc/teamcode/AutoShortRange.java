@@ -14,9 +14,10 @@ public abstract class AutoShortRange extends LinearOpMode {
 
     // Tunables
     private static final double SHOOT_RPM          = 1700.0;
+    private static final double SHOOT_AT_SPEED_TOL_RPM = 120.0;
     private static final double INTAKE_POWER       = 1.0;
     private static final long   FIRE_DURATION_MS   = 5_000;
-    private static final long   FLYWHEEL_SPINUP_MS = 2_000;
+    private static final long   FLYWHEEL_SPINUP_TIMEOUT_MS = 2_000;
     private static final long   PICKUP_DURATION_MS = 2_000;
     private static final long   AUTO_PERIOD_MS     = 30_000;
     private static final long   RECENTER_LEAD_MS   = 5_000;
@@ -177,13 +178,28 @@ public abstract class AutoShortRange extends LinearOpMode {
                 .isFinished(() -> !follower.isBusy() && System.currentTimeMillis() - startMs[0] >= minDurationMs);
     }
 
-    /** Blocks until flywheels have had FLYWHEEL_SPINUP_MS since startFlywheels; ticks turret while waiting. */
+    /** Waits until both flywheels are at speed, with a timeout fallback for robustness. */
     private AutoStep waitForFlywheelSpinup() {
         return new AutoStep.Builder()
                 .name("Wait for flywheel spinup")
-                .isFinished(() -> System.currentTimeMillis() - flywheelStartMs >= FLYWHEEL_SPINUP_MS)
+                .isFinished(this::isFlywheelReadyToShoot)
                 .onRun(this::tickTurret)
                 .build();
+    }
+
+    private boolean isFlywheelReadyToShoot() {
+        if (shooterBottomMotor == null || shooterTopMotor == null) return true;
+
+        long elapsedMs = System.currentTimeMillis() - flywheelStartMs;
+        if (elapsedMs >= FLYWHEEL_SPINUP_TIMEOUT_MS) return true;
+
+        double targetTps = rpmToTicksPerSec(SHOOT_RPM);
+        double tolTps = rpmToTicksPerSec(SHOOT_AT_SPEED_TOL_RPM);
+        double minReadyTps = targetTps - tolTps;
+
+        double bottomTps = Math.abs(shooterBottomMotor.getVelocity());
+        double topTps = Math.abs(shooterTopMotor.getVelocity());
+        return bottomTps >= minReadyTps && topTps >= minReadyTps;
     }
 
     /** Opens the gate for FIRE_DURATION_MS while ensuring flywheels and intake are active. */

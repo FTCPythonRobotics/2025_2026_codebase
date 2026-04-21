@@ -13,6 +13,7 @@
 - **AutoShortRange alliance mirror rule:** Red side should use a single-axis field mirror (Y only), not a both-axis 180-degree rotation.
 - **AutoShortRange wall transition behavior:** Do not enforce pickup dwell while pressed at wall-hit steps; retreat should begin immediately after wall contact step completes.
 - **Auto end requirement:** Before autonomous end (targeting the last 5 seconds), turret should begin recentering and be given time to finish so teleop starts from center.
+- **No pre-spin before start:** Do not spin flywheels in init/wait-for-start because FTC start delay can be long.
 - **Turret tx sign convention:** Use raw `result.getTx()` with NO negation. Positive tx (target right) drives toward positive/maxTicks; negative tx drives toward minTicks. The negated form (`-result.getTx()`) causes positive feedback (amplifies movement instead of counteracting). Confirmed by physical hand-rotation test.
 - **Turret testing priority:** Safety and slow behavior are higher priority than speed/performance while tuning.
 - **Turret limit strategy:** Use soft limits only; remove hard-stop/cutoff logic from turret runtime and test paths.
@@ -51,3 +52,4 @@
 - **Turret safety pattern:** Use soft-limit directional blocking at `+-TURRET_MAX_TICKS`; hard-stop/cutoff logic is intentionally removed.
 - **AutoShortRange alliance pattern:** Keep `AutoShortRangeBlue`/`AutoShortRangeRed` as lightweight wrappers overriding `isRed()`, and implement field mirroring inside `AutoShortRange.Paths` using shared `p(x,y)` and `h(deg)` helpers plus `startPose` from mirrored coordinates.
 - **AutoShortRange staging pattern:** Keep drivetrain paths as explicit stage steps, but bind mechanism timing with `onPreRun`/`onPostRun` plus `waitForFlywheelSpinup()` and `fireStep(...)` so shooter/intake behavior is deterministic across red and blue.
+- **AutoShortRange shooter optimization:** Prefer readiness-based spin-up gate (velocity at target with tolerance) plus timeout fallback instead of fixed-delay-only wait.

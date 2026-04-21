@@ -2,6 +2,7 @@
 
 > Chronological action log. Hooks and AI append to this file automatically.
 > Old sessions are consolidated by the daemon weekly.
+| 16:20 | Replaced fixed flywheel wait with at-speed-ready check + timeout fallback in AutoShortRange; kept no pre-start spinup | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | done | ~320 |
 | 16:13 | Added AutoShortRange turret recenter safeguards: timed trigger at 25s and end-of-auto recenter-until-deadline loop | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | done | ~360 |
 | 16:07 | Removed wall-step dwell lockup: moved 2s pickup minimum from wall-hit steps to sweep steps in AutoShortRange | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | done | ~280 |
 | 16:02 | Fixed AutoShortRange red mirroring: switched from both-axis flip to Y-only mirror and corrected heading reflection | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | done | ~260 |
