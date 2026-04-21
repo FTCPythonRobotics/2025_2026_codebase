@@ -1741,6 +1741,22 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-04-21T16:20:00.000Z"
+    },
+    {
+      "id": "bug-103",
+      "timestamp": "2026-04-21T16:03:45.636Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 7→4 lines (4 removed) | Also: stage9 = follower.pathBuilder(); .addPath(new BezierLine(p(51.800, 97.000), p(51.80",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-04-21T16:04:19.214Z"
     }
   ]
 }

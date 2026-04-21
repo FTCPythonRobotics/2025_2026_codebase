@@ -1,14 +1,13 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-04-21T12:06:22.848Z
-> Files: 4 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-04-21T16:04:19.200Z
+> Files: 1 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ../../.claude/projects/C--Users-Ben-StudioProjects-TeamPythonRobotics-Nationals-2025-2026/memory/
 
 
 ## ./
 
-- `AutoShortRange.pp` (~1803 tok)
 
 ## .claude/
 
@@ -51,7 +50,6 @@
 
 ## FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/internal/
 
-- `FtcRobotControllerActivity.java` — There are cases where a permission may be revoked and the system restart will restart the (~9428 tok)
 
 ## FtcRobotController/src/main/res/layout/
 
@@ -79,10 +77,7 @@
 
 ## TeamCode/src/main/java/org/firstinspires/ftc/teamcode/
 
-- `AutoShortRange.java` — Short-range autonomous with alliance-aware path mirroring, immediate-post-start intake, at-speed flywheel gating (with timeout), sweep-stage pickup dwell timing, timed/end-of-auto turret recenter, and turret tracking during path/turn steps. (~3378 tok)
-- `AutoShortRangeBlue.java` — Blue-side wrapper OpMode that selects `isRed() = false`. (~48 tok)
-- `AutoShortRangeRed.java` — Red-side wrapper OpMode that selects `isRed() = true`. (~48 tok)
-- `TestShooterAutoTune.java` — Mathematically rigorous shooter velocity PIDF tuner. (~6866 tok)
+- `AutoShortRange.java` — In-place rotation using Pedro's turnTo. Ticks turret during the rotation. (~5020 tok)
 
 ## TeamCode/src/main/java/org/firstinspires/ftc/teamcode/pedroPathing/
 

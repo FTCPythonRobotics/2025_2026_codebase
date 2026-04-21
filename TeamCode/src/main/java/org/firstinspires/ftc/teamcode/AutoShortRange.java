@@ -100,10 +100,7 @@ public abstract class AutoShortRange extends LinearOpMode {
         seq.add(drive("Stage 8 - Return to shoot", paths.stage8).build());
         seq.add(fireStep("Shoot cycle 2"));
 
-        // Cycle 3 then park.
-        seq.add(drive("Stage 9 - Enter row 3",  paths.stage9).build());
-        seq.add(driveForAtLeast("Stage 10 - Sweep row 3", paths.stage10, PICKUP_DURATION_MS, follower).build());
-        seq.add(drive("Stage 11 - Collect wall sample", paths.stage11).build());
+        // Park at top middle point.
         seq.add(drive("Stage 12 - Park", paths.stage12)
             .onPostRun(() -> { stopFlywheels(); stopIntake(); })
             .build());
@@ -319,9 +316,6 @@ public abstract class AutoShortRange extends LinearOpMode {
         public final PathChain stage6;
         public final PathChain stage7;
         public final PathChain stage8;
-        public final PathChain stage9;
-        public final PathChain stage10;
-        public final PathChain stage11;
         public final PathChain stage12;
 
         public final Pose startPose;
@@ -373,24 +367,9 @@ public abstract class AutoShortRange extends LinearOpMode {
                     .setLinearHeadingInterpolation(h(180.000), h(140.000))
                     .build();
 
-            stage9 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(51.800, 97.000), p(51.800, 34.500)))
-                    .setLinearHeadingInterpolation(h(140.000), h(180.000))
-                    .build();
-
-            stage10 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(51.800, 34.500), p(10.000, 34.500)))
-                    .setLinearHeadingInterpolation(h(180.000), h(180.000))
-                    .build();
-
-            stage11 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(10.000, 34.500), p(22.000, 34.500)))
-                    .setLinearHeadingInterpolation(h(180.000), h(180.000))
-                    .build();
-
             stage12 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(22.000, 34.500), p(56.000, 110.000)))
-                    .setLinearHeadingInterpolation(h(180.000), h(153.000))
+                    .addPath(new BezierLine(p(51.800, 97.000), p(56.000, 110.000)))
+                    .setLinearHeadingInterpolation(h(140.000), h(153.000))
                     .build();
         }
 
