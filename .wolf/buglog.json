@@ -1640,6 +1640,27 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-04-21T15:55:00.000Z"
+    },
+    {
+      "id": "bug-098",
+      "timestamp": "2026-04-21T15:56:00.000Z",
+      "error_message": "Intake engaged too late in AutoShortRange; should come on earlier",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "Intake was first started in stage 1 pre-run, delaying collection readiness until that step began.",
+      "fix": "Moved `startIntake()` to run immediately after `waitForStart()` and changed stage 1 pre-run to only `startFlywheels()`.",
+      "tags": [
+        "autonomous",
+        "intake",
+        "timing",
+        "short-range",
+        "java"
+      ],
+      "related_bugs": [
+        "bug-095",
+        "bug-097"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T15:56:00.000Z"
     }
   ]
 }

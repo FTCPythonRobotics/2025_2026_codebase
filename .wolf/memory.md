@@ -2,6 +2,7 @@
 
 > Chronological action log. Hooks and AI append to this file automatically.
 > Old sessions are consolidated by the daemon weekly.
+| 15:56 | Moved intake start earlier to immediate post-start in AutoShortRange; stage1 now only spins flywheels | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | done | ~220 |
 | 15:55 | Updated AutoShortRange timing constants to user spec: shoot 6s, pickup dwell 2s, spin-up 2s | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | done | ~450 |
 | 15:51 | Enforced shot precondition in fireStep: start flywheels + intake before opening gate | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | done | ~250 |
 | 15:48 | Wired intake/flywheel/gate actions into AutoShortRange staged sequence (spinup + per-cycle firing + park shutdown) | TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | done | ~700 |

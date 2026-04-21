@@ -55,6 +55,9 @@ public abstract class AutoShortRange extends LinearOpMode {
 
         if (isStopRequested()) return;
 
+        // Start collecting immediately once auto starts.
+        startIntake();
+
         buildSequence(follower, paths).run();
 
         stopFlywheels();
@@ -68,7 +71,7 @@ public abstract class AutoShortRange extends LinearOpMode {
 
         // Preload: drive to shoot lane, spin up, then fire.
         seq.add(drive("Stage 1 - Drive to shoot", paths.stage1)
-            .onPreRun(() -> { startFlywheels(); startIntake(); })
+            .onPreRun(this::startFlywheels)
             .build());
         seq.add(waitForFlywheelSpinup());
         seq.add(fireStep("Shoot preload"));

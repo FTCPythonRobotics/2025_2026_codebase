@@ -9,6 +9,7 @@
 - **No unicode in code or comments:** Use plain ASCII only. Replace em dashes with `-`, `x` for multiplication, `~` for approximately, `+-` for plus-minus, write out "degrees" instead of the symbol. Exception: only use unicode if the user explicitly asks for it or it is technically required.
 - **Auto shooting sequence requirement:** Shooting must run flywheel + intake + gate together; gate should open only after waiting for flywheel spin-up.
 - **Auto timing preference:** Use 2s flywheel spin-up, 6s shooting window, and 2s pickup dwell windows in AutoShortRange.
+- **AutoShortRange intake timing:** Intake should come on immediately after start (earlier than first stage pre-run), then remain managed by sequence shutdown.
 - **Turret tx sign convention:** Use raw `result.getTx()` with NO negation. Positive tx (target right) drives toward positive/maxTicks; negative tx drives toward minTicks. The negated form (`-result.getTx()`) causes positive feedback (amplifies movement instead of counteracting). Confirmed by physical hand-rotation test.
 - **Turret testing priority:** Safety and slow behavior are higher priority than speed/performance while tuning.
 - **Turret limit strategy:** Use soft limits only; remove hard-stop/cutoff logic from turret runtime and test paths.
