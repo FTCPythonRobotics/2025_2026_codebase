@@ -19,7 +19,7 @@ public class RobotTeleopDrive extends OpMode {
     public static double rotationScale = 0.7;
     public static double strafeScale   = 0.8;
     public static double intakePower   = 1.0;
-    public static double flywheelDefaultRpm = 1000.0;
+    public static double flywheelDefaultRpm = 1700.0;
     public static double flywheelStepRpm    = 100.0;
 
     // --- Hardware ---
@@ -40,7 +40,7 @@ public class RobotTeleopDrive extends OpMode {
     @IgnoreConfigurable private boolean          lastDpadRight;
     @IgnoreConfigurable private boolean          lastTriangle;
     @IgnoreConfigurable private boolean          flywheelOn;
-    @IgnoreConfigurable private double           flywheelSetRpm = 1000.0;
+    @IgnoreConfigurable private double           flywheelSetRpm = 1700.0;
     @IgnoreConfigurable private TurretController turretController;
     @IgnoreConfigurable private GateMechanism    gate;
     @IgnoreConfigurable private TelemetryManager dash;
@@ -93,9 +93,10 @@ public class RobotTeleopDrive extends OpMode {
 
         turretController = TurretController.create(hardwareMap, telemetry);
         if (turretController != null) {
-            turretController.setTargetTagIds(20, 24);
+            turretController.setTargetTagIds(GetTags());
             turretController.setTrackingEnabled(true);
         }
+
         gate       = GateMechanism.create(hardwareMap, telemetry, false);
         dash       = PanelsTelemetry.INSTANCE.getTelemetry();
         lastLoopMs = System.currentTimeMillis();
@@ -298,4 +299,7 @@ public class RobotTeleopDrive extends OpMode {
         return ticksPerSec / RobotConfig.SHOOTER_TICKS_PER_REV * 60.0;
     }
 
+    public int[] GetTags() {
+        return RobotConfig.TURRET_BLUE_TAG_IDS;
+    }
 }

@@ -20,6 +20,7 @@ public class TurretController {
     private double  lastTx;
     private double  filteredDerivative;
     private long    lastUpdateMs;
+    private long    lastTargetSeenMs;
     private double  lastPower;
     private boolean atLimit;
     private int[]   targetTagIds = new int[0]; // empty = any tag
@@ -68,6 +69,7 @@ public class TurretController {
         lastTx = 0;
         targetPreviouslyVisible = false;
         lastUpdateMs = System.currentTimeMillis();
+        lastTargetSeenMs = 0;
     }
 
     public void beginRecenter() {
@@ -109,6 +111,18 @@ public class TurretController {
 
         LLResultTypes.FiducialResult target = findTarget();
         boolean targetVisible = target != null;
+
+        if (targetVisible) {
+            lastTargetSeenMs = nowMs;
+        } else if (targetPreviouslyVisible
+                && nowMs - lastTargetSeenMs < RobotConfig.TURRET_TARGET_LOSS_GRACE_MS) {
+            // Brief tracking dropout: hold position for the grace window before recentering.
+            lastUpdateMs = nowMs;
+            turretMotor.setPower(0);
+            lastPower = 0;
+            atLimit = false;
+            return;
+        }
 
         // Reset PID state on target-visibility transitions to avoid stale integral/derivative.
         if (targetVisible != targetPreviouslyVisible) {

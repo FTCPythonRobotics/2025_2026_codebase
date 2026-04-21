@@ -13,11 +13,11 @@ public final class RobotConfig {
     public static final double SHOOTER_VEL_F_BOTTOM  = 15.12;    // per-motor feedforward from tuner: NATIVE_FULL / K_m
     public static final double SHOOTER_VEL_F_TOP     = 15.14;
 
-    // --- Turret tag IDs ---
+    // Turret tag IDs
     public static final int[] TURRET_RED_TAG_IDS  = { 24 };
     public static final int[] TURRET_BLUE_TAG_IDS = { 20 };
 
-    // --- Turret ---
+    // Turret
     // goBILDA 5203-2402-0004: 28 counts/rev x 13.7:1 gearbox x 85/16 external gear stage
     public static final double TURRET_TICKS_PER_DEG = (28.0 * 13.7 * (85.0 / 16.0)) / 360.0;
     public static final double TURRET_MAX_DEG       = 90.0;
@@ -25,6 +25,8 @@ public final class RobotConfig {
     public static final int    TURRET_MAX_TICKS     = 509;
 
     public static final double  TURRET_DEADBAND_DEG  = 2.5;
+    // Hold position this long after losing vision before recentering, to ride through brief drops.
+    public static final long    TURRET_TARGET_LOSS_GRACE_MS = 120;
     public static final double  TURRET_KF            = 0.1886;
     public static final double  TURRET_KP            = 0.0115;
     public static final double  TURRET_KI            = 0.00001;

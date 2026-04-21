@@ -604,3 +604,67 @@
 | 03:10 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java | removed 5 lines | ~1 |
 | 03:11 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java | 3→2 lines | ~26 |
 | 03:11 | Session end: 21 writes across 3 files (TestShooterAutoTune.java, RobotTeleopDrive.java, RobotConfig.java) | 4 reads | ~22015 tok |
+| 04:54 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java | 1→3 lines | ~60 |
+
+## Session: 2026-04-21 04:56
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-04-21 04:57
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-04-21 04:59
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 05:00 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java | 9→10 lines | ~92 |
+| 05:00 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java | 2→3 lines | ~33 |
+| 05:00 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java | added 2 condition(s) | ~281 |
+| 05:00 | Added 50ms grace window before turret recenters on Limelight target loss | TurretController.java | ok | ~600 |
+| 05:01 | Session end: 3 writes across 1 files (TurretController.java) | 2 reads | ~3348 tok |
+
+## Session: 2026-04-21 05:26
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 09:59 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 6→5 lines | ~61 |
+| 09:59 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | modified buildSequence() | ~653 |
+| 10:00 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | modified Paths() | ~1012 |
+
+| 10:00 | Replaced AutoShortRange paths with new blue-side coords (start 20,122 heading 144; rotate-in-place segments at 41,100) | AutoShortRange.java | done | ~800 |
+| 10:03 | Created TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | — | ~3383 |
+
+| 10:04 | Wired real shooter/intake/gate impl into AutoShortRange, renamed paths for clarity, added firingStep helper | AutoShortRange.java | build SUCCESSFUL | ~1800 |
+| 10:04 | Session end: 4 writes across 1 files (AutoShortRange.java) | 9 reads | ~5476 tok |
+| 10:06 | Session end: 4 writes across 1 files (AutoShortRange.java) | 9 reads | ~5476 tok |
+| 10:10 | Session end: 4 writes across 1 files (AutoShortRange.java) | 9 reads | ~5476 tok |
+| 10:15 | Created TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | — | ~3680 |
+| 10:16 | Session end: 5 writes across 1 files (AutoShortRange.java) | 9 reads | ~12801 tok |
+| 10:19 | Session end: 5 writes across 1 files (AutoShortRange.java) | 9 reads | ~12801 tok |
+| 10:27 | Session end: 5 writes across 1 files (AutoShortRange.java) | 12 reads | ~12801 tok |
+| 10:29 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | modified buildSequence() | ~336 |
+| 10:29 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | modified fireStep() | ~172 |
+| 10:30 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | reduced (-6 lines) | ~306 |
+| 10:30 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | reduced (-15 lines) | ~565 |
+| 10:34 | Edited FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/internal/FtcRobotControllerActivity.java | 2→2 lines | ~19 |
+| 10:37 | Session end: 10 writes across 2 files (AutoShortRange.java, FtcRobotControllerActivity.java) | 14 reads | ~23874 tok |
+
+## Session: 2026-04-21 11:42
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-04-21 11:57
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 12:08 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 21→24 lines | ~373 |
+| 12:08 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 18→22 lines | ~371 |
+| 12:08 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | expanded (+10 lines) | ~563 |
+| 12:09 | Updated AutoShortRange paths: added rotateToIntakeHeading and rotateToGoalHeading in-place rotations at (41,100); row 1 x end moved 19 to 21; drives now at constant heading 180 | AutoShortRange.java | done | ~600 |
+| 12:09 | Session end: 3 writes across 1 files (AutoShortRange.java) | 1 reads | ~4662 tok |
+| 12:09 | Session end: 3 writes across 1 files (AutoShortRange.java) | 1 reads | ~4662 tok |
+| 12:10 | Session end: 3 writes across 1 files (AutoShortRange.java) | 1 reads | ~4662 tok |

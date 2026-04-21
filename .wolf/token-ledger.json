@@ -2,14 +2,14 @@
   "version": 1,
   "created_at": "2026-04-17T12:59:31.396Z",
   "lifetime": {
-    "total_tokens_estimated": 2374266,
-    "total_reads": 1066,
-    "total_writes": 3722,
-    "total_sessions": 13,
-    "anatomy_hits": 886,
-    "anatomy_misses": 180,
-    "repeated_reads_blocked": 537,
-    "estimated_savings_vs_bare_cli": 915890
+    "total_tokens_estimated": 2470305,
+    "total_reads": 1142,
+    "total_writes": 3771,
+    "total_sessions": 19,
+    "anatomy_hits": 891,
+    "anatomy_misses": 251,
+    "repeated_reads_blocked": 544,
+    "estimated_savings_vs_bare_cli": 947060
   },
   "sessions": [
     {
@@ -28155,6 +28155,894 @@
         "writes_count": 21,
         "repeated_reads_blocked": 6,
         "anatomy_lookups": 3
+      }
+    },
+    {
+      "id": "session-2026-04-21-0459",
+      "started": "2026-04-21T03:59:21.162Z",
+      "ended": "2026-04-21T04:01:06.856Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 1914,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 999,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 99,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 35,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 301,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 2913,
+        "output_tokens_estimated": 435,
+        "reads_count": 2,
+        "writes_count": 3,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 2
+      }
+    },
+    {
+      "id": "session-2026-04-21-0526",
+      "started": "2026-04-21T04:26:25.557Z",
+      "ended": "2026-04-21T09:04:59.327Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRangeBlue.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoStep.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/GateMechanism.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/HardwareNames.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoSequence.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 66,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 700,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 1085,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3625,
+          "action": "create"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 5476,
+        "reads_count": 9,
+        "writes_count": 4,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-0526",
+      "started": "2026-04-21T04:26:25.557Z",
+      "ended": "2026-04-21T09:06:06.136Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRangeBlue.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoStep.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/GateMechanism.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/HardwareNames.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoSequence.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 66,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 700,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 1085,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3625,
+          "action": "create"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 5476,
+        "reads_count": 9,
+        "writes_count": 4,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-0526",
+      "started": "2026-04-21T04:26:25.557Z",
+      "ended": "2026-04-21T09:10:10.565Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRangeBlue.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoStep.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/GateMechanism.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/HardwareNames.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoSequence.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 66,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 700,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 1085,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3625,
+          "action": "create"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 5476,
+        "reads_count": 9,
+        "writes_count": 4,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-0526",
+      "started": "2026-04-21T04:26:25.557Z",
+      "ended": "2026-04-21T09:16:53.037Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRangeBlue.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3383,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoStep.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/GateMechanism.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/HardwareNames.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoSequence.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 66,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 700,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 1085,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3625,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3942,
+          "action": "create"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 3383,
+        "output_tokens_estimated": 9418,
+        "reads_count": 9,
+        "writes_count": 5,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-0526",
+      "started": "2026-04-21T04:26:25.557Z",
+      "ended": "2026-04-21T09:19:09.749Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRangeBlue.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3383,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoStep.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/GateMechanism.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/HardwareNames.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoSequence.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 66,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 700,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 1085,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3625,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3942,
+          "action": "create"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 3383,
+        "output_tokens_estimated": 9418,
+        "reads_count": 9,
+        "writes_count": 5,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-0526",
+      "started": "2026-04-21T04:26:25.557Z",
+      "ended": "2026-04-21T09:27:43.195Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRangeBlue.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3383,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoStep.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/GateMechanism.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/HardwareNames.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoSequence.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/pedroPathing/Constants.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/tmp/pedro-src/com/pedropathing/geometry/BezierLine.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 66,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 700,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 1085,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3625,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3942,
+          "action": "create"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 3383,
+        "output_tokens_estimated": 9418,
+        "reads_count": 12,
+        "writes_count": 5,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-0526",
+      "started": "2026-04-21T04:26:25.557Z",
+      "ended": "2026-04-21T09:37:57.728Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRangeBlue.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3531,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoStep.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/GateMechanism.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/HardwareNames.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotTeleopDrive.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoSequence.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/pedroPathing/Constants.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/tmp/pedro-src/com/pedropathing/geometry/BezierLine.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/internal/FtcOpModeRegister.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/internal/FtcRobotControllerActivity.java",
+          "tokens_estimated": 9428,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 66,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 700,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 1085,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3625,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3942,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 360,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 184,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 328,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 605,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/internal/FtcRobotControllerActivity.java",
+          "tokens_estimated": 20,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 12959,
+        "output_tokens_estimated": 10915,
+        "reads_count": 14,
+        "writes_count": 10,
+        "repeated_reads_blocked": 4,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-1157",
+      "started": "2026-04-21T10:57:18.485Z",
+      "ended": "2026-04-21T11:09:17.761Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3261,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 399,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 398,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 604,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 3261,
+        "output_tokens_estimated": 1401,
+        "reads_count": 1,
+        "writes_count": 3,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      }
+    },
+    {
+      "id": "session-2026-04-21-1157",
+      "started": "2026-04-21T10:57:18.485Z",
+      "ended": "2026-04-21T11:09:52.132Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3261,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 399,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 398,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 604,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 3261,
+        "output_tokens_estimated": 1401,
+        "reads_count": 1,
+        "writes_count": 3,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      }
+    },
+    {
+      "id": "session-2026-04-21-1157",
+      "started": "2026-04-21T10:57:18.485Z",
+      "ended": "2026-04-21T11:10:27.689Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3261,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 399,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 398,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 604,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 3261,
+        "output_tokens_estimated": 1401,
+        "reads_count": 1,
+        "writes_count": 3,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
       }
     }
   ],

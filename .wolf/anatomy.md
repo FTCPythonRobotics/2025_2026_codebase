@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-04-21T02:11:04.279Z
-> Files: 14 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-04-21T11:08:47.602Z
+> Files: 2 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ../../.claude/projects/C--Users-Ben-StudioProjects-TeamPythonRobotics-Nationals-2025-2026/memory/
 
@@ -50,6 +50,7 @@
 
 ## FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/internal/
 
+- `FtcRobotControllerActivity.java` — There are cases where a permission may be revoked and the system restart will restart the (~9428 tok)
 
 ## FtcRobotController/src/main/res/layout/
 
@@ -77,23 +78,10 @@
 
 ## TeamCode/src/main/java/org/firstinspires/ftc/teamcode/
 
-- `AutoLongRange.java` — AutoLongRange: runOpMode (~1538 tok)
-- `AutoLongRangeBlue.java` — Class: AutoLongRangeBlue (~74 tok)
-- `AutoLongRangeRed.java` — Class: AutoLongRangeRed (~73 tok)
-- `AutoShortRange.java` — AutoShortRange: runOpMode (~1728 tok)
-- `AutoShortRangeBlue.java` — Class: AutoShortRangeBlue (~74 tok)
-- `AutoShortRangeRed.java` — Class: AutoShortRangeRed (~74 tok)
-- `GateMechanism.java` — A pair of mirrored gate servos on the shooter. Use {@link #create} to build (~605 tok)
-- `RobotAutonomous.java` — RobotAutonomous: runOpMode (~290 tok)
-- `RobotConfig.java` — Class: RobotConfig (~954 tok)
-- `RobotTeleopDrive.java` — RobotTeleopDrive: init, loop, stop (~3814 tok)
-- `TestDriveMotors.java` — TestDriveMotors: init, loop, stop (~814 tok)
-- `TestShooterAutoTune.java` — Mathematically rigorous shooter velocity PIDF tuner. (~6848 tok)
-- `TurretController.java` — TurretController: create, setTargetTagIds, setTrackingEnabled, beginRecenter (~1914 tok)
+- `AutoShortRange.java` — Builder for a path-following step that keeps the turret tracking during the path. (~3575 tok)
 
 ## TeamCode/src/main/java/org/firstinspires/ftc/teamcode/pedroPathing/
 
-- `Constants.java` — Constants: createFollower (~850 tok)
 
 ## TeamCode/src/main/res/raw/
 
