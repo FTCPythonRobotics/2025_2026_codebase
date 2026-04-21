@@ -108,39 +108,6 @@ public abstract class AutoShortRange extends LinearOpMode {
             .onPostRun(() -> { stopFlywheels(); stopIntake(); })
             .build());
 
-        /*
-        seq.add(drive("Drive to shoot position", paths.driveToShootPose)
-                .onPreRun(() -> { startFlywheels(); startIntake(); })
-                .build());
-
-        seq.add(waitForFlywheelSpinup());
-        seq.add(fireStep("Fire preload samples"));
-
-        seq.add(turnStep("Rotate to intake heading", follower, Math.toRadians(180)));
-
-        seq.add(drive("Drive to row 1",          paths.shootToRow1).build());
-        seq.add(drive("Sweep row 1",             paths.sweepRow1).build());
-        seq.add(drive("Retreat from row 1",      paths.retreatFromRow1).build());
-
-        seq.add(drive("Collect sample at wall",  paths.collectAtWall).onPreRun(() -> {
-            delayRetreatStartMs = System.currentTimeMillis();
-        }).isFinished(() -> System.currentTimeMillis() - delayRetreatStartMs >= 500).build());
-
-        seq.add(drive("Retreat from wall",       paths.retreatFromWall).build());
-        seq.add(drive("Return to shoot pose",    paths.returnToShoot).build());
-
-        seq.add(turnStep("Rotate to goal heading", follower, Math.toRadians(144)));
-        seq.add(fireStep("Fire collected samples"));
-        seq.add(turnStep("Rotate to intake heading", follower, Math.toRadians(180)));
-
-        seq.add(drive("Drive to row 2",          paths.shootToRow2).build());
-        seq.add(drive("Sweep row 2",             paths.sweepRow2).build());
-
-        seq.add(drive("Park", paths.park)
-                .onPostRun(() -> { stopFlywheels(); stopIntake(); })
-                .build());
-         */
-
         return seq;
     }
 
