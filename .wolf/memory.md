@@ -812,3 +812,23 @@
 | 08:27 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java | 7→8 lines | ~76 |
 | 08:27 | Session end: 10 writes across 3 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java) | 3 reads | ~8994 tok |
 | 08:28 | Session end: 10 writes across 3 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java) | 3 reads | ~8994 tok |
+| 09:44 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | expanded (+6 lines) | ~275 |
+| 09:44 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | modified fireStep() | ~178 |
+| 09:44 | Session end: 12 writes across 4 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java, AutoShortRange.java) | 5 reads | ~14376 tok |
+| 09:46 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 4→1 lines | ~12 |
+| 09:46 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | modified driveForAtLeast() | ~185 |
+| 09:46 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 1→4 lines | ~47 |
+| 09:46 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java | 4→5 lines | ~43 |
+| 09:46 | Session end: 16 writes across 4 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java, AutoShortRange.java) | 5 reads | ~14683 tok |
+| 09:47 | Session end: 16 writes across 4 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java, AutoShortRange.java) | 5 reads | ~14683 tok |
+| 09:49 | Session end: 16 writes across 4 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java, AutoShortRange.java) | 5 reads | ~14683 tok |
+| 10:08 | Session end: 16 writes across 4 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java, AutoShortRange.java) | 5 reads | ~14821 tok |
+| 10:36 | Created TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java | — | ~521 |
+| 10:36 | Session end: 17 writes across 5 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java, AutoShortRange.java, AutoLongRange.java) | 5 reads | ~15379 tok |
+| 11:22 | Session end: 17 writes across 5 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java, AutoShortRange.java, AutoLongRange.java) | 5 reads | ~15379 tok |
+| 11:31 | Session end: 17 writes across 5 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java, AutoShortRange.java, AutoLongRange.java) | 5 reads | ~15379 tok |
+| 12:26 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java | added 1 condition(s) | ~300 |
+| 12:27 | Edited TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoLongRange.java | modified Paths() | ~168 |
+| 12:28 | Session end: 19 writes across 5 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java, AutoShortRange.java, AutoLongRange.java) | 7 reads | ~16639 tok |
+| 12:32 | Session end: 19 writes across 5 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java, AutoShortRange.java, AutoLongRange.java) | 8 reads | ~16639 tok |
+| 12:34 | Session end: 19 writes across 5 files (LimelightTuner.java, TurretController.java, TestLimelightTuner.java, AutoShortRange.java, AutoLongRange.java) | 8 reads | ~16639 tok |

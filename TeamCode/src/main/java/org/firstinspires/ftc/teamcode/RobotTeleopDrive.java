@@ -16,10 +16,10 @@ public class RobotTeleopDrive extends OpMode {
     // --- Tunables ---
     public static double crawlSpeed    = 0.4;
     public static double normalSpeed   = 1.0;
-    public static double rotationScale = 0.7;
-    public static double strafeScale   = 0.8;
+    public static double rotationScale = 1.0;
+    public static double strafeScale   = 1.0;
     public static double intakePower   = 1.0;
-    public static double flywheelDefaultRpm = 1700.0;
+    public static double flywheelDefaultRpm = 1600.0;
     public static double flywheelStepRpm    = 100.0;
 
     // --- Hardware ---

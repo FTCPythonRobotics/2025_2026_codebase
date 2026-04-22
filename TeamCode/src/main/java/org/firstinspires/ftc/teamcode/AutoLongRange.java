@@ -16,134 +16,62 @@ public abstract class AutoLongRange extends LinearOpMode {
     public void runOpMode() {
         Follower follower = Constants.createFollower(hardwareMap);
 
-        // TODO: initialise hardware (turret, gate servo, etc.) here
-
         Paths paths = new Paths(follower, isRed());
         follower.setStartingPose(paths.startPose);
 
         telemetry.addData("Follower", "ok");
         telemetry.addData("Alliance", isRed() ? "RED" : "BLUE");
-        telemetry.addData("Start pose", "x=%.1f y=%.1f h=%.0f deg",
-                paths.startPose.getX(), paths.startPose.getY(),
-                Math.toDegrees(paths.startPose.getHeading()));
         telemetry.addData(">>", "Press Play to start");
         telemetry.update();
+
         waitForStart();
         if (isStopRequested()) return;
 
-        buildSequence(follower, paths).run();
-    }
+        Pose endPose = paths.endPose;
+        final double POS_TOL_IN = 1.0;
+        final double VEL_TOL_IN_S = 1.0;
 
-    private AutoSequence buildSequence(Follower follower, Paths paths) {
         AutoSequence seq = new AutoSequence(this, follower);
-
         seq.add(new AutoStep.Builder()
-                .name("Approach row")
-                .path(paths.initialToSweepRow)
-                .onPreRun(() -> { /* TODO: start intake */ })
+                .name("Drive off start line")
+                .path(paths.mainChain)
+                .isFinished(() -> {
+                    if (follower.isBusy()) return false;
+                    Pose p = follower.getPose();
+                    double dx = p.getX() - endPose.getX();
+                    double dy = p.getY() - endPose.getY();
+                    double dist = Math.hypot(dx, dy);
+                    double speed = follower.getVelocity().getMagnitude();
+                    return dist <= POS_TOL_IN && speed <= VEL_TOL_IN_S;
+                })
                 .build());
 
-        seq.add(new AutoStep.Builder()
-                .name("Sweep row")
-                .path(paths.sweepRow)
-                .onPostRun(() -> { /* TODO: stop intake */ })
-                .build());
+        seq.run();
 
-        seq.add(new AutoStep.Builder()
-                .name("Return to score")
-                .path(paths.sweepRowToScore)
-                .onPreRun(() -> { /* TODO: score */ })
-                .onPostRun(() -> { /* TODO: stop scoring */ })
-                .build());
-
-        for (int i = 0; i < 4; i++) {
-            addPickupScoreCycle(seq, paths, i + 1);
+        // Actively hold the goal point so residual momentum is braked out.
+        follower.holdPoint(endPose);
+        long holdUntil = System.currentTimeMillis() + 400;
+        while (!isStopRequested() && System.currentTimeMillis() < holdUntil) {
+            follower.update();
         }
-
-        seq.add(new AutoStep.Builder()
-                .name("Park")
-                .path(paths.park)
-                .build());
-
-        return seq;
     }
-
-    private void addPickupScoreCycle(AutoSequence seq, Paths paths, int cycle) {
-        seq.add(new AutoStep.Builder()
-                .name("Cycle " + cycle + ": to pickup")
-                .path(paths.scoreToPickupApproach)
-                .onPreRun(() -> { /* TODO: start intake */ })
-                .build());
-
-        seq.add(new AutoStep.Builder()
-                .name("Cycle " + cycle + ": pickup")
-                .path(paths.pickupApproach)
-                .onPostRun(() -> { /* TODO: stop intake */ })
-                .build());
-
-        seq.add(new AutoStep.Builder()
-                .name("Cycle " + cycle + ": return to score")
-                .path(paths.pickupToScore)
-                .onPreRun(() -> { /* TODO: score */ })
-                .onPostRun(() -> { /* TODO: stop scoring */ })
-                .build());
-    }
-
-    // -------------------------------------------------------------------------
-    // Path definitions (blue-side coordinates; red is mirrored about field center)
-    // -------------------------------------------------------------------------
 
     public static class Paths {
 
-        public final PathChain initialToSweepRow;
-        public final PathChain sweepRow;
-        public final PathChain sweepRowToScore;
-        public final PathChain scoreToPickupApproach;
-        public final PathChain pickupApproach;
-        public final PathChain pickupToScore;
-        public final PathChain park;
-
-        public final Pose startPose;
+        public final PathChain mainChain;
+        public final Pose      startPose;
+        public final Pose      endPose;
 
         private final boolean isRed;
 
         public Paths(Follower follower, boolean isRed) {
             this.isRed = isRed;
 
-            startPose = new Pose(p(42, 8).getX(), p(42, 8).getY(), h(180));
+            startPose = new Pose(p(60, 10).getX(), p(60, 10).getY(), h(180));
+            endPose   = new Pose(p(36, 10).getX(), p(36, 10).getY(), h(180));
 
-            initialToSweepRow = follower.pathBuilder()
-                    .addPath(new BezierLine(p(42, 8), p(40, 36)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
-                    .build();
-
-            sweepRow = follower.pathBuilder()
-                    .addPath(new BezierLine(p(40, 36), p(20, 36)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
-                    .build();
-
-            sweepRowToScore = follower.pathBuilder()
-                    .addPath(new BezierLine(p(20, 36), p(42, 8)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
-                    .build();
-
-            scoreToPickupApproach = follower.pathBuilder()
-                    .addPath(new BezierLine(p(42, 8), p(12, 15)))
-                    .setLinearHeadingInterpolation(h(180), h(210))
-                    .build();
-
-            pickupApproach = follower.pathBuilder()
-                    .addPath(new BezierLine(p(12, 15), p(10, 9)))
-                    .setLinearHeadingInterpolation(h(210), h(180))
-                    .build();
-
-            pickupToScore = follower.pathBuilder()
-                    .addPath(new BezierLine(p(10, 9), p(42, 8)))
-                    .setLinearHeadingInterpolation(h(180), h(180))
-                    .build();
-
-            park = follower.pathBuilder()
-                    .addPath(new BezierLine(p(42, 8), p(35, 8)))
+            mainChain = follower.pathBuilder()
+                    .addPath(new BezierLine(p(60, 10), p(36, 10)))
                     .setLinearHeadingInterpolation(h(180), h(180))
                     .build();
         }

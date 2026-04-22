@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 public abstract class AutoShortRange extends LinearOpMode {
 
     // Tunables
-    private static final double SHOOT_RPM          = 1700.0;
+    private static final double SHOOT_RPM          = 1600.0;
     private static final double SHOOT_AT_SPEED_TOL_RPM = 120.0;
     private static final double INTAKE_POWER       = 1.0;
     private static final long   FIRE_DURATION_MS   = 5_000;
@@ -64,9 +64,6 @@ public abstract class AutoShortRange extends LinearOpMode {
         autoStartMs = System.currentTimeMillis();
         timedRecenterStarted = false;
 
-        // Start collecting immediately once auto starts.
-        startIntake();
-
         buildSequence(follower, paths).run();
 
         recenterTurretBeforeEnd();
@@ -87,17 +84,26 @@ public abstract class AutoShortRange extends LinearOpMode {
         seq.add(waitForFlywheelSpinup());
         seq.add(fireStep("Shoot preload"));
 
-        // Cycle 1: collect row, return, shoot.
+        // Cycle 1: collect row, return (spin up on the way back), shoot.
         seq.add(drive("Stage 2 - Enter row 1",  paths.stage2).build());
         seq.add(driveForAtLeast("Stage 3 - Sweep row 1", paths.stage3, PICKUP_DURATION_MS, follower).build());
-        seq.add(drive("Stage 4 - Return to shoot", paths.stage4).build());
+        seq.add(drive("Stage 4 - Return to shoot", paths.stage4)
+            .onPostRun(this::startFlywheels)
+            .build());
+        seq.add(waitForFlywheelSpinup());
         seq.add(fireStep("Shoot cycle 1"));
 
-        // Cycle 2: collect row, return, shoot.
+        // Cycle 2: collect row, return (spin up on the way back), shoot.
         seq.add(drive("Stage 5 - Enter row 2",  paths.stage5).build());
         seq.add(driveForAtLeast("Stage 6 - Sweep row 2", paths.stage6, PICKUP_DURATION_MS, follower).build());
-        seq.add(drive("Stage 7 - Collect wall sample", paths.stage7).build());
-        seq.add(drive("Stage 8 - Return to shoot", paths.stage8).build());
+        seq.add(drive("Stage 7 - Collect wall sample", paths.stage7)
+            .onPreRun(this::startIntake)
+            .onPostRun(this::stopIntake)
+            .build());
+        seq.add(drive("Stage 8 - Return to shoot", paths.stage8)
+            .onPostRun(this::startFlywheels)
+            .build());
+        seq.add(waitForFlywheelSpinup());
         seq.add(fireStep("Shoot cycle 2"));
 
         return seq;
@@ -132,9 +138,13 @@ public abstract class AutoShortRange extends LinearOpMode {
         return new AutoStep.Builder()
                 .name(name)
                 .path(path)
-                .onPreRun(() -> startMs[0] = System.currentTimeMillis())
+                .onPreRun(() -> {
+                    startMs[0] = System.currentTimeMillis();
+                    startIntake();
+                })
                 .onRun(this::tickTurret)
-                .isFinished(() -> !follower.isBusy() && System.currentTimeMillis() - startMs[0] >= minDurationMs);
+                .isFinished(() -> !follower.isBusy() && System.currentTimeMillis() - startMs[0] >= minDurationMs)
+                .onPostRun(this::stopIntake);
     }
 
     /** Waits until both flywheels are at speed, with a timeout fallback for robustness. */
@@ -174,7 +184,11 @@ public abstract class AutoShortRange extends LinearOpMode {
                 })
                 .onRun(this::tickTurret)
                 .isFinished(() -> System.currentTimeMillis() - fireStartMs[0] >= FIRE_DURATION_MS)
-                .onPostRun(gate::close)
+                .onPostRun(() -> {
+                    gate.close();
+                    stopFlywheels();
+                    stopIntake();
+                })
                 .build();
     }
 

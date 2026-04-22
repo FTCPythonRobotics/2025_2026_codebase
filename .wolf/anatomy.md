@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-04-22T07:27:02.803Z
-> Files: 4 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-04-22T11:27:11.658Z
+> Files: 5 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ../../.claude/projects/C--Users-Ben-StudioProjects-TeamPythonRobotics-Nationals-2025-2026/memory/
 
@@ -77,7 +77,8 @@
 
 ## TeamCode/src/main/java/org/firstinspires/ftc/teamcode/
 
-- `AutoShortRange.java` — In-place rotation using Pedro's turnTo. Ticks turret during the rotation. (~4897 tok)
+- `AutoLongRange.java` — AutoLongRange: runOpMode (~790 tok)
+- `AutoShortRange.java` — In-place rotation using Pedro's turnTo. Ticks turret during the rotation. (~5035 tok)
 - `LimelightTuner.java` — Finds good AprilTag exposure + sensor gain for current lighting by rewriting (~2900 tok)
 - `TestLimelightTuner.java` — TestLimelightTuner: runOpMode (~855 tok)
 - `TurretController.java` — Blocking exposure/gain sweep. Call once at auto init. (~2223 tok)
