@@ -1757,6 +1757,38 @@
       "related_bugs": [],
       "occurrences": 2,
       "last_seen": "2026-04-21T16:04:19.214Z"
+    },
+    {
+      "id": "bug-104",
+      "timestamp": "2026-04-21T16:05:58.480Z",
+      "error_message": "Wrong reference: 140 should be 153",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+      "root_cause": "Used \"140\" instead of \"153\"",
+      "fix": "Changed 140 → 153",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-21T16:05:58.480Z"
+    },
+    {
+      "id": "bug-105",
+      "timestamp": "2026-04-22T06:56:17.131Z",
+      "error_message": "Significant refactor of ",
+      "file": "TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+      "root_cause": "7 lines replaced/restructured",
+      "fix": "Rewrote 14→5 lines (7 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "java"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-22T06:56:17.131Z"
     }
   ]
 }

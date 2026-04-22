@@ -2,14 +2,14 @@
   "version": 1,
   "created_at": "2026-04-17T12:59:31.396Z",
   "lifetime": {
-    "total_tokens_estimated": 2556378,
-    "total_reads": 1210,
-    "total_writes": 3982,
-    "total_sessions": 26,
-    "anatomy_hits": 905,
-    "anatomy_misses": 305,
-    "repeated_reads_blocked": 629,
-    "estimated_savings_vs_bare_cli": 1091599
+    "total_tokens_estimated": 2601593,
+    "total_reads": 1227,
+    "total_writes": 4037,
+    "total_sessions": 27,
+    "anatomy_hits": 906,
+    "anatomy_misses": 321,
+    "repeated_reads_blocked": 637,
+    "estimated_savings_vs_bare_cli": 1109503
   },
   "sessions": [
     {
@@ -30756,6 +30756,502 @@
         "reads_count": 0,
         "writes_count": 3,
         "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-1702",
+      "started": "2026-04-21T16:02:22.770Z",
+      "ended": "2026-04-21T16:06:31.667Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 5020,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 52,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 23,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 67,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 6,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 3,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 13,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 11,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/AutoShortRange.java",
+          "tokens_estimated": 0,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 5020,
+        "output_tokens_estimated": 175,
+        "reads_count": 1,
+        "writes_count": 8,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      }
+    },
+    {
+      "id": "session-2026-04-21-2316",
+      "started": "2026-04-21T22:16:58.942Z",
+      "ended": "2026-04-21T22:23:41.068Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/LimelightTuner.java",
+          "tokens_estimated": 2265,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 73,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 67,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 120,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 2562,
+        "reads_count": 2,
+        "writes_count": 5,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-2316",
+      "started": "2026-04-21T22:16:58.942Z",
+      "ended": "2026-04-21T22:25:04.539Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/LimelightTuner.java",
+          "tokens_estimated": 2265,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 73,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 67,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 120,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 2562,
+        "reads_count": 2,
+        "writes_count": 5,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-2316",
+      "started": "2026-04-21T22:16:58.942Z",
+      "ended": "2026-04-22T06:56:51.683Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 2213,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/Pipeline_Name.vpr",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/LimelightTuner.java",
+          "tokens_estimated": 2265,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 73,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 67,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 120,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/LimelightTuner.java",
+          "tokens_estimated": 3108,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 46,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 67,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 2213,
+        "output_tokens_estimated": 5783,
+        "reads_count": 3,
+        "writes_count": 8,
+        "repeated_reads_blocked": 2,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-2316",
+      "started": "2026-04-21T22:16:58.942Z",
+      "ended": "2026-04-22T07:01:49.004Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 2213,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/Pipeline_Name.vpr",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/LimelightTuner.java",
+          "tokens_estimated": 2265,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 73,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 67,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 120,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/LimelightTuner.java",
+          "tokens_estimated": 3108,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 46,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 67,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestLimelightTuner.java",
+          "tokens_estimated": 916,
+          "action": "create"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 2213,
+        "output_tokens_estimated": 6699,
+        "reads_count": 3,
+        "writes_count": 9,
+        "repeated_reads_blocked": 2,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-2316",
+      "started": "2026-04-21T22:16:58.942Z",
+      "ended": "2026-04-22T07:27:08.530Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 2213,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/Pipeline_Name.vpr",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/LimelightTuner.java",
+          "tokens_estimated": 2265,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 73,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 67,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 120,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/LimelightTuner.java",
+          "tokens_estimated": 3108,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 46,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 67,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestLimelightTuner.java",
+          "tokens_estimated": 916,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 82,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 2213,
+        "output_tokens_estimated": 6781,
+        "reads_count": 3,
+        "writes_count": 10,
+        "repeated_reads_blocked": 2,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-04-21-2316",
+      "started": "2026-04-21T22:16:58.942Z",
+      "ended": "2026-04-22T07:28:15.804Z",
+      "reads": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 2213,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotConfig.java",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/Pipeline_Name.vpr",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/LimelightTuner.java",
+          "tokens_estimated": 2265,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 73,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 67,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 120,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/LimelightTuner.java",
+          "tokens_estimated": 3108,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 46,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 67,
+          "action": "edit"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TestLimelightTuner.java",
+          "tokens_estimated": 916,
+          "action": "create"
+        },
+        {
+          "file": "C:/Users/Ben/StudioProjects/TeamPythonRobotics-Nationals-2025-2026/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TurretController.java",
+          "tokens_estimated": 82,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 2213,
+        "output_tokens_estimated": 6781,
+        "reads_count": 3,
+        "writes_count": 10,
+        "repeated_reads_blocked": 2,
         "anatomy_lookups": 0
       }
     }

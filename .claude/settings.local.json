@@ -19,7 +19,10 @@
       "Bash(find . -name \"BezierLine*.java\")",
       "Bash(./gradlew :TeamCode:assembleDebug)",
       "Bash(mkdir -p /tmp/pedro)",
-      "Bash(unzip -o -q C:/Users/Ben/.gradle/caches/modules-2/files-2.1/com.pedropathing/core/2.1.1/e80c29f33823f4c1c2ddd27999b26c8820af3c5d/core-2.1.1-sources.jar -d core-src)"
+      "Bash(unzip -o -q C:/Users/Ben/.gradle/caches/modules-2/files-2.1/com.pedropathing/core/2.1.1/e80c29f33823f4c1c2ddd27999b26c8820af3c5d/core-2.1.1-sources.jar -d core-src)",
+      "Bash(unzip -p \"C:/Users/Ben/.gradle/caches/modules-2/files-2.1/org.firstinspires.ftc/Hardware/11.1.0/18c58575c1f13e339d88b482d82831f03548929/Hardware-11.1.0-sources.jar\" \"com/qualcomm/hardware/limelightvision/Limelight3A.java\")",
+      "Bash(unzip -p \"C:/Users/Ben/.gradle/caches/modules-2/files-2.1/org.firstinspires.ftc/Hardware/11.1.0/18c58575c1f13e339d88b482d82831f03548929/Hardware-11.1.0-sources.jar\" \"com/qualcomm/hardware/limelightvision/LLResult.java\")",
+      "Bash(unzip -p \"C:/Users/Ben/.gradle/caches/modules-2/files-2.1/org.firstinspires.ftc/Hardware/11.1.0/18c58575c1f13e339d88b482d82831f03548929/Hardware-11.1.0-sources.jar\" \"com/qualcomm/hardware/limelightvision/LLResultTypes.java\")"
     ]
   }
 }

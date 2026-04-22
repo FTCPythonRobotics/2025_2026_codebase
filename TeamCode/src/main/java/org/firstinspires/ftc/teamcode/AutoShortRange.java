@@ -100,11 +100,6 @@ public abstract class AutoShortRange extends LinearOpMode {
         seq.add(drive("Stage 8 - Return to shoot", paths.stage8).build());
         seq.add(fireStep("Shoot cycle 2"));
 
-        // Park at top middle point.
-        seq.add(drive("Stage 12 - Park", paths.stage12)
-            .onPostRun(() -> { stopFlywheels(); stopIntake(); })
-            .build());
-
         return seq;
     }
 
@@ -316,7 +311,6 @@ public abstract class AutoShortRange extends LinearOpMode {
         public final PathChain stage6;
         public final PathChain stage7;
         public final PathChain stage8;
-        public final PathChain stage12;
 
         public final Pose startPose;
 
@@ -328,13 +322,13 @@ public abstract class AutoShortRange extends LinearOpMode {
             startPose = new Pose(p(24.000, 126.000).getX(), p(24.000, 126.000).getY(), h(144.000));
 
             stage1 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(21.800, 120.300), p(51.800, 97.000)))
-                    .setLinearHeadingInterpolation(h(144.000), h(140.000))
+                    .addPath(new BezierLine(p(21.800, 120.300), p(56.000, 110.000)))
+                    .setLinearHeadingInterpolation(h(144.000), h(153.000))
                     .build();
 
             stage2 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(51.800, 97.000), p(51.800, 82.000)))
-                    .setLinearHeadingInterpolation(h(140.000), h(180.000))
+                    .addPath(new BezierLine(p(56.000, 110.000), p(51.800, 82.000)))
+                    .setLinearHeadingInterpolation(h(153.000), h(180.000))
                     .build();
 
             stage3 = follower.pathBuilder()
@@ -343,13 +337,13 @@ public abstract class AutoShortRange extends LinearOpMode {
                     .build();
 
             stage4 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(19.000, 82.000), p(51.800, 97.000)))
-                    .setLinearHeadingInterpolation(h(180.000), h(140.000))
+                    .addPath(new BezierLine(p(19.000, 82.000), p(56.000, 110.000)))
+                    .setLinearHeadingInterpolation(h(180.000), h(153.000))
                     .build();
 
             stage5 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(51.800, 97.000), p(51.800, 57.000)))
-                    .setLinearHeadingInterpolation(h(140.000), h(180.000))
+                    .addPath(new BezierLine(p(56.000, 110.000), p(51.800, 57.000)))
+                    .setLinearHeadingInterpolation(h(153.000), h(180.000))
                     .build();
 
             stage6 = follower.pathBuilder()
@@ -363,14 +357,10 @@ public abstract class AutoShortRange extends LinearOpMode {
                     .build();
 
             stage8 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(20.000, 57.000), p(51.800, 97.000)))
-                    .setLinearHeadingInterpolation(h(180.000), h(140.000))
+                    .addPath(new BezierLine(p(20.000, 57.000), p(56.000, 110.000)))
+                    .setLinearHeadingInterpolation(h(180.000), h(153.000))
                     .build();
 
-            stage12 = follower.pathBuilder()
-                    .addPath(new BezierLine(p(51.800, 97.000), p(56.000, 110.000)))
-                    .setLinearHeadingInterpolation(h(140.000), h(153.000))
-                    .build();
         }
 
         private Pose p(double x, double y) {

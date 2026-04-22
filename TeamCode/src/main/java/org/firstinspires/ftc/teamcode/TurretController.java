@@ -10,8 +10,9 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class TurretController {
 
-    private final Limelight3A limelight;
-    private final DcMotor     turretMotor;
+    private final Limelight3A    limelight;
+    private final DcMotor        turretMotor;
+    private final LimelightTuner tuner;
 
     private boolean trackingEnabled;
     private boolean recentering;
@@ -35,10 +36,13 @@ public class TurretController {
         turretMotor.setPower(0);
 
         limelight.setPollRateHz(90);
+        limelight.pipelineSwitch(0);
         limelight.start();
         if (!limelight.isRunning()) {
             throw new IllegalStateException("Limelight failed to start (not polling)");
         }
+
+        tuner = new LimelightTuner(limelight);
     }
 
     public static TurretController create(HardwareMap hw, Telemetry telemetry) {
@@ -53,7 +57,17 @@ public class TurretController {
         }
     }
 
-    public void setTargetTagIds(int... ids) { targetTagIds = ids; }
+    public void setTargetTagIds(int... ids) {
+        targetTagIds = ids;
+        tuner.setTargetTagIds(ids);
+    }
+
+    public LimelightTuner getTuner() { return tuner; }
+
+    /** Blocking exposure/gain sweep. Call once at auto init. */
+    public LimelightTuner.Result tuneLimelight(Telemetry telem) {
+        return tuner.tuneBlocking(telem);
+    }
 
     public void setTrackingEnabled(boolean enabled) {
         trackingEnabled = enabled;
