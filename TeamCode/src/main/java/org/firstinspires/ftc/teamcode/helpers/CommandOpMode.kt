@@ -9,14 +9,15 @@ open class CommandOpMode : OpMode() {
         commands.forEach { schedule(it) }
     }
 
-    override fun init() {}
+    override fun init() {
+        reset()
+    }
 
     override fun loop() {
         Scheduler.execute()
     }
 
     override fun stop() {
-        reset()
     }
 
     private fun reset() {
