@@ -10,12 +10,13 @@ import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem
 import org.firstinspires.ftc.teamcode.subsystems.SubsystemRegistry
 
 class TeleOpMode : LinearOpMode() {
-    private val drive by lazy {
-        DriveSubsystem(hardwareMap).also { it.init() }
-    }
+    private lateinit var drive: DriveSubsystem
 
     override fun runOpMode() {
+        drive = DriveSubsystem(hardwareMap).also { it.init() }
+
         Scheduler.reset()
+        SubsystemRegistry.initAll()
 
         waitForStart()
         if (isStopRequested) return
@@ -56,9 +57,6 @@ class TeleOpMode : LinearOpMode() {
     }
 
     private fun getGoScore(): PathChain? {
-        return drive.follower.pathBuilder()
-            .addPath(BezierLine(drive.follower.pose, Pose(56.0, 110.0, 153.0)))
-            .setLinearHeadingInterpolation(drive.follower.heading, 153.0)
-            .build()
+        return drive.follower.pathBuilder().addPath(BezierLine(drive.follower.pose, Pose(56.0, 110.0, 153.0))).setLinearHeadingInterpolation(drive.follower.heading, 153.0).build()
     }
 }
