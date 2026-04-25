@@ -36,7 +36,7 @@ object FollowerConfig {
             .hardwareMapName(HardwareMapConfig.PINPOINT_ODO)
             .encoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD)
             .forwardEncoderDirection(GoBildaPinpointDriver.EncoderDirection.REVERSED)
-            .forwardEncoderDirection(GoBildaPinpointDriver.EncoderDirection.FORWARD)
+            .strafeEncoderDirection(GoBildaPinpointDriver.EncoderDirection.FORWARD)
 
     private val followerConstants =
         FollowerConstants()
