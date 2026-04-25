@@ -16,7 +16,7 @@ class Robot(opmode: OpMode) {
     val shooter: ShooterSubsystem = ShooterSubsystem(ctx)
     val turret: TurretSubsystem = TurretSubsystem(ctx)
 
-    private val subsystems: List<Subsystem> = listOf(drive, shooter, turret)
+    val subsystems: List<Subsystem> = listOf(drive, shooter, turret)
 
     fun init() {
         subsystems.forEach { it.init() }
@@ -27,4 +27,9 @@ class Robot(opmode: OpMode) {
             Scheduler.schedule(it.updateCommand())
         }
     }
+
+    inline fun <reified T : Subsystem> getSubsystem(): T =
+        subsystems.first { it is T } as T
+    inline fun <reified T> getHwDevice(name: String): T =
+        ctx.hardwareMap.get(T::class.java, name)
 }

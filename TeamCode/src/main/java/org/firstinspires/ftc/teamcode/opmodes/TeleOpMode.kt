@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp
 import org.firstinspires.ftc.teamcode.helpers.RobotOpMode
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem
 
-@TeleOp
+@TeleOp(name = "TeleOp Mode")
 class TeleOpMode : RobotOpMode() {
     override fun onStart() {
         // Control

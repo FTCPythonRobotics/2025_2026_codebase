@@ -1,46 +1,30 @@
 package org.firstinspires.ftc.teamcode.subsystems
 
 import com.pedropathing.ivy.Command
-import com.pedropathing.ivy.commands.Commands.instant
+import com.pedropathing.ivy.commands.Commands.infinite
 import com.qualcomm.hardware.limelightvision.Limelight3A
-import com.qualcomm.robotcore.hardware.DcMotor
-import com.qualcomm.robotcore.hardware.DcMotorEx
+import org.firstinspires.ftc.teamcode.abstractions.LimitedDcMotor
 import org.firstinspires.ftc.teamcode.configs.HardwareMapConfig
+import org.firstinspires.ftc.teamcode.configs.TurretConfig
 import org.firstinspires.ftc.teamcode.helpers.RobotContext
 import org.firstinspires.ftc.teamcode.helpers.Subsystem
+import org.firstinspires.ftc.teamcode.helpers.device
 import kotlin.math.abs
 import kotlin.math.sign
 
 class TurretSubsystem(ctx: RobotContext) : Subsystem(ctx) {
-
-    // Tunables
-    private val kP = 0.1
-    private val kI = 0.01
-    private val kD = 0.005
-    private val kF = 0.3
-    private val deadBand = 1.0
 
     // PID state
     private var integral = 0.0
     private var lastError = 0.0
 
     // State
-    private lateinit var limelight: Limelight3A
-    private lateinit var turretMotor: DcMotorEx
+    private var limelight: Limelight3A = hw.device(HardwareMapConfig.LIMELIGHT_CAMERA)
+    private var motor: LimitedDcMotor = LimitedDcMotor(hw, HardwareMapConfig.TURRET_MOTOR, TurretConfig.MAX_TICKS)
 
-    // last frame target visibility
-    private var targetVisible: Boolean = false
+    private var lastUpdateTime: Long = System.nanoTime()
 
     override fun init() {
-        limelight = hw.get(Limelight3A::class.java, HardwareMapConfig.LIMELIGHT_CAMERA)
-        turretMotor = hw.get(DcMotorEx::class.java, HardwareMapConfig.TURRET_MOTOR)
-
-        turretMotor.mode = DcMotor.RunMode.STOP_AND_RESET_ENCODER
-        turretMotor.mode = DcMotor.RunMode.RUN_WITHOUT_ENCODER
-
-        turretMotor.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.BRAKE
-        turretMotor.power = 0.0
-
         limelight.setPollRateHz(90)
         limelight.start()
 
@@ -50,14 +34,24 @@ class TurretSubsystem(ctx: RobotContext) : Subsystem(ctx) {
     }
 
     override fun updateCommand(): Command {
-        return instant {}
+        return infinite { update() }
     }
 
-    fun test(unsafeDt: Double) {
+    fun update() {
+        // Calculate dt since last update
+        val currentTime = System.nanoTime()
+        val dt = (currentTime - lastUpdateTime) / 1e9 // ns->s
+
+        stepPID(dt)
+
+        lastUpdateTime = currentTime
+    }
+
+    fun stepPID(unsafeDt: Double) {
         val tx = 0.0 // Placeholder for actual tx value from vision processing
         val error = 0.0 - tx
 
-        if (abs(error) < deadBand) {
+        if (abs(error) < TurretConfig.DEADBAND_DEG) {
             integral = 0.0 // reset
             lastError = error
             return
@@ -65,15 +59,20 @@ class TurretSubsystem(ctx: RobotContext) : Subsystem(ctx) {
 
         val dt = unsafeDt.coerceIn(1e-6, 0.5)
 
-        val pTerm = kP * error
-        val iTerm = kI * integral
-        val dTerm = kD * (error - lastError) / dt
-        val kTerm = kF * sign(error)
+        val pTerm = TurretConfig.KP * error
+        val iTerm = TurretConfig.KI * integral
+        val dTerm = TurretConfig.KD * (error - lastError) / dt
+        val kTerm = TurretConfig.KF * sign(error)
 
         val rawOutput = (pTerm + iTerm + dTerm + kTerm)
         val output = rawOutput.coerceIn(-1.0, 1.0)
 
-        val saturated = abs(rawOutput) > 1.0
+        val applied = motor.setPower(output)
+
+        // power coerced to [-1, 1], or wrapper clipped to 0 at a position limit = saturated
+        val powerSaturated = abs(rawOutput) > 1.0
+        val limitClipped = applied != output
+        val saturated = powerSaturated || limitClipped
         val wouldWorsen = sign(rawOutput) == sign(error)
         if (!(saturated && wouldWorsen)) { // Only integrate if we're not saturated or if we are, it would help reduce error
             integral += error * dt
@@ -82,8 +81,7 @@ class TurretSubsystem(ctx: RobotContext) : Subsystem(ctx) {
         telemetry.addData("Error", error)
         telemetry.addData("Integral", integral)
         telemetry.addData("Output", output)
-
-        // TODO: set turret motor power to output
+        telemetry.addData("Applied", applied)
 
         // Save for next time to calculate derivative
         lastError = error
