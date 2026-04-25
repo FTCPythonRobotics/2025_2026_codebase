@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmodes
 
 import com.pedropathing.geometry.BezierLine
-import com.pedropathing.geometry.Pose
 import com.pedropathing.ivy.Scheduler.schedule
 import com.pedropathing.ivy.commands.Commands.infinite
 import com.pedropathing.paths.PathChain
@@ -23,7 +22,7 @@ class TeleOpMode : CommandOpMode() {
         schedule(infinite { handleBindings() })
 
         // Subsystems
-        schedule(infinite { drive.update() })
+        schedule(drive.updateCommand())
     }
 
     private fun handleBindings() {
@@ -37,9 +36,7 @@ class TeleOpMode : CommandOpMode() {
         }
         // Auto align - X on PS controllers
         if (gamepad1.aWasPressed()) {
-            getGoScore()?.let { pathChain ->
-                schedule(drive.followPath(pathChain))
-            }
+            schedule(drive.followPath(buildScoringPath()))
         }
         // Return control - Circle on PS controllers
         if (gamepad1.bWasPressed()) {
@@ -47,10 +44,10 @@ class TeleOpMode : CommandOpMode() {
         }
     }
 
-    private fun getGoScore(): PathChain? {
+    private fun buildScoringPath(): PathChain {
         return drive.follower.pathBuilder()
-            .addPath(BezierLine(drive.follower.pose, Pose(56.0, 110.0, 153.0)))
-            .setLinearHeadingInterpolation(drive.follower.heading, 153.0)
-            .build()
+            .addPath(BezierLine(drive.follower.pose, DriveSubsystem.SCORING_POSE))
+            .setLinearHeadingInterpolation(drive.follower.heading, DriveSubsystem.SCORING_HEADING)
+            .build()!!
     }
 }

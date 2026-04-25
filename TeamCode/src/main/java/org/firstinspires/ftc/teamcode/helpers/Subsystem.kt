@@ -6,5 +6,5 @@ import com.qualcomm.robotcore.hardware.HardwareMap
 abstract class Subsystem(protected val hw: HardwareMap) {
     abstract fun init()
 
-    abstract fun update(): Command
+    abstract fun updateCommand(): Command
 }

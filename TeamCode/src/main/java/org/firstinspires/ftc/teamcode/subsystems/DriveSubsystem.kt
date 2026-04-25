@@ -19,16 +19,14 @@ class DriveSubsystem(hw: HardwareMap) : Subsystem(hw) {
         private set
 
     private var isCrawling = false
-    private val crawlSpeed = 0.5
 
     private var fieldCentric = false
 
     override fun init() {
         follower = FollowerConfig.create(hw)
-        follower.update()
     }
 
-    override fun update(): Command =
+    override fun updateCommand(): Command =
         infinite {
             follower.update()
         }
@@ -45,7 +43,7 @@ class DriveSubsystem(hw: HardwareMap) : Subsystem(hw) {
         Command.build()
             .setStart { follower.startTeleopDrive() }
             .setExecute {
-                val scale = if (isCrawling) crawlSpeed else 1.0
+                val scale = if (isCrawling) CRAWL_SPEED else 1.0
 
                 follower.setTeleOpDrive(
                     -gamepad.left_stick_y.toDouble() * scale,
@@ -119,4 +117,12 @@ class DriveSubsystem(hw: HardwareMap) : Subsystem(hw) {
      */
     private fun wrapWithRequirement(inner: Command): Command =
         inner.proxy().requiring(this)
+
+    companion object {
+        // Tunables
+        private const val CRAWL_SPEED = 0.5
+
+        const val SCORING_HEADING = 153.0
+        val SCORING_POSE = Pose(56.0, 110.0, SCORING_HEADING)
+    }
 }

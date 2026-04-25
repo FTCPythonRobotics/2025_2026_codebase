@@ -50,7 +50,7 @@ class TurretSubsystem(hw: HardwareMap) : Subsystem(hw) {
         }
     }
 
-    override fun update() : Command {
+    override fun updateCommand() : Command {
         TODO("Not yet implemented")
     }
 
