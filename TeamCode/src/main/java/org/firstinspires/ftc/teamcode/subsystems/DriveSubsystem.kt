@@ -3,6 +3,8 @@ package org.firstinspires.ftc.teamcode.subsystems
 import com.pedropathing.follower.Follower
 import com.pedropathing.geometry.Pose
 import com.pedropathing.ivy.Command
+import com.pedropathing.ivy.Scheduler
+import com.pedropathing.ivy.commands.Commands.infinite
 import com.pedropathing.ivy.commands.Commands.instant
 import com.pedropathing.ivy.pedro.PedroCommands.hold
 import com.pedropathing.ivy.pedro.PedroCommands.turnTo
@@ -10,6 +12,7 @@ import com.pedropathing.paths.PathChain
 import com.qualcomm.robotcore.hardware.Gamepad
 import com.qualcomm.robotcore.hardware.HardwareMap
 import org.firstinspires.ftc.teamcode.configs.FollowerConfig
+import org.firstinspires.ftc.teamcode.helpers.Subsystem
 
 class DriveSubsystem(hw: HardwareMap) : Subsystem(hw) {
     lateinit var follower: Follower
@@ -25,9 +28,10 @@ class DriveSubsystem(hw: HardwareMap) : Subsystem(hw) {
         follower.update()
     }
 
-    override fun update() {
-        follower.update()
-    }
+    override fun update(): Command =
+        infinite {
+            follower.update()
+        }
 
     fun setStartingPose(pose: Pose) {
         follower.setStartingPose(pose)
