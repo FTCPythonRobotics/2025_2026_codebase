@@ -40,48 +40,49 @@ import java.util.function.Supplier
  *
  * @author Baron Henderson - 20077 The Indubitables
  * @version 1.0, 6/26/2025
+ *
+ * NOTE: Rewrote by Ben McAvoy - 28536 Team Python in Kotlin, with the same functionality 24/04/2026
  */
 @Configurable
 @TeleOp(name = "Tuning", group = "Pedro Pathing")
-class TuningOpMode :
-    SelectableOpMode("Select a Tuning OpMode", { s: SelectScope<Supplier<OpMode>> ->
-        s.folder("Localization") { l ->
-            l.add("Localization Test", Supplier { LocalizationTest() })
-            l.add("Offsets Tuner", Supplier { OffsetsTuner() })
-            l.add("Forward Tuner", Supplier { ForwardTuner() })
-            l.add("Lateral Tuner", Supplier { LateralTuner() })
-            l.add("Turn Tuner", Supplier { TurnTuner() })
-        }
-        s.folder("Automatic") { a ->
-            a.add("Forward Velocity Tuner", Supplier { ForwardVelocityTuner() })
-            a.add("Lateral Velocity Tuner", Supplier { LateralVelocityTuner() })
-            a.add(
-                "Forward Zero Power Acceleration Tuner",
-                Supplier { ForwardZeroPowerAccelerationTuner() },
-            )
-            a.add(
-                "Lateral Zero Power Acceleration Tuner",
-                Supplier { LateralZeroPowerAccelerationTuner() },
-            )
-            a.add("Predictive Braking Tuner", Supplier { PredictiveBrakingTuner() })
-        }
-        s.folder("Manual") { p ->
-            p.add("Translational Tuner", Supplier { TranslationalTuner() })
-            p.add("Heading Tuner", Supplier { HeadingTuner() })
-            p.add("Drive Tuner", Supplier { DriveTuner() })
-            p.add("Centripetal Tuner", Supplier { CentripetalTuner() })
-        }
-        s.folder("Tests") { p ->
-            p.add("Line", Supplier { Line() })
-            p.add("Triangle", Supplier { Triangle() })
-            p.add("Circle", Supplier { Circle() })
-        }
-        s.folder("Swerve") { p ->
-            p.add("Analog Min / Max Tuner", Supplier { AnalogMinMaxTuner() })
-            p.add("Swerve Offsets Test", Supplier { SwerveOffsetsTest() })
-            p.add("Swerve Turn Test", Supplier { SwerveTurnTest() })
-        }
-    }) {
+class TuningOpMode : SelectableOpMode("Select a Tuning OpMode", { s: SelectScope<Supplier<OpMode>> ->
+    s.folder("Localization") { l ->
+        l.add("Localization Test", Supplier { LocalizationTest() })
+        l.add("Offsets Tuner", Supplier { OffsetsTuner() })
+        l.add("Forward Tuner", Supplier { ForwardTuner() })
+        l.add("Lateral Tuner", Supplier { LateralTuner() })
+        l.add("Turn Tuner", Supplier { TurnTuner() })
+    }
+    s.folder("Automatic") { a ->
+        a.add("Forward Velocity Tuner", Supplier { ForwardVelocityTuner() })
+        a.add("Lateral Velocity Tuner", Supplier { LateralVelocityTuner() })
+        a.add(
+            "Forward Zero Power Acceleration Tuner",
+            Supplier { ForwardZeroPowerAccelerationTuner() },
+        )
+        a.add(
+            "Lateral Zero Power Acceleration Tuner",
+            Supplier { LateralZeroPowerAccelerationTuner() },
+        )
+        a.add("Predictive Braking Tuner", Supplier { PredictiveBrakingTuner() })
+    }
+    s.folder("Manual") { p ->
+        p.add("Translational Tuner", Supplier { TranslationalTuner() })
+        p.add("Heading Tuner", Supplier { HeadingTuner() })
+        p.add("Drive Tuner", Supplier { DriveTuner() })
+        p.add("Centripetal Tuner", Supplier { CentripetalTuner() })
+    }
+    s.folder("Tests") { p ->
+        p.add("Line", Supplier { Line() })
+        p.add("Triangle", Supplier { Triangle() })
+        p.add("Circle", Supplier { Circle() })
+    }
+    s.folder("Swerve") { p ->
+        p.add("Analog Min / Max Tuner", Supplier { AnalogMinMaxTuner() })
+        p.add("Swerve Offsets Test", Supplier { SwerveOffsetsTest() })
+        p.add("Swerve Turn Test", Supplier { SwerveTurnTest() })
+    }
+}) {
     override fun onSelect() {
         val firstTime = !followerInitialized
         follower = FollowerConfig.create(hardwareMap)
@@ -650,12 +651,9 @@ class ForwardZeroPowerAccelerationTuner : OpMode() {
             } else {
                 val currentVelocity = follower.velocity.dot(heading)
                 accelerations.add(
-                    (currentVelocity - previousVelocity) / (
-                        (System.nanoTime() - previousTimeNano) /
-                            Math.pow(
-                                10.0, 9.0,
-                            )
-                    ),
+                    (currentVelocity - previousVelocity) / ((System.nanoTime() - previousTimeNano) / Math.pow(
+                        10.0, 9.0,
+                    )),
                 )
                 previousVelocity = currentVelocity
                 previousTimeNano = System.nanoTime()
@@ -758,12 +756,9 @@ class LateralZeroPowerAccelerationTuner : OpMode() {
             } else {
                 val currentVelocity = Math.abs(follower.velocity.dot(heading))
                 accelerations.add(
-                    (currentVelocity - previousVelocity) / (
-                        (System.nanoTime() - previousTimeNano) /
-                            Math.pow(
-                                10.0, 9.0,
-                            )
-                    ),
+                    (currentVelocity - previousVelocity) / ((System.nanoTime() - previousTimeNano) / Math.pow(
+                        10.0, 9.0,
+                    )),
                 )
                 previousVelocity = currentVelocity
                 previousTimeNano = System.nanoTime()
@@ -801,12 +796,7 @@ class LateralZeroPowerAccelerationTuner : OpMode() {
  */
 class PredictiveBrakingTuner : OpMode() {
     private enum class State {
-        START_MOVE,
-        WAIT_DRIVE_TIME,
-        APPLY_BRAKE,
-        WAIT_BRAKE_TIME,
-        RECORD,
-        DONE,
+        START_MOVE, WAIT_DRIVE_TIME, APPLY_BRAKE, WAIT_BRAKE_TIME, RECORD, DONE,
     }
 
     private class BrakeRecord(val timeMs: Double, val pose: Pose, val velocity: Double)
@@ -820,10 +810,9 @@ class PredictiveBrakingTuner : OpMode() {
     private val brakeData = ArrayList<BrakeRecord>()
 
     companion object {
-        private val TEST_POWERS =
-            doubleArrayOf(
-                1.0, 1.0, 1.0, 0.9, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2,
-            )
+        private val TEST_POWERS = doubleArrayOf(
+            1.0, 1.0, 1.0, 0.9, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2,
+        )
         private const val BRAKING_POWER = -0.2
         private const val DRIVE_TIME_MS = 1000
     }
@@ -1129,15 +1118,9 @@ class DriveTuner : OpMode() {
         follower.deactivateAllPIDFs()
         follower.activateDrive()
 
-        forwards =
-            follower.pathBuilder().setGlobalDeceleration()
-                .addPath(BezierLine(Pose(72.0, 72.0), Pose(DISTANCE + 72, 72.0)))
-                .setConstantHeadingInterpolation(0.0).build()
+        forwards = follower.pathBuilder().setGlobalDeceleration().addPath(BezierLine(Pose(72.0, 72.0), Pose(DISTANCE + 72, 72.0))).setConstantHeadingInterpolation(0.0).build()
 
-        backwards =
-            follower.pathBuilder().setGlobalDeceleration()
-                .addPath(BezierLine(Pose(DISTANCE + 72, 72.0), Pose(72.0, 72.0)))
-                .setConstantHeadingInterpolation(0.0).build()
+        backwards = follower.pathBuilder().setGlobalDeceleration().addPath(BezierLine(Pose(DISTANCE + 72, 72.0), Pose(72.0, 72.0))).setConstantHeadingInterpolation(0.0).build()
 
         follower.followPath(forwards)
     }
@@ -1274,22 +1257,20 @@ class CentripetalTuner : OpMode() {
 
     override fun start() {
         follower.activateAllPIDFs()
-        forwards =
-            Path(
-                BezierCurve(
-                    Pose(72.0, 72.0),
-                    Pose(Math.abs(DISTANCE) + 72, 72.0),
-                    Pose(Math.abs(DISTANCE) + 72, DISTANCE + 72),
-                ),
-            )
-        backwards =
-            Path(
-                BezierCurve(
-                    Pose(Math.abs(DISTANCE) + 72, DISTANCE + 72),
-                    Pose(Math.abs(DISTANCE) + 72, 72.0),
-                    Pose(72.0, 72.0),
-                ),
-            )
+        forwards = Path(
+            BezierCurve(
+                Pose(72.0, 72.0),
+                Pose(Math.abs(DISTANCE) + 72, 72.0),
+                Pose(Math.abs(DISTANCE) + 72, DISTANCE + 72),
+            ),
+        )
+        backwards = Path(
+            BezierCurve(
+                Pose(Math.abs(DISTANCE) + 72, DISTANCE + 72),
+                Pose(Math.abs(DISTANCE) + 72, 72.0),
+                Pose(72.0, 72.0),
+            ),
+        )
 
         backwards.setTangentHeadingInterpolation()
         backwards.reverseHeadingInterpolation()
@@ -1363,13 +1344,7 @@ class Triangle : OpMode() {
     override fun start() {
         follower.setStartingPose(startPose)
 
-        triangle =
-            follower.pathBuilder().addPath(BezierLine(startPose, interPose))
-                .setLinearHeadingInterpolation(startPose.heading, interPose.heading)
-                .addPath(BezierLine(interPose, endPose))
-                .setLinearHeadingInterpolation(interPose.heading, endPose.heading)
-                .addPath(BezierLine(endPose, startPose))
-                .setLinearHeadingInterpolation(endPose.heading, startPose.heading).build()
+        triangle = follower.pathBuilder().addPath(BezierLine(startPose, interPose)).setLinearHeadingInterpolation(startPose.heading, interPose.heading).addPath(BezierLine(interPose, endPose)).setLinearHeadingInterpolation(interPose.heading, endPose.heading).addPath(BezierLine(endPose, startPose)).setLinearHeadingInterpolation(endPose.heading, startPose.heading).build()
 
         follower.followPath(triangle)
     }
@@ -1395,28 +1370,27 @@ class Circle : OpMode() {
     }
 
     override fun start() {
-        circle =
-            follower.pathBuilder().addPath(
-                BezierCurve(
-                    Pose(72.0, 72.0), Pose(RADIUS + 72, 72.0), Pose(RADIUS + 72, RADIUS + 72),
-                ),
-            ).setHeadingInterpolation(HeadingInterpolator.facingPoint(72.0, RADIUS + 72)).addPath(
-                BezierCurve(
-                    Pose(RADIUS + 72, RADIUS + 72),
-                    Pose(RADIUS + 72, (2 * RADIUS) + 72),
-                    Pose(72.0, (2 * RADIUS) + 72),
-                ),
-            ).setHeadingInterpolation(HeadingInterpolator.facingPoint(72.0, RADIUS + 72)).addPath(
-                BezierCurve(
-                    Pose(72.0, (2 * RADIUS) + 72),
-                    Pose(-RADIUS + 72, (2 * RADIUS) + 72),
-                    Pose(-RADIUS + 72, RADIUS + 72),
-                ),
-            ).setHeadingInterpolation(HeadingInterpolator.facingPoint(72.0, RADIUS + 72)).addPath(
-                BezierCurve(
-                    Pose(-RADIUS + 72, RADIUS + 72), Pose(-RADIUS + 72, 72.0), Pose(72.0, 72.0),
-                ),
-            ).setHeadingInterpolation(HeadingInterpolator.facingPoint(72.0, RADIUS + 72)).build()
+        circle = follower.pathBuilder().addPath(
+            BezierCurve(
+                Pose(72.0, 72.0), Pose(RADIUS + 72, 72.0), Pose(RADIUS + 72, RADIUS + 72),
+            ),
+        ).setHeadingInterpolation(HeadingInterpolator.facingPoint(72.0, RADIUS + 72)).addPath(
+            BezierCurve(
+                Pose(RADIUS + 72, RADIUS + 72),
+                Pose(RADIUS + 72, (2 * RADIUS) + 72),
+                Pose(72.0, (2 * RADIUS) + 72),
+            ),
+        ).setHeadingInterpolation(HeadingInterpolator.facingPoint(72.0, RADIUS + 72)).addPath(
+            BezierCurve(
+                Pose(72.0, (2 * RADIUS) + 72),
+                Pose(-RADIUS + 72, (2 * RADIUS) + 72),
+                Pose(-RADIUS + 72, RADIUS + 72),
+            ),
+        ).setHeadingInterpolation(HeadingInterpolator.facingPoint(72.0, RADIUS + 72)).addPath(
+            BezierCurve(
+                Pose(-RADIUS + 72, RADIUS + 72), Pose(-RADIUS + 72, 72.0), Pose(72.0, 72.0),
+            ),
+        ).setHeadingInterpolation(HeadingInterpolator.facingPoint(72.0, RADIUS + 72)).build()
         follower.followPath(circle)
     }
 
@@ -1457,8 +1431,7 @@ class Circle : OpMode() {
  */
 class AnalogMinMaxTuner : OpMode() {
     // populate the below with your names for the servos and encoders
-    val encoderNames =
-        arrayOf("leftFrontEncoder", "rightFrontEncoder", "leftBackEncoder", "rightBackEncoder")
+    val encoderNames = arrayOf("leftFrontEncoder", "rightFrontEncoder", "leftBackEncoder", "rightBackEncoder")
     lateinit var encoders: Array<AnalogInput>
     val minVoltages = DoubleArray(encoderNames.size)
     val maxVoltages = DoubleArray(encoderNames.size)
@@ -1480,10 +1453,9 @@ class AnalogMinMaxTuner : OpMode() {
             hub.bulkCachingMode = LynxModule.BulkCachingMode.MANUAL
         }
 
-        encoders =
-            Array(encoderNames.size) { i ->
-                hardwareMap.get(AnalogInput::class.java, encoderNames[i])
-            }
+        encoders = Array(encoderNames.size) { i ->
+            hardwareMap.get(AnalogInput::class.java, encoderNames[i])
+        }
         for (i in encoders.indices) {
             minVoltages[i] = 5.0 // bigger value than should ever be read
         }

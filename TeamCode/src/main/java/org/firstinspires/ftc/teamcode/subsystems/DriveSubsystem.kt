@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.subsystems
 
-import com.qualcomm.robotcore.hardware.Gamepad
 import com.pedropathing.follower.Follower
 import com.pedropathing.geometry.Pose
 import com.pedropathing.ivy.Command
@@ -8,6 +7,7 @@ import com.pedropathing.ivy.commands.Commands.instant
 import com.pedropathing.ivy.pedro.PedroCommands.hold
 import com.pedropathing.ivy.pedro.PedroCommands.turnTo
 import com.pedropathing.paths.PathChain
+import com.qualcomm.robotcore.hardware.Gamepad
 import com.qualcomm.robotcore.hardware.HardwareMap
 import org.firstinspires.ftc.teamcode.configs.FollowerConfig
 
@@ -94,14 +94,17 @@ class DriveSubsystem(hw: HardwareMap) : Subsystem(hw) {
      * Toggle crawl mode
      */
     fun toggleCrawlMode(): Command = instant { isCrawling = !isCrawling }
+
     /**
      * Set crawl mode to a specific state
      */
     fun setCrawlMode(enabled: Boolean): Command = instant { isCrawling = enabled }
+
     /**
      * Toggle field centric mode
      */
     fun toggleFieldCentric(): Command = instant { fieldCentric = !fieldCentric }
+
     /**
      * Set field centric mode to a specific state
      */
