@@ -1,17 +1,17 @@
 package org.firstinspires.ftc.teamcode.subsystems
 
 import com.pedropathing.ivy.Command
+import com.pedropathing.ivy.commands.Commands.instant
 import com.qualcomm.hardware.limelightvision.Limelight3A
 import com.qualcomm.robotcore.hardware.DcMotor
 import com.qualcomm.robotcore.hardware.DcMotorEx
-import com.qualcomm.robotcore.hardware.HardwareMap
-import org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry
 import org.firstinspires.ftc.teamcode.configs.HardwareMapConfig
+import org.firstinspires.ftc.teamcode.helpers.RobotContext
 import org.firstinspires.ftc.teamcode.helpers.Subsystem
 import kotlin.math.abs
 import kotlin.math.sign
 
-class TurretSubsystem(hw: HardwareMap) : Subsystem(hw) {
+class TurretSubsystem(ctx: RobotContext) : Subsystem(ctx) {
 
     // Tunables
     private val kP = 0.1
@@ -42,7 +42,6 @@ class TurretSubsystem(hw: HardwareMap) : Subsystem(hw) {
         turretMotor.power = 0.0
 
         limelight.setPollRateHz(90)
-        limelight.setPollRateHz(0)
         limelight.start()
 
         if (!limelight.isConnected) {
@@ -50,8 +49,8 @@ class TurretSubsystem(hw: HardwareMap) : Subsystem(hw) {
         }
     }
 
-    override fun updateCommand() : Command {
-        TODO("Not yet implemented")
+    override fun updateCommand(): Command {
+        return instant {}
     }
 
     fun test(unsafeDt: Double) {
@@ -83,6 +82,8 @@ class TurretSubsystem(hw: HardwareMap) : Subsystem(hw) {
         telemetry.addData("Error", error)
         telemetry.addData("Integral", integral)
         telemetry.addData("Output", output)
+
+        // TODO: set turret motor power to output
 
         // Save for next time to calculate derivative
         lastError = error

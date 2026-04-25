@@ -3,18 +3,17 @@ package org.firstinspires.ftc.teamcode.subsystems
 import com.pedropathing.follower.Follower
 import com.pedropathing.geometry.Pose
 import com.pedropathing.ivy.Command
-import com.pedropathing.ivy.Scheduler
 import com.pedropathing.ivy.commands.Commands.infinite
 import com.pedropathing.ivy.commands.Commands.instant
 import com.pedropathing.ivy.pedro.PedroCommands.hold
 import com.pedropathing.ivy.pedro.PedroCommands.turnTo
 import com.pedropathing.paths.PathChain
 import com.qualcomm.robotcore.hardware.Gamepad
-import com.qualcomm.robotcore.hardware.HardwareMap
 import org.firstinspires.ftc.teamcode.configs.FollowerConfig
+import org.firstinspires.ftc.teamcode.helpers.RobotContext
 import org.firstinspires.ftc.teamcode.helpers.Subsystem
 
-class DriveSubsystem(hw: HardwareMap) : Subsystem(hw) {
+class DriveSubsystem(ctx: RobotContext) : Subsystem(ctx) {
     lateinit var follower: Follower
         private set
 
@@ -123,6 +122,6 @@ class DriveSubsystem(hw: HardwareMap) : Subsystem(hw) {
         private const val CRAWL_SPEED = 0.5
 
         const val SCORING_HEADING = 153.0
-        val SCORING_POSE = Pose(56.0, 110.0, SCORING_HEADING)
+        val SCORING_POSE = Pose(56.0, 110.0)
     }
 }
