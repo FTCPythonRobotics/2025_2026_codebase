@@ -7,8 +7,8 @@ object TurretConfig {
     const val MAX_TICKS: Double = MAX_ANGLE_DEG * TICKS_PER_DEG;
 
     // Tag IDs
-    const val RED_TAG_IDS: Int = 24;
-    const val BLUE_TAG_IDS: Int = 20;
+    const val RED_TAG_ID: Int = 24;
+    const val BLUE_TAG_ID: Int = 20;
 
     // State steady values
     const val TARGET_LOSS_GRACE_MS: Int = 120;

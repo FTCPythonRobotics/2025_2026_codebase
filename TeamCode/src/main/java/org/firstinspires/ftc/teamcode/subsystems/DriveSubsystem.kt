@@ -91,25 +91,29 @@ class DriveSubsystem(ctx: RobotContext) : Subsystem(ctx) {
     fun turnToHeadingDeg(degrees: Double): Command =
         wrapWithRequirement(turnTo(follower, Math.toRadians(degrees)))
 
-    /**
-     * Toggle crawl mode
-     */
-    fun toggleCrawlMode(): Command = instant { isCrawling = !isCrawling }
+    fun toggleCrawlMode() {
+        isCrawling = !isCrawling
+    }
 
-    /**
-     * Set crawl mode to a specific state
-     */
-    fun setCrawlMode(enabled: Boolean): Command = instant { isCrawling = enabled }
+    fun setCrawlMode(enabled: Boolean) {
+        isCrawling = enabled
+    }
 
-    /**
-     * Toggle field centric mode
-     */
-    fun toggleFieldCentric(): Command = instant { fieldCentric = !fieldCentric }
+    fun toggleFieldCentric() {
+        fieldCentric = !fieldCentric
+    }
 
-    /**
-     * Set field centric mode to a specific state
-     */
-    fun setFieldCentric(enabled: Boolean): Command = instant { fieldCentric = enabled }
+    fun setFieldCentric(enabled: Boolean) {
+        fieldCentric = enabled
+    }
+
+    fun toggleCrawlModeCommand(): Command = instant { toggleCrawlMode() }
+
+    fun setCrawlModeCommand(enabled: Boolean): Command = instant { setCrawlMode(enabled) }
+
+    fun toggleFieldCentricCommand(): Command = instant { toggleFieldCentric() }
+
+    fun setFieldCentricCommand(enabled: Boolean): Command = instant { setFieldCentric(enabled) }
 
     /**
      * Helper to wrap already made commands with requirements
