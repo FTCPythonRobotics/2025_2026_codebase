@@ -20,7 +20,7 @@ class AutoOpMode : RobotOpMode() {
 
     override fun onStart() {
         // Build paths
-        init(robot.drive.follower)
+        init(robot.drive.follower, false)
 
         robot.turret.setTargetTagID(targetTagId)
         robot.drive.setStartingPose(Pose(21.800, 120.300, Math.toRadians(144.0)))
@@ -50,84 +50,91 @@ class AutoOpMode : RobotOpMode() {
         )
     }
 
+    // VISUALIZER_PATH_BEGIN
     companion object Paths {
-        lateinit var ScorePreload: PathChain
-            private set
-        lateinit var Intake1: PathChain
-            private set
-        lateinit var Score1: PathChain
-            private set
-        lateinit var Intake2: PathChain
-            private set
-        lateinit var Score2: PathChain
-            private set
-        lateinit var Intake3: PathChain
-            private set
-        lateinit var FinalScore: PathChain
-            private set
+            lateinit var ScorePreload: PathChain
+                private set
+            lateinit var Intake1: PathChain
+                private set
+            lateinit var Score1: PathChain
+                private set
+            lateinit var Intake2: PathChain
+                private set
+            lateinit var Score2: PathChain
+                private set
+            lateinit var Intake3: PathChain
+                private set
+            lateinit var FinalScore: PathChain
+                private set
 
-        fun init(follower: Follower) {
-            ScorePreload = follower.pathBuilder().addPath(
-                BezierLine(
-                    Pose(21.800, 120.300), Pose(51.800, 97.000)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(144.0), Math.toRadians(140.0)).build()
+            fun init(follower: Follower, isRed: Boolean) {
+                fun pose(x: Double, y: Double): Pose =
+                    if (isRed) Pose(141.500 - x, y) else Pose(x, y)
+                fun heading(deg: Double): Double =
+                    Math.toRadians(if (isRed) 180.0 - deg else deg)
 
-            Intake1 = follower.pathBuilder().addPath(
-                BezierLine(
-                    Pose(51.800, 97.000), Pose(51.800, 82.000)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(140.0), Math.toRadians(180.0)).addPath(
-                BezierLine(
-                    Pose(51.800, 82.000), Pose(19.000, 82.000)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(180.0), Math.toRadians(180.0)).build()
+                ScorePreload = follower.pathBuilder().addPath(
+                    BezierLine(
+                        pose(21.800, 120.300), pose(51.800, 97.000)
+                    )
+                ).setLinearHeadingInterpolation(heading(144.0), heading(140.0)).build()
 
-            Score1 = follower.pathBuilder().addPath(
-                BezierLine(
-                    Pose(19.000, 82.000), Pose(51.800, 97.000)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(180.0), Math.toRadians(140.0)).build()
+                Intake1 = follower.pathBuilder().addPath(
+                    BezierLine(
+                        pose(51.800, 97.000), pose(51.800, 82.000)
+                    )
+                ).setLinearHeadingInterpolation(heading(140.0), heading(180.0)).addPath(
+                    BezierLine(
+                        pose(51.800, 82.000), pose(19.000, 82.000)
+                    )
+                ).setLinearHeadingInterpolation(heading(180.0), heading(180.0)).build()
 
-            Intake2 = follower.pathBuilder().addPath(
-                BezierLine(
-                    Pose(51.800, 97.000), Pose(51.800, 57.000)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(140.0), Math.toRadians(180.0)).addPath(
-                BezierLine(
-                    Pose(51.800, 57.000), Pose(10.000, 57.000)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(180.0), Math.toRadians(180.0)).build()
+                Score1 = follower.pathBuilder().addPath(
+                    BezierLine(
+                        pose(19.000, 82.000), pose(51.800, 97.000)
+                    )
+                ).setLinearHeadingInterpolation(heading(180.0), heading(140.0)).build()
 
-            Score2 = follower.pathBuilder().addPath(
-                BezierLine(
-                    Pose(10.000, 57.000), Pose(20.000, 57.000)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(180.0), Math.toRadians(180.0)).addPath(
-                BezierLine(
-                    Pose(20.000, 57.000), Pose(51.800, 97.000)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(180.0), Math.toRadians(140.0)).build()
+                Intake2 = follower.pathBuilder().addPath(
+                    BezierLine(
+                        pose(51.800, 97.000), pose(51.800, 57.000)
+                    )
+                ).setLinearHeadingInterpolation(heading(140.0), heading(180.0)).addPath(
+                    BezierLine(
+                        pose(51.800, 57.000), pose(10.000, 57.000)
+                    )
+                ).setLinearHeadingInterpolation(heading(180.0), heading(180.0)).build()
 
-            Intake3 = follower.pathBuilder().addPath(
-                BezierLine(
-                    Pose(51.800, 97.000), Pose(51.800, 34.500)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(140.0), Math.toRadians(180.0)).addPath(
-                BezierLine(
-                    Pose(51.800, 34.500), Pose(10.000, 34.500)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(180.0), Math.toRadians(180.0)).build()
+                Score2 = follower.pathBuilder().addPath(
+                    BezierLine(
+                        pose(10.000, 57.000), pose(20.000, 57.000)
+                    )
+                ).setLinearHeadingInterpolation(heading(180.0), heading(180.0)).addPath(
+                    BezierLine(
+                        pose(20.000, 57.000), pose(51.800, 97.000)
+                    )
+                ).setLinearHeadingInterpolation(heading(180.0), heading(140.0)).build()
 
-            FinalScore = follower.pathBuilder().addPath(
-                BezierLine(
-                    Pose(10.000, 34.500), Pose(20.000, 34.500)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(180.0), Math.toRadians(180.0)).addPath(
-                BezierLine(
-                    Pose(20.000, 34.500), Pose(56.000, 110.000)
-                )
-            ).setLinearHeadingInterpolation(Math.toRadians(180.0), Math.toRadians(153.0)).build()
+                Intake3 = follower.pathBuilder().addPath(
+                    BezierLine(
+                        pose(51.800, 97.000), pose(51.800, 34.500)
+                    )
+                ).setLinearHeadingInterpolation(heading(140.0), heading(180.0)).addPath(
+                    BezierLine(
+                        pose(51.800, 34.500), pose(10.000, 34.500)
+                    )
+                ).setLinearHeadingInterpolation(heading(180.0), heading(180.0)).build()
+
+                FinalScore = follower.pathBuilder().addPath(
+                    BezierLine(
+                        pose(10.000, 34.500), pose(20.000, 34.500)
+                    )
+                ).setLinearHeadingInterpolation(heading(180.0), heading(180.0)).addPath(
+                    BezierLine(
+                        pose(20.000, 34.500), pose(56.000, 110.000)
+                    )
+                ).setLinearHeadingInterpolation(heading(180.0), heading(153.0)).build()
+            }
         }
-    }
+    // VISUALIZER_PATH_END
 }
