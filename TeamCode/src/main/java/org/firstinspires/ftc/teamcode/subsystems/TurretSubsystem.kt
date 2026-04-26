@@ -16,74 +16,145 @@ class TurretSubsystem(ctx: RobotContext) : Subsystem(ctx) {
 
     // PID state
     private var integral = 0.0
-    private var lastError = 0.0
+    private var lastTx = 0.0
+    private var filteredDerivative = 0.0
 
-    // State
-    private var limelight: Limelight3A = hw.device(HardwareMapConfig.LIMELIGHT_CAMERA)
-    private var motor: LimitedDcMotor = LimitedDcMotor(hw, HardwareMapConfig.TURRET_MOTOR, TurretConfig.MAX_TICKS)
+    // Hardware
+    private val limelight: Limelight3A = hw.device(HardwareMapConfig.LIMELIGHT_CAMERA)
+    private val motor: LimitedDcMotor = LimitedDcMotor(hw, HardwareMapConfig.TURRET_MOTOR, TurretConfig.MAX_TICKS)
 
+    // Loop / target tracking state
     private var lastUpdateTime: Long = System.nanoTime()
+    private var targetTagID: Int? = null
+    private var targetPreviouslyVisible = false
+    private var lastTargetSeenNs: Long = 0L
+    private var firstUpdateSinceInit = true
+
+    private val targetLossGraceNs: Long = TurretConfig.TARGET_LOSS_GRACE_MS.toLong() * 1_000_000L
 
     override fun init() {
         limelight.setPollRateHz(90)
+        limelight.pipelineSwitch(0)
         limelight.start()
 
         if (!limelight.isConnected) {
             throw RuntimeException("Limelight not connected")
         }
+
+        resetPidState()
+        targetPreviouslyVisible = false
+        firstUpdateSinceInit = true
     }
 
-    override fun updateCommand(): Command {
-        return infinite { update() }
+    override fun updateCommand(): Command = infinite { update() }
+
+    fun setTargetTagID(tagID: Int) {
+        targetTagID = tagID
     }
 
-    fun update() {
-        // Calculate dt since last update
-        val currentTime = System.nanoTime()
-        val dt = (currentTime - lastUpdateTime) / 1e9 // ns->s
-
-        stepPID(dt)
-
-        lastUpdateTime = currentTime
+    private fun resetPidState() {
+        integral = 0.0
+        lastTx = 0.0
+        filteredDerivative = 0.0
     }
 
-    fun stepPID(unsafeDt: Double) {
-        val tx = 0.0 // Placeholder for actual tx value from vision processing
-        val error = 0.0 - tx
+    private fun update() {
+        val now = System.nanoTime()
 
-        if (abs(error) < TurretConfig.DEADBAND_DEG) {
-            integral = 0.0 // reset
-            lastError = error
+        if (firstUpdateSinceInit) {
+            firstUpdateSinceInit = false
+            lastUpdateTime = now
+            return
+        }
+
+        val dt = (now - lastUpdateTime) / 1e9 // ns->s
+        lastUpdateTime = now
+
+        stepPID(dt, now)
+    }
+
+    private fun getTxForTarget(): Double? {
+        // TODO: The limelight has a config option for filtering at
+        // TODO: a "hardware" level. We could potentially use that.
+
+        val target = targetTagID ?: return null
+        val result = limelight.latestResult ?: return null
+        if (!result.isValid) return null
+
+        return result.fiducialResults
+            .firstOrNull { it.fiducialId == target }
+            ?.targetXDegrees
+    }
+
+    private fun stepPID(unsafeDt: Double, nowNs: Long) {
+        val targetTx = getTxForTarget()
+        val targetVisible = targetTx != null
+
+        // Pick the drive signal:
+        //  - Visible target: tx from limelight (track the tag).
+        //  - Lost target, inside grace window: hold position; the target may reappear.
+        //  - Lost target, past grace: recenter — feed the current angle as the signal so
+        //    the same PID drives the turret back toward encoder zero.
+        val tx: Double = when {
+            targetVisible -> {
+                lastTargetSeenNs = nowNs
+                targetTx
+            }
+            targetPreviouslyVisible && (nowNs - lastTargetSeenNs) < targetLossGraceNs -> {
+                motor.setPower(0.0) // hold position (lost target but in grace period)
+                return
+            }
+            else -> -motor.currentTicks / TurretConfig.TICKS_PER_DEG // use current angle as signal to recenter (want to drive to zero)
+        }
+
+        // Reset PID state across visibility transitions (acquire/lose), and seed lastTx
+        // so the first D term after a transition doesn't spike from a stale baseline.
+        if (targetVisible != targetPreviouslyVisible) {
+            resetPidState()
+            lastTx = tx
+        }
+        targetPreviouslyVisible = targetVisible
+
+        if (abs(tx) < TurretConfig.DEADBAND_DEG) {
+            integral = 0.0
+            lastTx = tx
+            motor.setPower(0.0)
             return
         }
 
         val dt = unsafeDt.coerceIn(1e-6, 0.5)
 
-        val pTerm = TurretConfig.KP * error
-        val iTerm = TurretConfig.KI * integral
-        val dTerm = TurretConfig.KD * (error - lastError) / dt
-        val kTerm = TurretConfig.KF * sign(error)
+        val rawD = (tx - lastTx) / dt
+        filteredDerivative = TurretConfig.D_FILTER * filteredDerivative +
+                (1.0 - TurretConfig.D_FILTER) * rawD
 
-        val rawOutput = (pTerm + iTerm + dTerm + kTerm)
-        val output = rawOutput.coerceIn(-1.0, 1.0)
+        // Drive signal is tx directly (positive tx => target right => positive motor power),
+        // matching the old controller which had TURRET_MOTOR_POWER_INVERTED = false.
+        val pTerm = TurretConfig.KP * tx
+        val iTerm = TurretConfig.KI * integral
+        val dTerm = TurretConfig.KD * filteredDerivative
+        val kTerm = TurretConfig.KF * sign(tx)
+
+        val rawOutput = pTerm + iTerm + dTerm + kTerm
+        val output = rawOutput.coerceIn(-1.0..1.0)
 
         val applied = motor.setPower(output)
 
-        // power coerced to [-1, 1], or wrapper clipped to 0 at a position limit = saturated
+        // Saturation of power coerced to [-1, 1] or wrapper clipped to 0 at a position limit.
         val powerSaturated = abs(rawOutput) > 1.0
         val limitClipped = applied != output
         val saturated = powerSaturated || limitClipped
-        val wouldWorsen = sign(rawOutput) == sign(error)
-        if (!(saturated && wouldWorsen)) { // Only integrate if we're not saturated or if we are, it would help reduce error
-            integral += error * dt
+        val wouldWorsen = sign(rawOutput) == sign(tx)
+        if (!(saturated && wouldWorsen)) {
+            integral += tx * dt
         }
 
-        telemetry.addData("Error", error)
+        telemetry.addData("tx", tx)
         telemetry.addData("Integral", integral)
+        telemetry.addData("Filtered D", filteredDerivative)
         telemetry.addData("Output", output)
         telemetry.addData("Applied", applied)
 
-        // Save for next time to calculate derivative
-        lastError = error
+        lastTx = tx
     }
 }

@@ -5,6 +5,7 @@ import com.pedropathing.ivy.Scheduler.schedule
 import com.pedropathing.ivy.commands.Commands.infinite
 import com.pedropathing.paths.PathChain
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp
+import org.firstinspires.ftc.teamcode.configs.TurretConfig
 import org.firstinspires.ftc.teamcode.helpers.RobotOpMode
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem
 
@@ -14,6 +15,8 @@ class TeleOpMode : RobotOpMode() {
         // Control
         schedule(robot.drive.teleopDrive(gamepad1))
         schedule(infinite { handleBindings() })
+
+        robot.turret.setTargetTagID(TurretConfig.BLUE_TAG_IDS)
     }
 
     private fun handleBindings() {
