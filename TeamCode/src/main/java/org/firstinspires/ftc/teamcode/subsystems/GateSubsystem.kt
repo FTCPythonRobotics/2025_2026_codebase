@@ -19,9 +19,6 @@ class GateSubsystem(ctx: RobotContext) : Subsystem(ctx) {
         gateRight = LimitedServo(hw, HardwareMapConfig.GATE_SERVO_RIGHT, GateConfig.GATE_RIGHT_MIN_POS, GateConfig.GATE_RIGHT_MAX_POS)
     }
 
-    override fun updateCommand(): Command =
-        instant { }
-
     fun open() {
         gateLeft.setPos(GateConfig.GATE_LEFT_MAX_POS)
         gateRight.setPos(GateConfig.GATE_RIGHT_MAX_POS)
@@ -39,11 +36,22 @@ class GateSubsystem(ctx: RobotContext) : Subsystem(ctx) {
     }
 
     fun openCommand(): Command =
-        instant { open() }
+        Command.build()
+            .setStart(this::open)
+            .setDone { true }
+            .requiring(this)
+
     fun closeCommand(): Command =
-        instant { close() }
+        Command.build()
+            .setStart(this::close)
+            .setDone { true }
+            .requiring(this)
+
     fun toggleCommand(): Command =
-        instant { toggle() }
+        Command.build()
+            .setStart(this::toggle)
+            .setDone { true }
+            .requiring(this)
 
     fun isOpen(): Boolean = isOpen
 }

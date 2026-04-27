@@ -26,12 +26,13 @@ class Robot(opmode: OpMode) {
 
     fun schedulePeriodics() {
         subsystems.forEach {
-            Scheduler.schedule(it.updateCommand())
+            it.updateCommand()?.let { cmd -> Scheduler.schedule(cmd) }
         }
     }
 
     inline fun <reified T : Subsystem> getSubsystem(): T =
         subsystems.first { it is T } as T
+
     inline fun <reified T> getHwDevice(name: String): T =
         ctx.hardwareMap.get(T::class.java, name)
 }

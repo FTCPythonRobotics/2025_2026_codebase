@@ -25,7 +25,7 @@ class DriveSubsystem(ctx: RobotContext) : Subsystem(ctx) {
         follower = FollowerConfig.create(hw)
     }
 
-    override fun updateCommand(): Command =
+    override fun updateCommand(): Command? =
         infinite {
             follower.update()
         }

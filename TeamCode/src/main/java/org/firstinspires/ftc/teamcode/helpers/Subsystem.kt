@@ -8,7 +8,7 @@ abstract class Subsystem(ctx: RobotContext) {
     protected val hw: HardwareMap = ctx.hardwareMap
     protected val telemetry: Telemetry = ctx.telemetry
 
-    abstract fun init()
+    open fun init() {}
 
-    abstract fun updateCommand(): Command
+    open fun updateCommand(): Command? = null
 }
