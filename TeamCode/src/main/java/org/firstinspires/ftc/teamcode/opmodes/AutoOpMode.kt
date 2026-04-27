@@ -27,7 +27,10 @@ class AutoOpMode : RobotOpMode() {
 
         schedule(
             sequential(
+                robot.gate.closeCommand(),
+
                 sequential(
+                    // Spin up early
                     robot.shooter.setTargetRPMCommand(ShooterConfig.FIXED_RPM),
 
                     parallel(
@@ -35,9 +38,12 @@ class AutoOpMode : RobotOpMode() {
                         Commands.waitUntil(robot.shooter::atTarget)
                     ),
 
-                    // TODO: Open gate + run intake to shoot
+                    // TODO: run intake to shoot
+                    robot.gate.openCommand(),
                     waitMs(3000.0),
-                    robot.shooter.stopCommand()
+                    robot.gate.closeCommand(),
+
+                    robot.shooter.stopCommand(),
                 ),
 
                 robot.drive.followPath(Intake1),

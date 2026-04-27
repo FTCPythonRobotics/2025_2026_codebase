@@ -17,6 +17,8 @@ class TeleOpMode : RobotOpMode() {
     override fun onStart() {
         // Control
         schedule(robot.drive.teleopDrive(gamepad1))
+        schedule(robot.gate.closeCommand())
+
         schedule(infinite { handleBindings() })
 
         robot.turret.setTargetTagID(targetTagId)
@@ -44,6 +46,11 @@ class TeleOpMode : RobotOpMode() {
             robot.shooter.setTargetRPM(ShooterConfig.FIXED_RPM)
         } else if (gamepad1.rightTriggerWasReleased()) {
             robot.shooter.stop()
+        }
+
+        // Square should be used to toggle the intake
+        if (gamepad1.xWasPressed()) {
+            robot.gate.toggle()
         }
 
         if (gamepad1.rightBumperWasPressed()) {
