@@ -2,13 +2,12 @@ package org.firstinspires.ftc.teamcode.subsystems
 
 import com.pedropathing.ivy.Command
 import com.pedropathing.ivy.commands.Commands.infinite
-import com.qualcomm.hardware.limelightvision.Limelight3A
+import org.firstinspires.ftc.teamcode.abstractions.LimelightCamera
 import org.firstinspires.ftc.teamcode.abstractions.LimitedDcMotor
 import org.firstinspires.ftc.teamcode.configs.HardwareMapConfig
 import org.firstinspires.ftc.teamcode.configs.TurretConfig
 import org.firstinspires.ftc.teamcode.helpers.RobotContext
 import org.firstinspires.ftc.teamcode.helpers.Subsystem
-import org.firstinspires.ftc.teamcode.helpers.device
 import kotlin.math.abs
 import kotlin.math.sign
 
@@ -20,7 +19,7 @@ class TurretSubsystem(ctx: RobotContext) : Subsystem(ctx) {
     private var filteredDerivative = 0.0
 
     // Hardware
-    private val limelight: Limelight3A = hw.device(HardwareMapConfig.LIMELIGHT_CAMERA)
+    private val limelight: LimelightCamera = LimelightCamera(hw, HardwareMapConfig.LIMELIGHT_CAMERA)
     private val motor: LimitedDcMotor = LimitedDcMotor(hw, HardwareMapConfig.TURRET_MOTOR, TurretConfig.MAX_TICKS)
 
     // Loop / target tracking state
@@ -33,13 +32,7 @@ class TurretSubsystem(ctx: RobotContext) : Subsystem(ctx) {
     private val targetLossGraceNs: Long = TurretConfig.TARGET_LOSS_GRACE_MS.toLong() * 1_000_000L
 
     override fun init() {
-        limelight.setPollRateHz(90)
-        limelight.pipelineSwitch(0)
-        limelight.start()
-
-        if (!limelight.isConnected) {
-            throw RuntimeException("Limelight not connected")
-        }
+        limelight.start(pollRateHz = 90, pipeline = 0)
 
         resetPidState()
         targetPreviouslyVisible = false
@@ -78,12 +71,7 @@ class TurretSubsystem(ctx: RobotContext) : Subsystem(ctx) {
         // TODO: a "hardware" level. We could potentially use that.
 
         val target = targetTagID ?: return null
-        val result = limelight.latestResult ?: return null
-        if (!result.isValid) return null
-
-        return result.fiducialResults
-            .firstOrNull { it.fiducialId == target }
-            ?.targetXDegrees
+        return limelight.txForFiducial(target)
     }
 
     private fun stepPID(unsafeDt: Double, nowNs: Long) {
