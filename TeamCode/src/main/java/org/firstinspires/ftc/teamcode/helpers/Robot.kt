@@ -4,6 +4,7 @@ import com.pedropathing.ivy.Scheduler
 import com.qualcomm.robotcore.eventloop.opmode.OpMode
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem
 import org.firstinspires.ftc.teamcode.subsystems.GateSubsystem
+import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem
 import org.firstinspires.ftc.teamcode.subsystems.ShooterSubsystem
 import org.firstinspires.ftc.teamcode.subsystems.TurretSubsystem
 
@@ -16,9 +17,10 @@ class Robot(opmode: OpMode) {
     val drive: DriveSubsystem = DriveSubsystem(ctx)
     val shooter: ShooterSubsystem = ShooterSubsystem(ctx)
     val turret: TurretSubsystem = TurretSubsystem(ctx)
-    var gate: GateSubsystem = GateSubsystem(ctx)
+    val gate: GateSubsystem = GateSubsystem(ctx)
+    val intake: IntakeSubsystem = IntakeSubsystem(ctx)
 
-    val subsystems: List<Subsystem> = listOf(drive, shooter, turret, gate)
+    val subsystems: List<Subsystem> = listOf(drive, shooter, turret, gate, intake)
 
     fun init() {
         subsystems.forEach { it.init() }

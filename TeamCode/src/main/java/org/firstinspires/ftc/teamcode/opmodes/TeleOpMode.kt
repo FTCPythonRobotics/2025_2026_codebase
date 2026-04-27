@@ -27,11 +27,11 @@ class TeleOpMode : RobotOpMode() {
     private fun handleBindings() {
         // Toggle crawl mode - Right bumper on PS controllers
         if (gamepad1.rightBumperWasPressed()) {
-            robot.drive.toggleCrawlMode()
+            schedule(robot.drive.toggleCrawlModeCommand())
         }
         // Toggle field centric - SELECT on PS controllers
         if (gamepad1.backWasPressed()) {
-            robot.drive.toggleFieldCentric()
+            schedule(robot.drive.toggleFieldCentricCommand())
         }
         // Auto align - X on PS controllers
         if (gamepad1.aWasPressed()) {
@@ -43,14 +43,14 @@ class TeleOpMode : RobotOpMode() {
         }
 
         if (gamepad1.rightTriggerWasPressed()) {
-            robot.shooter.setTargetRPM(ShooterConfig.FIXED_RPM)
+            schedule(robot.shooter.setTargetRPMCommand(ShooterConfig.FIXED_RPM))
         } else if (gamepad1.rightTriggerWasReleased()) {
-            robot.shooter.stop()
+            schedule(robot.shooter.stopCommand())
         }
 
         // Square should be used to toggle the intake
         if (gamepad1.xWasPressed()) {
-            robot.gate.toggle()
+            schedule(robot.intake.toggleCommand())
         }
 
         if (gamepad1.rightBumperWasPressed()) {

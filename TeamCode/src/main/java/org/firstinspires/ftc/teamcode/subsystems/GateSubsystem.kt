@@ -36,22 +36,11 @@ class GateSubsystem(ctx: RobotContext) : Subsystem(ctx) {
     }
 
     fun openCommand(): Command =
-        Command.build()
-            .setStart(this::open)
-            .setDone { true }
-            .requiring(this)
-
+        instant { open() }.requiring(this)
     fun closeCommand(): Command =
-        Command.build()
-            .setStart(this::close)
-            .setDone { true }
-            .requiring(this)
-
+        instant { close() }.requiring(this)
     fun toggleCommand(): Command =
-        Command.build()
-            .setStart(this::toggle)
-            .setDone { true }
-            .requiring(this)
+        instant { toggle() }.requiring(this)
 
     fun isOpen(): Boolean = isOpen
 }

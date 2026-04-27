@@ -38,10 +38,10 @@ class ShooterSubsystem(ctx: RobotContext) : Subsystem(ctx) {
     }
 
     fun setTargetRPMCommand(rpm: Double): Command =
-        instant { setTargetRPM(rpm) }
+        instant { setTargetRPM(rpm) }.requiring(this)
 
     fun stopCommand(): Command =
-        instant { stop() }
+        instant { stop() }.requiring(this)
 
     fun atTarget(): Boolean =
         targetRPM > 0.0 && abs(targetRPM - currentRPM()) <= ShooterConfig.AT_TARGET_TOLERANCE_RPM
