@@ -43,11 +43,21 @@ class DriveSubsystem(ctx: RobotContext) : Subsystem(ctx) {
             .setStart { follower.startTeleopDrive() }
             .setExecute {
                 val scale = if (isCrawling) CRAWL_SPEED else 1.0
+                val forward = -gamepad.left_stick_y.toDouble() * scale
+                val strafe = -gamepad.left_stick_x.toDouble() * scale
+                val turn = -gamepad.right_stick_x.toDouble() * scale
+                val (driveForward, driveStrafe) = if (fieldCentric) {
+                    // Pedro's field heading 0 faces field-right. Rotate driver input so
+                    // stick-forward means field-up for PlayStation-style driving.
+                    -strafe to forward
+                } else {
+                    forward to strafe
+                }
 
                 follower.setTeleOpDrive(
-                    -gamepad.left_stick_y.toDouble() * scale,
-                    -gamepad.left_stick_x.toDouble() * scale,
-                    -gamepad.right_stick_x.toDouble() * scale,
+                    driveForward,
+                    driveStrafe,
+                    turn,
                     !fieldCentric
                 )
             }
