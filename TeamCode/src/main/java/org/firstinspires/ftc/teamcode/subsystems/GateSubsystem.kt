@@ -21,13 +21,13 @@ class GateSubsystem(ctx: RobotContext) : Subsystem(ctx) {
 
     fun open() {
         gateLeft.setPos(GateConfig.GATE_LEFT_MAX_POS)
-        gateRight.setPos(GateConfig.GATE_RIGHT_MAX_POS)
+        gateRight.setPos(GateConfig.GATE_RIGHT_MIN_POS)
         isOpen = true
     }
 
     fun close() {
         gateLeft.setPos(GateConfig.GATE_LEFT_MIN_POS)
-        gateRight.setPos(GateConfig.GATE_RIGHT_MIN_POS)
+        gateRight.setPos(GateConfig.GATE_RIGHT_MAX_POS)
         isOpen = false
     }
 
