@@ -21,13 +21,14 @@ class TeleOpMode : RobotOpMode() {
     private lateinit var bindings: GamepadBindings
 
     override fun onStart() {
-        // Control
+        // Setup
         driver = PlayStationGamepad(gamepad1)
+        bindings = createBindings()
+
+        // Init
         robot.drive.setStartingPose(STARTING_POSE)
         schedule(robot.drive.teleopDrive(driver.raw))
         schedule(robot.gate.closeCommand())
-
-        bindings = createBindings()
         schedule(infinite { bindings.update() })
 
         robot.turret.setTargetTagID(TARGET_TAG_ID)
