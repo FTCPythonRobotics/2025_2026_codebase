@@ -104,7 +104,7 @@ class TurretSubsystem(ctx: RobotContext) : Subsystem(ctx) {
                 motor.setPower(0.0) // hold position (lost target but in grace period)
                 return
             }
-            else -> -motor.currentTicks / TurretConfig.TICKS_PER_DEG // use current angle as signal to recenter (want to drive to zero)
+            else -> motor.currentTicks / TurretConfig.TICKS_PER_DEG // use current angle as signal to recenter (want to drive to zero)
         }
 
         // Reset PID state across visibility transitions (acquire/lose), and seed lastTx

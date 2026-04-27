@@ -26,6 +26,11 @@ class IntakeSubsystem(ctx: RobotContext) : Subsystem(ctx) {
         isOn = true
     }
 
+    fun reverse() {
+        intakeMotor.power = -IntakeConfig.INTAKE_POWER
+        isOn = true
+    }
+
     fun stop() {
         intakeMotor.power = 0.0
         isOn = false
@@ -35,6 +40,8 @@ class IntakeSubsystem(ctx: RobotContext) : Subsystem(ctx) {
         instant { toggle() }.requiring(this)
     fun startCommand() =
         instant { start() }.requiring(this)
+    fun reverseCommand() =
+        instant { reverse() }.requiring(this)
     fun stopCommand() =
         instant { stop() }.requiring(this)
 }

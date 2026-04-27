@@ -50,7 +50,6 @@ class LimitedServo(
         // robot initialization instead of after the servo has been commanded.
         require(minPos in 0.0..1.0) { "minPos must be between 0.0 and 1.0" }
         require(maxPos in 0.0..1.0) { "maxPos must be between 0.0 and 1.0" }
-        require(minPos <= maxPos) { "minPos must be less than or equal to maxPos" }
     }
 
     /**

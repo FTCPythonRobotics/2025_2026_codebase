@@ -5,6 +5,7 @@ import com.pedropathing.ivy.commands.Commands.infinite
 import com.pedropathing.ivy.commands.Commands.instant
 import com.qualcomm.robotcore.hardware.DcMotor
 import com.qualcomm.robotcore.hardware.DcMotorEx
+import com.qualcomm.robotcore.hardware.DcMotorSimple
 import org.firstinspires.ftc.teamcode.configs.HardwareMapConfig
 import org.firstinspires.ftc.teamcode.configs.ShooterConfig
 import org.firstinspires.ftc.teamcode.helpers.RobotContext
@@ -24,6 +25,8 @@ class ShooterSubsystem(ctx: RobotContext) : Subsystem(ctx) {
 
         configureMotor(topMotor)
         configureMotor(bottomMotor)
+
+        bottomMotor.direction = DcMotorSimple.Direction.REVERSE
     }
 
     override fun updateCommand(): Command =
@@ -37,11 +40,18 @@ class ShooterSubsystem(ctx: RobotContext) : Subsystem(ctx) {
         targetRPM = 0.0
     }
 
+    fun toggle(rpm: Double) {
+        if (targetRPM > 0.0) stop() else setTargetRPM(rpm)
+    }
+
     fun setTargetRPMCommand(rpm: Double): Command =
         instant { setTargetRPM(rpm) }.requiring(this)
 
     fun stopCommand(): Command =
         instant { stop() }.requiring(this)
+
+    fun toggleCommand(rpm: Double): Command =
+        instant { toggle(rpm) }.requiring(this)
 
     fun atTarget(): Boolean =
         targetRPM > 0.0 && abs(targetRPM - currentRPM()) <= ShooterConfig.AT_TARGET_TOLERANCE_RPM
